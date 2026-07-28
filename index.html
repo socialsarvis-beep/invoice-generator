@@ -3,561 +3,525 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Invoice Generator - Create Professional Invoices Free</title>
-    <meta name="description" content="Create professional invoices with our free invoice generator. Download PDF, customize branding, and manage billing. Perfect for freelancers and small businesses.">
+    <title>Ultra Invoice Generator - Professional Invoices</title>
+    <meta name="description" content="Create stunning professional invoices with our premium invoice generator. Free, fast, and feature-rich.">
     
-    <!-- Google Verification Tag -->
-    <meta name="google-site-verification" content="YOUR_CODE_HERE" />
-    
-    <!-- SEO Tags -->
-    <meta name="keywords" content="invoice generator, free invoice maker, billing software, freelance invoice, GST invoice">
+    <meta name="google-site-verification" content="YOUR_VERIFICATION_CODE_HERE" />
     <link rel="canonical" href="https://socialsarvis-beep.github.io/invoice-generator/">
     
-    <!-- Open Graph Tags -->
-    <meta property="og:title" content="Free Professional Invoice Generator">
-    <meta property="og:description" content="Create professional invoices instantly. Free PDF download.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://socialsarvis-beep.github.io/invoice-generator/">
-    
-    <!-- Font Awesome Icons -->
+    <!-- Font Awesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
+        :root {
+            --bg: #f8faff;
+            --card: #ffffff;
+            --text: #1a1a2e;
+            --text-light: #64748b;
+            --border: #e8edf5;
+            --primary: #f7971e;
+            --primary-dark: #e68a00;
+            --gradient: linear-gradient(145deg, #f7971e, #ffd200);
+            --shadow: 0 25px 80px rgba(0,0,0,0.08);
+            --radius: 20px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
+
+        [data-theme="dark"] {
+            --bg: #0f0f1a;
+            --card: #1a1a2e;
+            --text: #f1f5f9;
+            --text-light: #94a3b8;
+            --border: #2d2d44;
+            --shadow: 0 25px 80px rgba(0,0,0,0.4);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
 
         body {
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            background: var(--bg);
+            color: var(--text);
             min-height: 100vh;
             padding: 20px;
+            transition: var(--transition);
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+        .container { max-width: 1280px; margin: 0 auto; }
 
         /* Header */
         .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 20px 20px 0 0;
-            padding: 40px 50px;
+            background: linear-gradient(145deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            border-radius: var(--radius) var(--radius) 0 0;
+            padding: 28px 40px;
             color: white;
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
+            gap: 16px;
+            border-bottom: 3px solid rgba(247, 151, 30, 0.3);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
         }
 
-        .header-left {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-
+        .header-left { display: flex; align-items: center; gap: 18px; }
         .header-logo {
-            width: 60px;
-            height: 60px;
-            background: rgba(255,255,255,0.2);
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 30px;
-            backdrop-filter: blur(10px);
-            border: 2px solid rgba(255,255,255,0.3);
+            width: 56px; height: 56px;
+            background: var(--gradient);
+            border-radius: 14px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 28px; color: #1a1a2e;
+            box-shadow: 0 8px 25px rgba(247, 151, 30, 0.3);
         }
-
         .header h1 {
-            font-size: 2rem;
-            font-weight: 700;
-            letter-spacing: -0.5px;
+            font-size: 1.8rem; font-weight: 900;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
+        .header p { font-size: 0.95rem; opacity: 0.8; color: #a8b5d9; }
 
-        .header p {
-            font-size: 1rem;
-            opacity: 0.9;
-            margin-top: 4px;
-        }
+        .header-actions { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
 
-        .header-badge {
-            background: rgba(255,255,255,0.2);
-            padding: 8px 20px;
-            border-radius: 50px;
-            font-size: 0.85rem;
+        .theme-toggle, .theme-btn {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.15);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 0.9rem;
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.3);
         }
+        .theme-toggle:hover, .theme-btn:hover {
+            background: rgba(247, 151, 30, 0.2);
+            border-color: #f7971e;
+            transform: translateY(-2px);
+        }
+
+        /* Navigation */
+        .nav-bar {
+            background: var(--card);
+            padding: 12px 32px;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            border-bottom: 2px solid var(--border);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+            transition: var(--transition);
+        }
+        .nav-bar a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.85rem;
+            transition: var(--transition);
+            padding: 6px 14px;
+            border-radius: 10px;
+        }
+        .nav-bar a:hover, .nav-bar a.active {
+            color: #f7971e;
+            background: rgba(247, 151, 30, 0.08);
+        }
+        .nav-bar a i { margin-right: 8px; }
 
         /* Tool Wrapper */
         .tool-wrapper {
-            background: white;
-            border-radius: 0 0 20px 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            background: var(--card);
+            border-radius: 0 0 var(--radius) var(--radius);
             padding: 35px;
-            margin-bottom: 40px;
+            box-shadow: var(--shadow);
+            margin-bottom: 35px;
+            transition: var(--transition);
+            border: 1px solid var(--border);
         }
 
-        .tool-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 35px;
-        }
+        .tool-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 35px; }
 
-        @media (max-width: 768px) {
-            .tool-grid {
-                grid-template-columns: 1fr;
-            }
-            .header {
-                flex-direction: column;
-                text-align: center;
-                gap: 15px;
-                padding: 30px 20px;
-            }
-            .header-left {
-                flex-direction: column;
-            }
+        @media (max-width: 900px) { .tool-grid { grid-template-columns: 1fr; } }
+        @media (max-width: 600px) {
+            .header { flex-direction: column; text-align: center; padding: 20px; }
+            .header-left { flex-direction: column; }
+            .header-actions { justify-content: center; }
+            .nav-bar { justify-content: center; padding: 10px 12px; gap: 6px; }
+            .nav-bar a { font-size: 0.75rem; padding: 4px 8px; }
+            .tool-wrapper { padding: 16px; }
         }
 
         /* Form */
         .form-section h2 {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: #2d3748;
-            margin-bottom: 25px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            font-size: 1.4rem; font-weight: 800;
+            color: var(--text);
+            margin-bottom: 24px;
+            display: flex; align-items: center; gap: 10px;
         }
+        .form-section h2 i { color: #f7971e; }
 
-        .form-section h2 i {
-            color: #667eea;
-        }
-
-        .form-group {
-            margin-bottom: 18px;
-        }
-
+        .form-group { margin-bottom: 16px; }
         .form-group label {
             display: block;
-            font-weight: 500;
-            font-size: 0.85rem;
-            margin-bottom: 6px;
-            color: #4a5568;
+            font-weight: 600;
+            font-size: 0.78rem;
+            margin-bottom: 5px;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
+        .form-group label i { color: #f7971e; margin-right: 6px; width: 16px; }
 
-        .form-group label i {
-            color: #667eea;
-            margin-right: 8px;
-            width: 18px;
-        }
-
-        .form-group input,
-        .form-group textarea {
+        .form-group input, .form-group textarea, .form-group select {
             width: 100%;
             padding: 12px 16px;
-            border: 2px solid #e2e8f0;
+            border: 2px solid var(--border);
             border-radius: 12px;
             font-size: 0.95rem;
-            transition: all 0.3s ease;
-            background: #f7fafc;
+            transition: var(--transition);
+            background: var(--bg);
+            color: var(--text);
         }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
+        .form-group input:focus, .form-group textarea:focus {
             outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
-            background: white;
+            border-color: #f7971e;
+            box-shadow: 0 0 0 4px rgba(247, 151, 30, 0.1);
         }
-
-        .form-group textarea {
-            resize: vertical;
-            min-height: 60px;
-        }
-
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-        }
+        .form-group textarea { resize: vertical; min-height: 60px; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
 
         .btn {
             padding: 14px 28px;
             border: none;
             border-radius: 12px;
-            font-size: 1rem;
-            font-weight: 600;
+            font-size: 0.95rem;
+            font-weight: 700;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: var(--transition);
             width: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 10px;
         }
-
         .btn-primary {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+            background: var(--gradient);
+            color: #1a1a2e;
+            box-shadow: 0 4px 20px rgba(247, 151, 30, 0.35);
         }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.5);
-        }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 35px rgba(247, 151, 30, 0.45); }
 
         /* Preview */
         .preview-section {
-            background: #f7fafc;
+            background: var(--bg);
             border-radius: 16px;
-            padding: 25px;
-            border: 2px solid #e2e8f0;
+            padding: 20px;
+            border: 2px solid var(--border);
             position: relative;
+            transition: var(--transition);
         }
-
         .preview-section::before {
-            content: 'LIVE PREVIEW';
+            content: '⚡ LIVE PREVIEW';
             position: absolute;
             top: -12px;
             right: 20px;
-            background: #667eea;
-            color: white;
-            padding: 2px 15px;
+            background: var(--gradient);
+            color: #1a1a2e;
+            padding: 3px 16px;
             border-radius: 50px;
             font-size: 0.7rem;
-            font-weight: 600;
-            letter-spacing: 1px;
-        }
-
-        .preview-section h2 {
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: #2d3748;
-            margin-bottom: 20px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
         }
 
         #invoicePreview {
             background: white;
-            padding: 30px;
+            padding: 28px;
             border-radius: 12px;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 25px rgba(0,0,0,0.04);
         }
+        [data-theme="dark"] #invoicePreview { background: #1e1e32; color: white; }
+        [data-theme="dark"] #invoicePreview .invoice-header .company { color: white; }
+        [data-theme="dark"] #invoicePreview .invoice-details .value { color: #e2e8f0; }
+        [data-theme="dark"] #invoicePreview .invoice-table td { color: #e2e8f0; border-color: #2d2d44; }
+        [data-theme="dark"] #invoicePreview .invoice-table th { background: #2d2d44; color: #94a3b8; }
+        [data-theme="dark"] #invoicePreview .invoice-table .total-row { background: #1a1a2e; }
+        [data-theme="dark"] #invoicePreview .invoice-footer { border-color: #2d2d44; }
+        [data-theme="dark"] #invoicePreview .invoice-number .num { color: white; }
 
         .invoice-header {
-            border-bottom: 3px solid #667eea;
-            padding-bottom: 18px;
-            margin-bottom: 25px;
+            border-bottom: 3px solid #f7971e;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
+            gap: 10px;
         }
-
         .invoice-header .company {
             font-size: 1.6rem;
-            font-weight: 700;
-            color: #2d3748;
+            font-weight: 900;
+            color: #1a1a2e;
         }
-
-        .invoice-header .company span {
-            color: #667eea;
-        }
-
-        .invoice-number {
-            text-align: right;
-        }
-
-        .invoice-number .num {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #2d3748;
-        }
+        .invoice-header .company span { color: #f7971e; }
+        .invoice-number .num { font-size: 1rem; font-weight: 700; }
 
         .status-badge {
             display: inline-block;
             padding: 4px 18px;
             border-radius: 50px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            margin-top: 5px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            margin-top: 4px;
+            letter-spacing: 0.5px;
         }
-
-        .status-paid {
-            background: #48bb78;
-            color: white;
-        }
-
-        .status-unpaid {
-            background: #ed8936;
-            color: white;
-        }
-
-        .status-overdue {
-            background: #fc8181;
-            color: white;
-        }
+        .status-paid { background: #22c55e; color: white; }
+        .status-unpaid { background: #f59e0b; color: white; }
+        .status-overdue { background: #ef4444; color: white; }
 
         .invoice-details {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin-bottom: 25px;
+            gap: 18px;
+            margin-bottom: 20px;
         }
-
         .invoice-details .label {
-            font-size: 0.75rem;
-            color: #a0aec0;
+            font-size: 0.7rem;
+            color: #94a3b8;
             text-transform: uppercase;
-            font-weight: 600;
-            letter-spacing: 0.5px;
+            font-weight: 700;
+            letter-spacing: 0.8px;
         }
-
         .invoice-details .value {
             font-size: 0.95rem;
-            font-weight: 500;
-            color: #2d3748;
+            font-weight: 600;
+            color: #1a1a2e;
             margin-top: 2px;
         }
 
         .invoice-table {
             width: 100%;
             border-collapse: collapse;
-            margin: 20px 0;
+            margin: 16px 0;
         }
-
         .invoice-table th {
-            background: #edf2f7;
-            padding: 12px 15px;
+            background: #f1f5f9;
+            padding: 10px 14px;
             text-align: left;
-            font-size: 0.8rem;
+            font-size: 0.7rem;
             text-transform: uppercase;
-            font-weight: 600;
-            color: #4a5568;
-        }
-
-        .invoice-table td {
-            padding: 12px 15px;
-            border-bottom: 1px solid #e2e8f0;
-        }
-
-        .invoice-table .total-row {
             font-weight: 700;
-            font-size: 1.1rem;
-            background: #f7fafc;
-            border-top: 2px solid #667eea;
+            color: #475569;
+            letter-spacing: 0.5px;
+        }
+        .invoice-table td {
+            padding: 10px 14px;
+            border-bottom: 1px solid #e8edf5;
+            font-weight: 500;
+        }
+        .invoice-table .total-row {
+            font-weight: 800;
+            font-size: 1.05rem;
+            background: #f8faff;
+            border-top: 3px solid #f7971e;
         }
 
-        .invoice-footer {
-            margin-top: 25px;
-            padding-top: 20px;
-            border-top: 2px solid #e2e8f0;
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
+        /* Action Buttons */
         .action-buttons {
             display: flex;
-            gap: 12px;
-            margin-top: 20px;
+            gap: 10px;
+            margin-top: 16px;
+            flex-wrap: wrap;
         }
-
         .action-buttons button {
             flex: 1;
-            padding: 12px;
+            padding: 10px 16px;
             border: none;
             border-radius: 12px;
-            font-weight: 600;
+            font-weight: 700;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: var(--transition);
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 8px;
+            font-size: 0.85rem;
+            min-width: 80px;
         }
+        .btn-pdf { background: linear-gradient(145deg, #dc2626, #b91c1c); color: white; }
+        .btn-pdf:hover { transform: translateY(-3px); box-shadow: 0 8px 35px rgba(220,38,38,0.3); }
+        .btn-save { background: linear-gradient(145deg, #2563eb, #1d4ed8); color: white; }
+        .btn-save:hover { transform: translateY(-3px); box-shadow: 0 8px 35px rgba(37,99,235,0.3); }
+        .btn-copy { background: #f1f5f9; color: #475569; }
+        .btn-copy:hover { transform: translateY(-3px); }
+        .btn-reset { background: #f1f5f9; color: #475569; }
+        .btn-reset:hover { transform: translateY(-3px); }
+        .btn-whatsapp { background: #25D366; color: white; }
+        .btn-whatsapp:hover { transform: translateY(-3px); }
 
-        .btn-pdf {
-            background: linear-gradient(135deg, #fc8181, #e53e3e);
-            color: white;
-            box-shadow: 0 4px 15px rgba(229, 62, 62, 0.3);
-        }
-
-        .btn-pdf:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(229, 62, 62, 0.4);
-        }
-
-        .btn-reset {
-            background: #edf2f7;
-            color: #4a5568;
-        }
-
-        .btn-reset:hover {
-            background: #e2e8f0;
-            transform: translateY(-2px);
-        }
-
-        /* Status Selector */
         .status-selector {
             display: flex;
-            gap: 10px;
+            gap: 8px;
             margin: 10px 0;
+            flex-wrap: wrap;
         }
-
         .status-selector button {
-            padding: 5px 15px;
+            padding: 4px 16px;
             border-radius: 50px;
-            border: 2px solid #e2e8f0;
-            background: white;
-            font-size: 0.75rem;
-            font-weight: 500;
+            border: 2px solid var(--border);
+            background: var(--card);
+            font-size: 0.7rem;
+            font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: var(--transition);
+            color: var(--text);
         }
+        .status-selector button.active-paid { border-color: #22c55e; background: #22c55e; color: white; }
+        .status-selector button.active-unpaid { border-color: #f59e0b; background: #f59e0b; color: white; }
+        .status-selector button.active-overdue { border-color: #ef4444; background: #ef4444; color: white; }
 
-        .status-selector button.active-paid {
-            border-color: #48bb78;
-            background: #48bb78;
-            color: white;
+        /* Multiple Items */
+        .item-row {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr 40px;
+            gap: 10px;
+            align-items: center;
+            margin-bottom: 8px;
         }
-
-        .status-selector button.active-unpaid {
-            border-color: #ed8936;
-            background: #ed8936;
-            color: white;
+        .item-row input {
+            padding: 8px 12px;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            font-size: 0.85rem;
+            background: var(--bg);
+            color: var(--text);
         }
-
-        .status-selector button.active-overdue {
-            border-color: #fc8181;
-            background: #fc8181;
+        .item-row input:focus { outline: none; border-color: #f7971e; }
+        .remove-item {
+            background: #ef4444;
             color: white;
+            border: none;
+            border-radius: 8px;
+            width: 32px;
+            height: 32px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: var(--transition);
         }
+        .remove-item:hover { transform: scale(1.1); }
+        .add-item-btn {
+            background: var(--gradient);
+            color: #1a1a2e;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 0.85rem;
+            margin-top: 6px;
+        }
+        .add-item-btn:hover { transform: translateY(-2px); }
 
         /* Content Section */
         .content-section {
-            background: white;
-            border-radius: 20px;
+            background: var(--card);
+            border-radius: var(--radius);
             padding: 40px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+            box-shadow: var(--shadow);
             margin-top: 30px;
+            border: 1px solid var(--border);
+            transition: var(--transition);
         }
-
         .content-section h2 {
-            color: #2d3748;
+            color: var(--text);
             font-size: 1.6rem;
-            margin-bottom: 15px;
+            font-weight: 800;
+            margin-bottom: 14px;
         }
-
-        .content-section h3 {
-            color: #4a5568;
-            font-size: 1.2rem;
-            margin: 25px 0 10px;
-        }
-
-        .content-section p {
-            color: #4a5568;
-            line-height: 1.8;
-        }
+        .content-section p { color: var(--text-light); line-height: 1.8; }
 
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin: 25px 0;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 16px;
+            margin: 24px 0;
         }
-
         .feature-card {
-            background: #f7fafc;
+            background: var(--bg);
             padding: 20px;
-            border-radius: 12px;
+            border-radius: 14px;
             text-align: center;
-            border: 1px solid #e2e8f0;
-            transition: all 0.3s ease;
+            border: 1px solid var(--border);
+            transition: var(--transition);
         }
+        .feature-card:hover { transform: translateY(-5px); border-color: #f7971e; }
+        .feature-card i { font-size: 2rem; color: #f7971e; margin-bottom: 8px; }
+        .feature-card h4 { color: var(--text); font-weight: 700; }
+        .feature-card p { font-size: 0.85rem; color: var(--text-light); }
 
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            border-color: #667eea;
-        }
-
-        .feature-card i {
-            font-size: 2rem;
-            color: #667eea;
-            margin-bottom: 10px;
-        }
-
-        .feature-card h4 {
-            color: #2d3748;
-            margin-bottom: 5px;
-        }
-
-        .feature-card p {
-            font-size: 0.9rem;
-            color: #718096;
-        }
-
+        /* Footer */
         footer {
             text-align: center;
-            padding: 30px 0 20px;
-            color: #718096;
-            border-top: 1px solid #e2e8f0;
-            margin-top: 30px;
+            padding: 30px 0 18px;
+            color: var(--text-light);
+            border-top: 1px solid var(--border);
+            margin-top: 28px;
+            transition: var(--transition);
         }
-
         footer a {
-            color: #667eea;
+            color: #f7971e;
             text-decoration: none;
             margin: 0 10px;
-            font-weight: 500;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        footer a:hover { color: #e68a00; }
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 10px 0;
         }
 
-        footer a:hover {
-            text-decoration: underline;
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--card);
+            border: 2px solid #22c55e;
+            padding: 16px 24px;
+            border-radius: 14px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            display: none;
+            align-items: center;
+            gap: 12px;
+            font-weight: 600;
+            color: var(--text);
+            z-index: 1000;
+            transition: var(--transition);
+            border-left: 6px solid #22c55e;
         }
+        .toast.show { display: flex; animation: slideIn 0.4s ease; }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .toast i { font-size: 1.4rem; color: #22c55e; }
 
         @media print {
-            .action-buttons, .btn, .form-section, .status-selector {
+            .action-buttons, .btn, .form-section, .status-selector, .nav-bar, .header-actions, .theme-toggle {
                 display: none !important;
             }
-            .preview-section {
-                border: none !important;
-                padding: 0 !important;
-            }
-            .preview-section::before {
-                display: none !important;
-            }
-            body {
-                background: white !important;
-                padding: 0 !important;
-            }
-            .tool-wrapper {
-                box-shadow: none !important;
-                padding: 0 !important;
-            }
-            .header {
-                border-radius: 0 !important;
-            }
-        }
-
-        /* Loading animation */
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-
-        .loading {
-            animation: pulse 1.5s ease-in-out infinite;
+            .preview-section { border: none !important; padding: 0 !important; }
+            .preview-section::before { display: none !important; }
+            body { background: white !important; padding: 0 !important; }
+            .tool-wrapper { box-shadow: none !important; padding: 0 !important; }
+            .header { border-radius: 0 !important; }
+            #invoicePreview { background: white !important; }
         }
     </style>
 </head>
@@ -567,17 +531,26 @@
     <!-- Header -->
     <div class="header">
         <div class="header-left">
-            <div class="header-logo">
-                <i class="fas fa-file-invoice"></i>
-            </div>
+            <div class="header-logo"><i class="fas fa-file-invoice-dollar"></i></div>
             <div>
                 <h1>Invoice Generator</h1>
-                <p><i class="fas fa-check-circle" style="color: #48bb78;"></i> Professional invoices in seconds</p>
+                <p><i class="fas fa-check-circle" style="color:#22c55e;"></i> Premium • Feature Rich • Free</p>
             </div>
         </div>
-        <div class="header-badge">
-            <i class="fas fa-shield-alt"></i> 100% Free • No Signup
+        <div class="header-actions">
+            <button class="theme-toggle" onclick="toggleTheme()"><i class="fas fa-moon"></i> <span id="themeLabel">Dark</span></button>
+            <button class="theme-btn" onclick="window.location.reload()"><i class="fas fa-redo"></i></button>
         </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="nav-bar">
+        <a href="index.html" class="active"><i class="fas fa-home"></i> Home</a>
+        <a href="about.html"><i class="fas fa-info-circle"></i> About</a>
+        <a href="blog.html"><i class="fas fa-blog"></i> Blog</a>
+        <a href="privacy-policy.html"><i class="fas fa-shield-alt"></i> Privacy</a>
+        <a href="terms.html"><i class="fas fa-file-contract"></i> Terms</a>
+        <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
     </div>
 
     <!-- Tool -->
@@ -586,9 +559,9 @@
             <!-- Form -->
             <div class="form-section">
                 <h2><i class="fas fa-pen-fancy"></i> Invoice Details</h2>
-                
+
                 <div class="form-group">
-                    <label><i class="fas fa-building"></i> Your Company Name</label>
+                    <label><i class="fas fa-building"></i> Company Name</label>
                     <input type="text" id="companyName" value="Freelance Pro" oninput="updatePreview()">
                 </div>
 
@@ -614,23 +587,32 @@
                 </div>
 
                 <div class="form-group">
-                    <label><i class="fas fa-align-left"></i> Service Description</label>
-                    <textarea id="description" oninput="updatePreview()">Web Development Services - Project completion</textarea>
+                    <label><i class="fas fa-dollar-sign"></i> Currency</label>
+                    <select id="currency" onchange="updatePreview()">
+                        <option value="$">$ USD</option>
+                        <option value="€">€ EUR</option>
+                        <option value="£">£ GBP</option>
+                        <option value="₹">₹ INR</option>
+                    </select>
                 </div>
 
-                <div class="form-row">
-                    <div class="form-group">
-                        <label><i class="fas fa-cubes"></i> Quantity / Hours</label>
-                        <input type="number" id="quantity" value="20" min="1" oninput="updatePreview()">
+                <!-- Multiple Items -->
+                <div class="form-group">
+                    <label><i class="fas fa-list"></i> Items / Services</label>
+                    <div id="itemsContainer">
+                        <div class="item-row">
+                            <input type="text" class="item-desc" placeholder="Description" value="Web Development" oninput="updatePreview()">
+                            <input type="number" class="item-qty" placeholder="Qty" value="20" oninput="updatePreview()">
+                            <input type="number" class="item-rate" placeholder="Rate" value="1500" oninput="updatePreview()">
+                            <input type="text" class="item-total" readonly style="background:#f1f5f9;font-weight:700;">
+                            <button class="remove-item" onclick="removeItem(this)">✕</button>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label><i class="fas fa-rupee-sign"></i> Rate (₹)</label>
-                        <input type="number" id="rate" value="1500" min="1" oninput="updatePreview()">
-                    </div>
+                    <button class="add-item-btn" onclick="addItem()"><i class="fas fa-plus"></i> Add Item</button>
                 </div>
 
                 <div class="form-group">
-                    <label><i class="fas fa-sticky-note"></i> Additional Notes</label>
+                    <label><i class="fas fa-sticky-note"></i> Notes</label>
                     <textarea id="notes" oninput="updatePreview()">Thank you for your business! Payment due within 15 days.</textarea>
                 </div>
 
@@ -645,7 +627,7 @@
                     <div class="invoice-header">
                         <div>
                             <div class="company"><span id="previewCompany">Freelance</span> Pro</div>
-                            <div style="font-size:0.8rem; color:#718096;">GST: 22ABCDE1234F1Z5</div>
+                            <div style="font-size:0.75rem; color:#94a3b8; font-weight:500;">GST: 22ABCDE1234F1Z5</div>
                         </div>
                         <div class="invoice-number">
                             <div class="num" id="previewInvoiceNumber">INV-2026-001</div>
@@ -655,22 +637,21 @@
 
                     <div class="invoice-details">
                         <div>
-                            <div class="label"><i class="fas fa-user"></i> Bill To</div>
+                            <div class="label">Bill To</div>
                             <div class="value" id="previewClient">Tech Solutions Inc.</div>
                         </div>
                         <div style="text-align:right;">
-                            <div class="label"><i class="fas fa-calendar-day"></i> Invoice Date</div>
+                            <div class="label">Invoice Date</div>
                             <div class="value" id="previewDate">--</div>
-                            <div class="label" style="margin-top:8px;"><i class="fas fa-calendar-check"></i> Due Date</div>
+                            <div class="label" style="margin-top:6px;">Due Date</div>
                             <div class="value" id="previewDue">--</div>
                         </div>
                     </div>
 
-                    <!-- Status Selector -->
                     <div class="status-selector">
-                        <button class="active-paid" onclick="setStatus('paid')">Paid</button>
-                        <button onclick="setStatus('unpaid')">Unpaid</button>
-                        <button onclick="setStatus('overdue')">Overdue</button>
+                        <button class="active-paid" onclick="setStatus('paid')">✅ Paid</button>
+                        <button onclick="setStatus('unpaid')">⏳ Unpaid</button>
+                        <button onclick="setStatus('overdue')">⚠️ Overdue</button>
                     </div>
 
                     <table class="invoice-table">
@@ -682,260 +663,347 @@
                                 <th style="text-align:right;">Amount</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="previewItemsBody">
                             <tr>
-                                <td id="previewDescription">Web Development Services</td>
+                                <td id="previewDescription">Web Development</td>
                                 <td style="text-align:center;" id="previewQty">20</td>
-                                <td style="text-align:right;" id="previewRate">₹1,500</td>
-                                <td style="text-align:right;" id="previewAmount">₹30,000</td>
+                                <td style="text-align:right;" id="previewRate">$1,500</td>
+                                <td style="text-align:right;" id="previewAmount">$30,000</td>
                             </tr>
+                        </tbody>
+                        <tfoot>
                             <tr class="total-row">
                                 <td colspan="3" style="text-align:right; font-size:1rem;">
                                     <i class="fas fa-calculator"></i> Total Amount
                                 </td>
-                                <td style="text-align:right;" id="previewTotal">₹30,000</td>
+                                <td style="text-align:right;" id="previewTotal">$30,000</td>
                             </tr>
-                        </tbody>
+                        </tfoot>
                     </table>
 
-                    <div style="margin-top:15px; font-size:0.9rem; color:#4a5568; background:#f7fafc; padding:10px 15px; border-radius:8px;">
-                        <i class="fas fa-sticky-note" style="color:#667eea;"></i>
-                        <strong>Notes:</strong> <span id="previewNotes">Thank you for your business! Payment due within 15 days.</span>
+                    <div style="margin-top:14px; font-size:0.85rem; color:var(--text-light); background:var(--bg); padding:10px 16px; border-radius:10px; border-left:4px solid #f7971e;">
+                        <i class="fas fa-sticky-note" style="color:#f7971e;"></i>
+                        <strong>Notes:</strong> <span id="previewNotes">Thank you for your business!</span>
                     </div>
 
-                    <div class="invoice-footer">
+                    <div class="invoice-footer" style="margin-top:18px; padding-top:16px; border-top:2px solid var(--border); display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px;">
                         <div>
-                            <div style="font-size:0.75rem; color:#a0aec0; text-transform:uppercase; letter-spacing:0.5px;">Payment Terms</div>
-                            <div style="font-weight:600; color:#2d3748;">15 Days</div>
+                            <div style="font-size:0.7rem; color:#94a3b8; text-transform:uppercase; font-weight:700; letter-spacing:0.5px;">Payment Terms</div>
+                            <div style="font-weight:700; color:var(--text);">15 Days</div>
                         </div>
                         <div style="text-align:right;">
-                            <div style="font-size:0.75rem; color:#a0aec0; text-transform:uppercase; letter-spacing:0.5px;">Generated on</div>
-                            <div style="font-weight:600; color:#2d3748;" id="previewGenerated">--</div>
+                            <div style="font-size:0.7rem; color:#94a3b8; text-transform:uppercase; font-weight:700; letter-spacing:0.5px;">Generated on</div>
+                            <div style="font-weight:700; color:var(--text);" id="previewGenerated">--</div>
                         </div>
                     </div>
                 </div>
 
                 <div class="action-buttons">
-                    <button class="btn-pdf" onclick="downloadPDF()">
-                        <i class="fas fa-file-pdf"></i> Download PDF
-                    </button>
-                    <button class="btn-reset" onclick="resetForm()">
-                        <i class="fas fa-undo-alt"></i> Reset
-                    </button>
+                    <button class="btn-pdf" onclick="downloadPDF()"><i class="fas fa-file-pdf"></i> PDF</button>
+                    <button class="btn-save" onclick="saveInvoice()"><i class="fas fa-save"></i> Save</button>
+                    <button class="btn-copy" onclick="copyInvoice()"><i class="fas fa-copy"></i> Copy</button>
+                    <button class="btn-whatsapp" onclick="shareWhatsApp()"><i class="fab fa-whatsapp"></i> Share</button>
+                    <button class="btn-reset" onclick="resetForm()"><i class="fas fa-undo-alt"></i> Reset</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- SEO Content -->
+    <!-- Content -->
     <div class="content-section">
-        <h2><i class="fas fa-star" style="color:#667eea;"></i> Why Use Our Professional Invoice Generator?</h2>
-        <p>Creating invoices manually is time-consuming and prone to errors. Our free Invoice Generator helps you create professional, tax-compliant invoices in seconds. Perfect for freelancers, small businesses, and agencies.</p>
-
+        <h2>🌟 Premium Features</h2>
         <div class="features-grid">
-            <div class="feature-card">
-                <i class="fas fa-bolt"></i>
-                <h4>Instant Generation</h4>
-                <p>Create invoices in seconds with real-time preview</p>
-            </div>
-            <div class="feature-card">
-                <i class="fas fa-file-pdf"></i>
-                <h4>PDF Download</h4>
-                <p>Download invoices as PDF for easy sharing</p>
-            </div>
-            <div class="feature-card">
-                <i class="fas fa-mobile-alt"></i>
-                <h4>Mobile Friendly</h4>
-                <p>Works perfectly on all devices</p>
-            </div>
-            <div class="feature-card">
-                <i class="fas fa-gem"></i>
-                <h4>100% Free</h4>
-                <p>No signup, no credit card required</p>
-            </div>
+            <div class="feature-card"><i class="fas fa-moon"></i><h4>Dark Mode</h4><p>Eye-friendly night mode</p></div>
+            <div class="feature-card"><i class="fas fa-save"></i><h4>Save Invoices</h4><p>Local storage save</p></div>
+            <div class="feature-card"><i class="fas fa-copy"></i><h4>Copy Invoice</h4><p>One-click copy</p></div>
+            <div class="feature-card"><i class="fas fa-dollar-sign"></i><h4>Multi Currency</h4><p>$ € £ ₹ support</p></div>
+            <div class="feature-card"><i class="fas fa-list"></i><h4>Multiple Items</h4><p>Add unlimited items</p></div>
+            <div class="feature-card"><i class="fab fa-whatsapp"></i><h4>WhatsApp Share</h4><p>Direct share</p></div>
         </div>
-
-        <h3><i class="fas fa-question-circle" style="color:#667eea;"></i> Frequently Asked Questions</h3>
-        
-        <p><strong>Is this invoice generator really free?</strong><br>
-        Yes! 100% free with no hidden charges. No signup required.</p>
-        
-        <p><strong>Can I use this for GST invoices?</strong><br>
-        Yes! Add your GST number and create professional invoices.</p>
-        
-        <p><strong>How do I download the invoice?</strong><br>
-        Click the "Download PDF" button and save to your device.</p>
-        
-        <p><strong>Can I change the payment status?</strong><br>
-        Yes! Use the Paid/Unpaid/Overdue buttons below the invoice preview.</p>
+        <h3>❓ FAQ</h3>
+        <p><strong>Is this really free?</strong><br>Yes! 100% free with no hidden charges.</p>
+        <p><strong>Can I add multiple items?</strong><br>Yes! Click "Add Item" to add more services.</p>
+        <p><strong>How to save invoice?</strong><br>Click "Save" button - it saves in your browser.</p>
     </div>
 
-    <!-- Footer -->
     <footer>
-        <p>&copy; 2026 Invoice Generator Tool. Made with <i class="fas fa-heart" style="color:#fc8181;"></i> by socialsarv</p>
-        <p>
-            <a href="#"><i class="fas fa-info-circle"></i> About</a> |
-            <a href="#"><i class="fas fa-lock"></i> Privacy</a> |
-            <a href="#"><i class="fas fa-file-contract"></i> Terms</a> |
-            <a href="#"><i class="fas fa-envelope"></i> Contact</a>
-        </p>
+        <p>&copy; 2026 Invoice Generator. Made with <i class="fas fa-heart" style="color:#ef4444;"></i> by socialsarv</p>
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="blog.html">Blog</a>
+            <a href="privacy-policy.html">Privacy</a>
+            <a href="terms.html">Terms</a>
+            <a href="contact.html">Contact</a>
+        </div>
     </footer>
 </div>
 
+<!-- Toast -->
+<div class="toast" id="toast"><i class="fas fa-check-circle"></i> <span id="toastMsg">Done!</span></div>
+
 <script>
     let currentStatus = 'paid';
+    let itemCount = 1;
 
-    window.onload = function() {
-        const today = new Date().toISOString().split('T')[0];
-        document.getElementById('invoiceDate').value = today;
-        
-        const dueDate = new Date();
-        dueDate.setDate(dueDate.getDate() + 15);
-        document.getElementById('dueDate').value = dueDate.toISOString().split('T')[0];
-        
-        updatePreview();
-    };
-
-    function setStatus(status) {
-        currentStatus = status;
-        const badge = document.getElementById('statusBadge');
-        const buttons = document.querySelectorAll('.status-selector button');
-        
-        buttons.forEach(btn => {
-            btn.className = '';
-        });
-        
-        if (status === 'paid') {
-            badge.className = 'status-badge status-paid';
-            badge.textContent = 'PAID';
-            buttons[0].className = 'active-paid';
-        } else if (status === 'unpaid') {
-            badge.className = 'status-badge status-unpaid';
-            badge.textContent = 'UNPAID';
-            buttons[1].className = 'active-unpaid';
+    // === THEME ===
+    function toggleTheme() {
+        const html = document.documentElement;
+        const current = html.getAttribute('data-theme');
+        if (current === 'dark') {
+            html.removeAttribute('data-theme');
+            document.getElementById('themeLabel').textContent = 'Dark';
         } else {
-            badge.className = 'status-badge status-overdue';
-            badge.textContent = 'OVERDUE';
-            buttons[2].className = 'active-overdue';
+            html.setAttribute('data-theme', 'dark');
+            document.getElementById('themeLabel').textContent = 'Light';
         }
     }
 
+    // === DATE ===
+    window.onload = function() {
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('invoiceDate').value = today;
+        const due = new Date(); due.setDate(due.getDate() + 15);
+        document.getElementById('dueDate').value = due.toISOString().split('T')[0];
+        updatePreview();
+        // Load saved theme
+        if (localStorage.getItem('theme') === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            document.getElementById('themeLabel').textContent = 'Light';
+        }
+    };
+
+    // === STATUS ===
+    function setStatus(status) {
+        currentStatus = status;
+        const badge = document.getElementById('statusBadge');
+        const btns = document.querySelectorAll('.status-selector button');
+        btns.forEach(b => b.className = '');
+        const map = { paid: ['status-paid', 'Paid', 'active-paid', 0],
+                      unpaid: ['status-unpaid', 'Unpaid', 'active-unpaid', 1],
+                      overdue: ['status-overdue', 'Overdue', 'active-overdue', 2] };
+        const m = map[status];
+        badge.className = 'status-badge ' + m[0];
+        badge.textContent = m[1];
+        btns[m[3]].className = m[2];
+    }
+
+    // === CURRENCY ===
+    function getCurrency() {
+        return document.getElementById('currency').value || '$';
+    }
+
+    function formatCurrency(num) {
+        return getCurrency() + Number(num).toLocaleString('en-US');
+    }
+
+    // === ITEMS ===
+    function addItem() {
+        const container = document.getElementById('itemsContainer');
+        const div = document.createElement('div');
+        div.className = 'item-row';
+        div.innerHTML = `
+            <input type="text" class="item-desc" placeholder="Description" value="Service ${++itemCount}" oninput="updatePreview()">
+            <input type="number" class="item-qty" placeholder="Qty" value="1" oninput="updatePreview()">
+            <input type="number" class="item-rate" placeholder="Rate" value="500" oninput="updatePreview()">
+            <input type="text" class="item-total" readonly style="background:#f1f5f9;font-weight:700;">
+            <button class="remove-item" onclick="removeItem(this)">✕</button>
+        `;
+        container.appendChild(div);
+        updatePreview();
+        showToast('Item added!');
+    }
+
+    function removeItem(btn) {
+        const row = btn.parentElement;
+        if (document.querySelectorAll('.item-row').length > 1) {
+            row.remove();
+            updatePreview();
+            showToast('Item removed');
+        } else {
+            showToast('Need at least 1 item');
+        }
+    }
+
+    function getItemsData() {
+        const rows = document.querySelectorAll('.item-row');
+        const items = [];
+        rows.forEach(row => {
+            const desc = row.querySelector('.item-desc').value || 'Service';
+            const qty = parseFloat(row.querySelector('.item-qty').value) || 0;
+            const rate = parseFloat(row.querySelector('.item-rate').value) || 0;
+            items.push({ desc, qty, rate, total: qty * rate });
+            const totalInput = row.querySelector('.item-total');
+            totalInput.value = formatCurrency(qty * rate);
+        });
+        return items;
+    }
+
+    // === UPDATE PREVIEW ===
     function updatePreview() {
         const company = document.getElementById('companyName').value || 'Your Company';
-        const client = document.getElementById('clientName').value || 'Client Name';
+        const client = document.getElementById('clientName').value || 'Client';
         const invNum = document.getElementById('invoiceNumber').value || 'INV-001';
         const invDate = document.getElementById('invoiceDate').value;
         const dueDate = document.getElementById('dueDate').value;
-        const desc = document.getElementById('description').value || 'Service';
-        const qty = parseInt(document.getElementById('quantity').value) || 1;
-        const rate = parseInt(document.getElementById('rate').value) || 0;
         const notes = document.getElementById('notes').value || '';
-
-        const formatCurrency = (num) => {
-            return '₹' + Number(num).toLocaleString('en-IN');
-        };
 
         document.getElementById('previewCompany').textContent = company;
         document.getElementById('previewClient').textContent = client;
         document.getElementById('previewInvoiceNumber').textContent = invNum;
-        
-        document.getElementById('previewDate').textContent = invDate ? new Date(invDate).toLocaleDateString('en-IN') : '--';
-        document.getElementById('previewDue').textContent = dueDate ? new Date(dueDate).toLocaleDateString('en-IN') : '--';
-        
-        document.getElementById('previewDescription').textContent = desc;
-        document.getElementById('previewQty').textContent = qty;
-        document.getElementById('previewRate').textContent = formatCurrency(rate);
-        
-        const total = qty * rate;
-        document.getElementById('previewAmount').textContent = formatCurrency(total);
-        document.getElementById('previewTotal').textContent = formatCurrency(total);
-        
-        document.getElementById('previewNotes').textContent = notes || 'No additional notes.';
-        
-        const now = new Date().toLocaleDateString('en-IN', { 
-            day: 'numeric', 
-            month: 'short', 
-            year: 'numeric' 
+        document.getElementById('previewDate').textContent = invDate ? new Date(invDate).toLocaleDateString('en-US') : '--';
+        document.getElementById('previewDue').textContent = dueDate ? new Date(dueDate).toLocaleDateString('en-US') : '--';
+        document.getElementById('previewNotes').textContent = notes || 'No notes';
+
+        // Items
+        const items = getItemsData();
+        const tbody = document.getElementById('previewItemsBody');
+        tbody.innerHTML = '';
+        let grandTotal = 0;
+        items.forEach((item, i) => {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td>${item.desc}</td>
+                <td style="text-align:center;">${item.qty}</td>
+                <td style="text-align:right;">${formatCurrency(item.rate)}</td>
+                <td style="text-align:right;">${formatCurrency(item.total)}</td>
+            `;
+            tbody.appendChild(tr);
+            grandTotal += item.total;
         });
+
+        document.getElementById('previewTotal').textContent = formatCurrency(grandTotal);
+
+        // Generate on
+        const now = new Date().toLocaleDateString('en-US', { day: 'numeric', month: 'short', year: 'numeric' });
         document.getElementById('previewGenerated').textContent = now;
     }
 
-    function downloadPDF() {
-        const preview = document.getElementById('invoicePreview');
-        
-        const printWindow = window.open('', '_blank');
-        printWindow.document.write(`
-            <html>
-                <head>
-                    <title>Invoice</title>
-                    <style>
-                        body { font-family: 'Poppins', Arial, sans-serif; padding: 40px; max-width: 800px; margin: auto; }
-                        ${document.querySelector('style').innerHTML}
-                        .action-buttons, .btn, .form-section, .status-selector, .preview-section h2 {
-                            display: none !important;
-                        }
-                        .preview-section::before { display: none !important; }
-                        .preview-section { border: none !important; padding: 0 !important; }
-                        .tool-wrapper { box-shadow: none !important; padding: 0 !important; }
-                        .header { border-radius: 0 !important; }
-                        .status-badge { display: inline-block !important; }
-                        .invoice-header { margin-top: 0 !important; }
-                    </style>
-                    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-                </head>
-                <body>
-                    <div class="header" style="border-radius:12px 12px 0 0;">
-                        <div class="header-left">
-                            <div class="header-logo">
-                                <i class="fas fa-file-invoice"></i>
-                            </div>
-                            <div>
-                                <h1>Invoice</h1>
-                                <p>Professional Invoice</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div style="margin-top:20px; padding:0 20px;">
-                        ${preview.outerHTML}
-                    </div>
-                    <div style="margin-top:30px; text-align:center; color:#718096; font-size:0.8rem; border-top:1px solid #e2e8f0; padding-top:20px;">
-                        Generated by Invoice Generator Tool
-                    </div>
-                    <script>
-                        window.onload = function() { 
-                            window.print(); 
-                        }
-                    <\/script>
-                </body>
-            </html>
-        `);
-        printWindow.document.close();
+    // === TOAST ===
+    function showToast(msg) {
+        const toast = document.getElementById('toast');
+        document.getElementById('toastMsg').textContent = msg;
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 3000);
     }
 
+    // === SAVE ===
+    function saveInvoice() {
+        const data = {
+            company: document.getElementById('companyName').value,
+            client: document.getElementById('clientName').value,
+            number: document.getElementById('invoiceNumber').value,
+            date: document.getElementById('invoiceDate').value,
+            due: document.getElementById('dueDate').value,
+            notes: document.getElementById('notes').value,
+            currency: getCurrency(),
+            items: getItemsData(),
+            status: currentStatus,
+            savedAt: new Date().toISOString()
+        };
+        const key = 'invoice_' + Date.now();
+        localStorage.setItem(key, JSON.stringify(data));
+        // Show saved invoices count
+        const count = Object.keys(localStorage).filter(k => k.startsWith('invoice_')).length;
+        showToast('✅ Invoice saved! (' + count + ' saved)');
+    }
+
+    // === COPY ===
+    function copyInvoice() {
+        const text = document.getElementById('invoicePreview').innerText;
+        navigator.clipboard.writeText(text).then(() => {
+            showToast('📋 Invoice copied!');
+        }).catch(() => {
+            // Fallback
+            const area = document.createElement('textarea');
+            area.value = text;
+            document.body.appendChild(area);
+            area.select();
+            document.execCommand('copy');
+            area.remove();
+            showToast('📋 Invoice copied!');
+        });
+    }
+
+    // === WHATSAPP ===
+    function shareWhatsApp() {
+        const company = document.getElementById('companyName').value || 'Invoice';
+        const client = document.getElementById('clientName').value || 'Client';
+        const total = document.getElementById('previewTotal').textContent;
+        const msg = `📄 *Invoice from ${company}*\nClient: ${client}\nTotal: ${total}\n\nCreated with Invoice Generator`;
+        const url = `https://wa.me/?text=${encodeURIComponent(msg)}`;
+        window.open(url, '_blank');
+    }
+
+    // === PDF ===
+    function downloadPDF() {
+        const preview = document.getElementById('invoicePreview');
+        const w = window.open('', '_blank');
+        const styles = document.querySelector('style').innerHTML;
+        w.document.write(`
+            <html><head><title>Invoice</title>
+            <style>${styles}</style>
+            <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+            <style>
+                .action-buttons, .btn, .form-section, .status-selector, .nav-bar, .header-actions { display: none !important; }
+                .preview-section { border: none !important; padding: 0 !important; }
+                .preview-section::before { display: none !important; }
+                body { background: white !important; padding: 20px !important; }
+                .tool-wrapper { box-shadow: none !important; padding: 0 !important; }
+                .header { border-radius: 0 !important; }
+                #invoicePreview { background: white !important; }
+                .status-badge { display: inline-block !important; }
+                .invoice-footer { border-color: #e8edf5 !important; }
+            </style>
+            </head>
+            <body>
+                <div class="header" style="border-radius:12px 12px 0 0;padding:20px 30px;">
+                    <div class="header-left">
+                        <div class="header-logo"><i class="fas fa-file-invoice-dollar"></i></div>
+                        <div><h1 style="color:white;">Invoice</h1><p style="color:#a8b5d9;">Professional Invoice</p></div>
+                    </div>
+                </div>
+                <div style="margin-top:16px;">${preview.outerHTML}</div>
+                <div style="text-align:center;color:#94a3b8;font-size:0.8rem;border-top:1px solid #e8edf5;padding-top:16px;margin-top:20px;">
+                    Generated by Invoice Generator
+                </div>
+                <script>window.onload=function(){window.print();}<\/script>
+            </body></html>
+        `);
+        w.document.close();
+    }
+
+    // === RESET ===
     function resetForm() {
         document.getElementById('companyName').value = 'Freelance Pro';
         document.getElementById('clientName').value = 'Tech Solutions Inc.';
         document.getElementById('invoiceNumber').value = 'INV-2026-001';
-        document.getElementById('description').value = 'Web Development Services - Project completion';
-        document.getElementById('quantity').value = 20;
-        document.getElementById('rate').value = 1500;
         document.getElementById('notes').value = 'Thank you for your business! Payment due within 15 days.';
-        
+        document.getElementById('currency').value = '$';
         const today = new Date().toISOString().split('T')[0];
         document.getElementById('invoiceDate').value = today;
-        
-        const dueDate = new Date();
-        dueDate.setDate(dueDate.getDate() + 15);
-        document.getElementById('dueDate').value = dueDate.toISOString().split('T')[0];
-        
+        const due = new Date(); due.setDate(due.getDate() + 15);
+        document.getElementById('dueDate').value = due.toISOString().split('T')[0];
+        // Reset items
+        const container = document.getElementById('itemsContainer');
+        container.innerHTML = `
+            <div class="item-row">
+                <input type="text" class="item-desc" placeholder="Description" value="Web Development" oninput="updatePreview()">
+                <input type="number" class="item-qty" placeholder="Qty" value="20" oninput="updatePreview()">
+                <input type="number" class="item-rate" placeholder="Rate" value="1500" oninput="updatePreview()">
+                <input type="text" class="item-total" readonly style="background:#f1f5f9;font-weight:700;">
+                <button class="remove-item" onclick="removeItem(this)">✕</button>
+            </div>
+        `;
+        itemCount = 1;
         setStatus('paid');
         updatePreview();
+        showToast('🔄 Reset done!');
     }
 
-    document.querySelectorAll('input, textarea').forEach(el => {
-        el.addEventListener('input', updatePreview);
-    });
+    // Auto update
+    document.addEventListener('input', updatePreview);
 </script>
 
 </body>
