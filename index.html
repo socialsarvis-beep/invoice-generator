@@ -3,14 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ultra Invoice Generator - Professional Invoices</title>
-    <meta name="description" content="Create stunning professional invoices with our premium invoice generator. Free, fast, and feature-rich.">
+    <title>Premium Invoice Generator - Pro Features</title>
+    <meta name="description" content="Premium invoice generator with QR code, email, logo upload - 100% free">
     
     <meta name="google-site-verification" content="YOUR_VERIFICATION_CODE_HERE" />
     <link rel="canonical" href="https://socialsarvis-beep.github.io/invoice-generator/">
     
     <!-- Font Awesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+    <!-- QR Code Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -55,48 +58,48 @@
         .header {
             background: linear-gradient(145deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
             border-radius: var(--radius) var(--radius) 0 0;
-            padding: 28px 40px;
+            padding: 24px 36px;
             color: white;
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            gap: 16px;
+            gap: 14px;
             border-bottom: 3px solid rgba(247, 151, 30, 0.3);
             box-shadow: 0 20px 60px rgba(0,0,0,0.2);
         }
 
-        .header-left { display: flex; align-items: center; gap: 18px; }
+        .header-left { display: flex; align-items: center; gap: 16px; }
         .header-logo {
-            width: 56px; height: 56px;
+            width: 52px; height: 52px;
             background: var(--gradient);
             border-radius: 14px;
             display: flex; align-items: center; justify-content: center;
-            font-size: 28px; color: #1a1a2e;
+            font-size: 26px; color: #1a1a2e;
             box-shadow: 0 8px 25px rgba(247, 151, 30, 0.3);
         }
         .header h1 {
-            font-size: 1.8rem; font-weight: 900;
+            font-size: 1.6rem; font-weight: 900;
             background: var(--gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        .header p { font-size: 0.95rem; opacity: 0.8; color: #a8b5d9; }
+        .header p { font-size: 0.9rem; opacity: 0.8; color: #a8b5d9; }
 
-        .header-actions { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+        .header-actions { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
 
-        .theme-toggle, .theme-btn {
+        .theme-toggle {
             background: rgba(255,255,255,0.1);
             border: 1px solid rgba(255,255,255,0.15);
             color: white;
-            padding: 8px 16px;
+            padding: 7px 14px;
             border-radius: 10px;
             cursor: pointer;
             transition: var(--transition);
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             backdrop-filter: blur(10px);
         }
-        .theme-toggle:hover, .theme-btn:hover {
+        .theme-toggle:hover {
             background: rgba(247, 151, 30, 0.2);
             border-color: #f7971e;
             transform: translateY(-2px);
@@ -105,9 +108,9 @@
         /* Navigation */
         .nav-bar {
             background: var(--card);
-            padding: 12px 32px;
+            padding: 10px 28px;
             display: flex;
-            gap: 20px;
+            gap: 18px;
             flex-wrap: wrap;
             border-bottom: 2px solid var(--border);
             box-shadow: 0 4px 20px rgba(0,0,0,0.03);
@@ -117,55 +120,55 @@
             color: var(--text-light);
             text-decoration: none;
             font-weight: 500;
-            font-size: 0.85rem;
+            font-size: 0.82rem;
             transition: var(--transition);
-            padding: 6px 14px;
+            padding: 5px 12px;
             border-radius: 10px;
         }
         .nav-bar a:hover, .nav-bar a.active {
             color: #f7971e;
             background: rgba(247, 151, 30, 0.08);
         }
-        .nav-bar a i { margin-right: 8px; }
+        .nav-bar a i { margin-right: 6px; }
 
         /* Tool Wrapper */
         .tool-wrapper {
             background: var(--card);
             border-radius: 0 0 var(--radius) var(--radius);
-            padding: 35px;
+            padding: 30px;
             box-shadow: var(--shadow);
-            margin-bottom: 35px;
+            margin-bottom: 30px;
             transition: var(--transition);
             border: 1px solid var(--border);
         }
 
-        .tool-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 35px; }
+        .tool-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
 
         @media (max-width: 900px) { .tool-grid { grid-template-columns: 1fr; } }
         @media (max-width: 600px) {
-            .header { flex-direction: column; text-align: center; padding: 20px; }
+            .header { flex-direction: column; text-align: center; padding: 18px; }
             .header-left { flex-direction: column; }
             .header-actions { justify-content: center; }
-            .nav-bar { justify-content: center; padding: 10px 12px; gap: 6px; }
-            .nav-bar a { font-size: 0.75rem; padding: 4px 8px; }
-            .tool-wrapper { padding: 16px; }
+            .nav-bar { justify-content: center; padding: 8px 10px; gap: 4px; }
+            .nav-bar a { font-size: 0.7rem; padding: 3px 7px; }
+            .tool-wrapper { padding: 14px; }
         }
 
         /* Form */
         .form-section h2 {
-            font-size: 1.4rem; font-weight: 800;
+            font-size: 1.3rem; font-weight: 800;
             color: var(--text);
-            margin-bottom: 24px;
+            margin-bottom: 20px;
             display: flex; align-items: center; gap: 10px;
         }
         .form-section h2 i { color: #f7971e; }
 
-        .form-group { margin-bottom: 16px; }
+        .form-group { margin-bottom: 14px; }
         .form-group label {
             display: block;
             font-weight: 600;
-            font-size: 0.78rem;
-            margin-bottom: 5px;
+            font-size: 0.75rem;
+            margin-bottom: 4px;
             color: var(--text-light);
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -174,10 +177,10 @@
 
         .form-group input, .form-group textarea, .form-group select {
             width: 100%;
-            padding: 12px 16px;
+            padding: 10px 14px;
             border: 2px solid var(--border);
             border-radius: 12px;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             transition: var(--transition);
             background: var(--bg);
             color: var(--text);
@@ -187,14 +190,59 @@
             border-color: #f7971e;
             box-shadow: 0 0 0 4px rgba(247, 151, 30, 0.1);
         }
-        .form-group textarea { resize: vertical; min-height: 60px; }
-        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+        .form-group textarea { resize: vertical; min-height: 50px; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+        /* Logo Upload */
+        .logo-upload {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 10px 14px;
+            border: 2px dashed var(--border);
+            border-radius: 12px;
+            background: var(--bg);
+            transition: var(--transition);
+            cursor: pointer;
+            flex-wrap: wrap;
+        }
+        .logo-upload:hover { border-color: #f7971e; }
+        .logo-upload img {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            object-fit: cover;
+            border: 2px solid var(--border);
+        }
+        .logo-upload .placeholder {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            background: var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: var(--text-light);
+        }
+        .logo-upload input[type="file"] {
+            position: absolute;
+            opacity: 0;
+            width: 0.1px;
+            height: 0.1px;
+        }
+        .logo-label {
+            font-weight: 500;
+            color: var(--text-light);
+            font-size: 0.85rem;
+        }
+        .logo-label i { color: #f7971e; margin-right: 6px; }
 
         .btn {
-            padding: 14px 28px;
+            padding: 12px 24px;
             border: none;
             border-radius: 12px;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             font-weight: 700;
             cursor: pointer;
             transition: var(--transition);
@@ -202,7 +250,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            gap: 8px;
         }
         .btn-primary {
             background: var(--gradient);
@@ -215,7 +263,7 @@
         .preview-section {
             background: var(--bg);
             border-radius: 16px;
-            padding: 20px;
+            padding: 18px;
             border: 2px solid var(--border);
             position: relative;
             transition: var(--transition);
@@ -224,21 +272,22 @@
             content: '⚡ LIVE PREVIEW';
             position: absolute;
             top: -12px;
-            right: 20px;
+            right: 18px;
             background: var(--gradient);
             color: #1a1a2e;
-            padding: 3px 16px;
+            padding: 2px 14px;
             border-radius: 50px;
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             font-weight: 800;
             letter-spacing: 0.5px;
         }
 
         #invoicePreview {
             background: white;
-            padding: 28px;
+            padding: 24px;
             border-radius: 12px;
             box-shadow: 0 4px 25px rgba(0,0,0,0.04);
+            position: relative;
         }
         [data-theme="dark"] #invoicePreview { background: #1e1e32; color: white; }
         [data-theme="dark"] #invoicePreview .invoice-header .company { color: white; }
@@ -249,10 +298,17 @@
         [data-theme="dark"] #invoicePreview .invoice-footer { border-color: #2d2d44; }
         [data-theme="dark"] #invoicePreview .invoice-number .num { color: white; }
 
+        .invoice-logo {
+            max-width: 80px;
+            max-height: 60px;
+            border-radius: 8px;
+            object-fit: contain;
+        }
+
         .invoice-header {
             border-bottom: 3px solid #f7971e;
-            padding-bottom: 16px;
-            margin-bottom: 20px;
+            padding-bottom: 14px;
+            margin-bottom: 18px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -260,20 +316,20 @@
             gap: 10px;
         }
         .invoice-header .company {
-            font-size: 1.6rem;
+            font-size: 1.4rem;
             font-weight: 900;
             color: #1a1a2e;
         }
         .invoice-header .company span { color: #f7971e; }
-        .invoice-number .num { font-size: 1rem; font-weight: 700; }
+        .invoice-number .num { font-size: 0.95rem; font-weight: 700; }
 
         .status-badge {
             display: inline-block;
-            padding: 4px 18px;
+            padding: 3px 16px;
             border-radius: 50px;
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             font-weight: 700;
-            margin-top: 4px;
+            margin-top: 3px;
             letter-spacing: 0.5px;
         }
         .status-paid { background: #22c55e; color: white; }
@@ -283,18 +339,18 @@
         .invoice-details {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 18px;
-            margin-bottom: 20px;
+            gap: 16px;
+            margin-bottom: 18px;
         }
         .invoice-details .label {
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             color: #94a3b8;
             text-transform: uppercase;
             font-weight: 700;
             letter-spacing: 0.8px;
         }
         .invoice-details .value {
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             font-weight: 600;
             color: #1a1a2e;
             margin-top: 2px;
@@ -303,75 +359,99 @@
         .invoice-table {
             width: 100%;
             border-collapse: collapse;
-            margin: 16px 0;
+            margin: 14px 0;
         }
         .invoice-table th {
             background: #f1f5f9;
-            padding: 10px 14px;
+            padding: 8px 12px;
             text-align: left;
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             text-transform: uppercase;
             font-weight: 700;
             color: #475569;
             letter-spacing: 0.5px;
         }
         .invoice-table td {
-            padding: 10px 14px;
+            padding: 8px 12px;
             border-bottom: 1px solid #e8edf5;
             font-weight: 500;
+            font-size: 0.85rem;
         }
         .invoice-table .total-row {
             font-weight: 800;
-            font-size: 1.05rem;
+            font-size: 1rem;
             background: #f8faff;
             border-top: 3px solid #f7971e;
         }
 
-        /* Action Buttons */
+        /* QR Code */
+        .qr-section {
+            display: flex;
+            gap: 14px;
+            align-items: center;
+            margin: 10px 0;
+            flex-wrap: wrap;
+        }
+        #qrcode {
+            background: white;
+            padding: 8px;
+            border-radius: 10px;
+            border: 2px solid var(--border);
+        }
+        #qrcode img { display: block; }
+
+        .qr-label {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
         .action-buttons {
             display: flex;
-            gap: 10px;
-            margin-top: 16px;
+            gap: 8px;
+            margin-top: 14px;
             flex-wrap: wrap;
         }
         .action-buttons button {
             flex: 1;
-            padding: 10px 16px;
+            padding: 8px 12px;
             border: none;
-            border-radius: 12px;
+            border-radius: 10px;
             font-weight: 700;
             cursor: pointer;
             transition: var(--transition);
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
-            font-size: 0.85rem;
-            min-width: 80px;
+            gap: 6px;
+            font-size: 0.8rem;
+            min-width: 60px;
         }
         .btn-pdf { background: linear-gradient(145deg, #dc2626, #b91c1c); color: white; }
-        .btn-pdf:hover { transform: translateY(-3px); box-shadow: 0 8px 35px rgba(220,38,38,0.3); }
+        .btn-pdf:hover { transform: translateY(-2px); box-shadow: 0 6px 25px rgba(220,38,38,0.3); }
         .btn-save { background: linear-gradient(145deg, #2563eb, #1d4ed8); color: white; }
-        .btn-save:hover { transform: translateY(-3px); box-shadow: 0 8px 35px rgba(37,99,235,0.3); }
+        .btn-save:hover { transform: translateY(-2px); }
         .btn-copy { background: #f1f5f9; color: #475569; }
-        .btn-copy:hover { transform: translateY(-3px); }
-        .btn-reset { background: #f1f5f9; color: #475569; }
-        .btn-reset:hover { transform: translateY(-3px); }
+        .btn-copy:hover { transform: translateY(-2px); }
+        .btn-email { background: linear-gradient(145deg, #ea580c, #c2410c); color: white; }
+        .btn-email:hover { transform: translateY(-2px); }
         .btn-whatsapp { background: #25D366; color: white; }
-        .btn-whatsapp:hover { transform: translateY(-3px); }
+        .btn-whatsapp:hover { transform: translateY(-2px); }
+        .btn-reset { background: #f1f5f9; color: #475569; }
+        .btn-reset:hover { transform: translateY(-2px); }
 
         .status-selector {
             display: flex;
-            gap: 8px;
-            margin: 10px 0;
+            gap: 6px;
+            margin: 8px 0;
             flex-wrap: wrap;
         }
         .status-selector button {
-            padding: 4px 16px;
+            padding: 3px 14px;
             border-radius: 50px;
             border: 2px solid var(--border);
             background: var(--card);
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             font-weight: 600;
             cursor: pointer;
             transition: var(--transition);
@@ -381,19 +461,18 @@
         .status-selector button.active-unpaid { border-color: #f59e0b; background: #f59e0b; color: white; }
         .status-selector button.active-overdue { border-color: #ef4444; background: #ef4444; color: white; }
 
-        /* Multiple Items */
         .item-row {
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr 40px;
-            gap: 10px;
+            grid-template-columns: 2fr 1fr 1fr 1fr 32px;
+            gap: 8px;
             align-items: center;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
         .item-row input {
-            padding: 8px 12px;
+            padding: 6px 10px;
             border: 2px solid var(--border);
             border-radius: 8px;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             background: var(--bg);
             color: var(--text);
         }
@@ -403,10 +482,10 @@
             color: white;
             border: none;
             border-radius: 8px;
-            width: 32px;
-            height: 32px;
+            width: 28px;
+            height: 28px;
             cursor: pointer;
-            font-size: 1rem;
+            font-size: 0.8rem;
             transition: var(--transition);
         }
         .remove-item:hover { transform: scale(1.1); }
@@ -414,106 +493,105 @@
             background: var(--gradient);
             color: #1a1a2e;
             border: none;
-            padding: 8px 16px;
-            border-radius: 10px;
+            padding: 6px 14px;
+            border-radius: 8px;
             font-weight: 600;
             cursor: pointer;
             transition: var(--transition);
-            font-size: 0.85rem;
-            margin-top: 6px;
+            font-size: 0.8rem;
+            margin-top: 4px;
         }
         .add-item-btn:hover { transform: translateY(-2px); }
 
-        /* Content Section */
         .content-section {
             background: var(--card);
             border-radius: var(--radius);
-            padding: 40px;
+            padding: 32px;
             box-shadow: var(--shadow);
-            margin-top: 30px;
+            margin-top: 28px;
             border: 1px solid var(--border);
             transition: var(--transition);
         }
         .content-section h2 {
             color: var(--text);
-            font-size: 1.6rem;
+            font-size: 1.4rem;
             font-weight: 800;
-            margin-bottom: 14px;
+            margin-bottom: 12px;
         }
         .content-section p { color: var(--text-light); line-height: 1.8; }
 
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 16px;
-            margin: 24px 0;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 14px;
+            margin: 20px 0;
         }
         .feature-card {
             background: var(--bg);
-            padding: 20px;
-            border-radius: 14px;
+            padding: 16px;
+            border-radius: 12px;
             text-align: center;
             border: 1px solid var(--border);
             transition: var(--transition);
         }
-        .feature-card:hover { transform: translateY(-5px); border-color: #f7971e; }
-        .feature-card i { font-size: 2rem; color: #f7971e; margin-bottom: 8px; }
-        .feature-card h4 { color: var(--text); font-weight: 700; }
-        .feature-card p { font-size: 0.85rem; color: var(--text-light); }
+        .feature-card:hover { transform: translateY(-4px); border-color: #f7971e; }
+        .feature-card i { font-size: 1.8rem; color: #f7971e; margin-bottom: 6px; }
+        .feature-card h4 { color: var(--text); font-weight: 700; font-size: 0.9rem; }
+        .feature-card p { font-size: 0.8rem; color: var(--text-light); }
 
-        /* Footer */
         footer {
             text-align: center;
-            padding: 30px 0 18px;
+            padding: 24px 0 14px;
             color: var(--text-light);
             border-top: 1px solid var(--border);
-            margin-top: 28px;
+            margin-top: 24px;
             transition: var(--transition);
         }
         footer a {
             color: #f7971e;
             text-decoration: none;
-            margin: 0 10px;
+            margin: 0 8px;
             font-weight: 600;
             transition: var(--transition);
+            font-size: 0.85rem;
         }
         footer a:hover { color: #e68a00; }
         .footer-links {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 8px;
-            margin: 10px 0;
+            gap: 6px;
+            margin: 8px 0;
         }
 
-        /* Toast Notification */
         .toast {
             position: fixed;
             bottom: 30px;
             right: 30px;
             background: var(--card);
             border: 2px solid #22c55e;
-            padding: 16px 24px;
-            border-radius: 14px;
+            padding: 14px 20px;
+            border-radius: 12px;
             box-shadow: 0 20px 60px rgba(0,0,0,0.15);
             display: none;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
             font-weight: 600;
             color: var(--text);
             z-index: 1000;
             transition: var(--transition);
-            border-left: 6px solid #22c55e;
+            border-left: 5px solid #22c55e;
+            font-size: 0.9rem;
         }
         .toast.show { display: flex; animation: slideIn 0.4s ease; }
         @keyframes slideIn {
             from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        .toast i { font-size: 1.4rem; color: #22c55e; }
+        .toast i { font-size: 1.2rem; color: #22c55e; }
 
         @media print {
-            .action-buttons, .btn, .form-section, .status-selector, .nav-bar, .header-actions, .theme-toggle {
+            .action-buttons, .btn, .form-section, .status-selector, .nav-bar, .header-actions, .theme-toggle, .qr-section {
                 display: none !important;
             }
             .preview-section { border: none !important; padding: 0 !important; }
@@ -534,12 +612,12 @@
             <div class="header-logo"><i class="fas fa-file-invoice-dollar"></i></div>
             <div>
                 <h1>Invoice Generator</h1>
-                <p><i class="fas fa-check-circle" style="color:#22c55e;"></i> Premium • Feature Rich • Free</p>
+                <p><i class="fas fa-check-circle" style="color:#22c55e;"></i> Premium • QR • Email • Logo</p>
             </div>
         </div>
         <div class="header-actions">
             <button class="theme-toggle" onclick="toggleTheme()"><i class="fas fa-moon"></i> <span id="themeLabel">Dark</span></button>
-            <button class="theme-btn" onclick="window.location.reload()"><i class="fas fa-redo"></i></button>
+            <button class="theme-toggle" onclick="window.location.reload()"><i class="fas fa-redo"></i></button>
         </div>
     </div>
 
@@ -559,6 +637,18 @@
             <!-- Form -->
             <div class="form-section">
                 <h2><i class="fas fa-pen-fancy"></i> Invoice Details</h2>
+
+                <!-- Logo Upload -->
+                <div class="form-group">
+                    <label><i class="fas fa-image"></i> Company Logo</label>
+                    <div class="logo-upload" onclick="document.getElementById('logoInput').click()">
+                        <div id="logoPreview" class="placeholder">
+                            <i class="fas fa-plus"></i>
+                        </div>
+                        <span class="logo-label"><i class="fas fa-upload"></i> Click to upload logo (PNG/JPG)</span>
+                        <input type="file" id="logoInput" accept="image/png,image/jpeg" onchange="handleLogoUpload(event)">
+                    </div>
+                </div>
 
                 <div class="form-group">
                     <label><i class="fas fa-building"></i> Company Name</label>
@@ -596,7 +686,7 @@
                     </select>
                 </div>
 
-                <!-- Multiple Items -->
+                <!-- Items -->
                 <div class="form-group">
                     <label><i class="fas fa-list"></i> Items / Services</label>
                     <div id="itemsContainer">
@@ -604,7 +694,7 @@
                             <input type="text" class="item-desc" placeholder="Description" value="Web Development" oninput="updatePreview()">
                             <input type="number" class="item-qty" placeholder="Qty" value="20" oninput="updatePreview()">
                             <input type="number" class="item-rate" placeholder="Rate" value="1500" oninput="updatePreview()">
-                            <input type="text" class="item-total" readonly style="background:#f1f5f9;font-weight:700;">
+                            <input type="text" class="item-total" readonly style="background:#f1f5f9;font-weight:700;font-size:0.8rem;">
                             <button class="remove-item" onclick="removeItem(this)">✕</button>
                         </div>
                     </div>
@@ -625,9 +715,14 @@
             <div class="preview-section">
                 <div id="invoicePreview">
                     <div class="invoice-header">
-                        <div>
-                            <div class="company"><span id="previewCompany">Freelance</span> Pro</div>
-                            <div style="font-size:0.75rem; color:#94a3b8; font-weight:500;">GST: 22ABCDE1234F1Z5</div>
+                        <div style="display:flex;align-items:center;gap:12px;">
+                            <div id="previewLogo" style="display:none;">
+                                <img id="previewLogoImg" class="invoice-logo" alt="Logo">
+                            </div>
+                            <div>
+                                <div class="company"><span id="previewCompany">Freelance</span> Pro</div>
+                                <div style="font-size:0.7rem; color:#94a3b8; font-weight:500;">GST: 22ABCDE1234F1Z5</div>
+                            </div>
                         </div>
                         <div class="invoice-number">
                             <div class="num" id="previewInvoiceNumber">INV-2026-001</div>
@@ -643,7 +738,7 @@
                         <div style="text-align:right;">
                             <div class="label">Invoice Date</div>
                             <div class="value" id="previewDate">--</div>
-                            <div class="label" style="margin-top:6px;">Due Date</div>
+                            <div class="label" style="margin-top:4px;">Due Date</div>
                             <div class="value" id="previewDue">--</div>
                         </div>
                     </div>
@@ -673,7 +768,7 @@
                         </tbody>
                         <tfoot>
                             <tr class="total-row">
-                                <td colspan="3" style="text-align:right; font-size:1rem;">
+                                <td colspan="3" style="text-align:right; font-size:0.95rem;">
                                     <i class="fas fa-calculator"></i> Total Amount
                                 </td>
                                 <td style="text-align:right;" id="previewTotal">$30,000</td>
@@ -681,19 +776,28 @@
                         </tfoot>
                     </table>
 
-                    <div style="margin-top:14px; font-size:0.85rem; color:var(--text-light); background:var(--bg); padding:10px 16px; border-radius:10px; border-left:4px solid #f7971e;">
+                    <!-- QR Code -->
+                    <div class="qr-section">
+                        <div id="qrcode"></div>
+                        <div>
+                            <div class="qr-label"><i class="fas fa-qrcode" style="color:#f7971e;"></i> Scan to Pay</div>
+                            <div style="font-size:0.7rem; color:var(--text-light);">UPI: freelancer@pay</div>
+                        </div>
+                    </div>
+
+                    <div style="margin-top:12px; font-size:0.8rem; color:var(--text-light); background:var(--bg); padding:8px 14px; border-radius:8px; border-left:4px solid #f7971e;">
                         <i class="fas fa-sticky-note" style="color:#f7971e;"></i>
                         <strong>Notes:</strong> <span id="previewNotes">Thank you for your business!</span>
                     </div>
 
-                    <div class="invoice-footer" style="margin-top:18px; padding-top:16px; border-top:2px solid var(--border); display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px;">
+                    <div class="invoice-footer" style="margin-top:14px; padding-top:14px; border-top:2px solid var(--border); display:flex; justify-content:space-between; flex-wrap:wrap; gap:6px;">
                         <div>
-                            <div style="font-size:0.7rem; color:#94a3b8; text-transform:uppercase; font-weight:700; letter-spacing:0.5px;">Payment Terms</div>
-                            <div style="font-weight:700; color:var(--text);">15 Days</div>
+                            <div style="font-size:0.65rem; color:#94a3b8; text-transform:uppercase; font-weight:700; letter-spacing:0.5px;">Payment Terms</div>
+                            <div style="font-weight:700; color:var(--text); font-size:0.9rem;">15 Days</div>
                         </div>
                         <div style="text-align:right;">
-                            <div style="font-size:0.7rem; color:#94a3b8; text-transform:uppercase; font-weight:700; letter-spacing:0.5px;">Generated on</div>
-                            <div style="font-weight:700; color:var(--text);" id="previewGenerated">--</div>
+                            <div style="font-size:0.65rem; color:#94a3b8; text-transform:uppercase; font-weight:700; letter-spacing:0.5px;">Generated on</div>
+                            <div style="font-weight:700; color:var(--text); font-size:0.9rem;" id="previewGenerated">--</div>
                         </div>
                     </div>
                 </div>
@@ -702,6 +806,7 @@
                     <button class="btn-pdf" onclick="downloadPDF()"><i class="fas fa-file-pdf"></i> PDF</button>
                     <button class="btn-save" onclick="saveInvoice()"><i class="fas fa-save"></i> Save</button>
                     <button class="btn-copy" onclick="copyInvoice()"><i class="fas fa-copy"></i> Copy</button>
+                    <button class="btn-email" onclick="emailInvoice()"><i class="fas fa-envelope"></i> Email</button>
                     <button class="btn-whatsapp" onclick="shareWhatsApp()"><i class="fab fa-whatsapp"></i> Share</button>
                     <button class="btn-reset" onclick="resetForm()"><i class="fas fa-undo-alt"></i> Reset</button>
                 </div>
@@ -719,11 +824,15 @@
             <div class="feature-card"><i class="fas fa-dollar-sign"></i><h4>Multi Currency</h4><p>$ € £ ₹ support</p></div>
             <div class="feature-card"><i class="fas fa-list"></i><h4>Multiple Items</h4><p>Add unlimited items</p></div>
             <div class="feature-card"><i class="fab fa-whatsapp"></i><h4>WhatsApp Share</h4><p>Direct share</p></div>
+            <div class="feature-card"><i class="fas fa-envelope"></i><h4>Email Invoice</h4><p>Send via email</p></div>
+            <div class="feature-card"><i class="fas fa-qrcode"></i><h4>QR Code</h4><p>Payment QR</p></div>
+            <div class="feature-card"><i class="fas fa-image"></i><h4>Logo Upload</h4><p>Brand your invoices</p></div>
         </div>
         <h3>❓ FAQ</h3>
         <p><strong>Is this really free?</strong><br>Yes! 100% free with no hidden charges.</p>
-        <p><strong>Can I add multiple items?</strong><br>Yes! Click "Add Item" to add more services.</p>
-        <p><strong>How to save invoice?</strong><br>Click "Save" button - it saves in your browser.</p>
+        <p><strong>How to add logo?</strong><br>Click "Company Logo" box and upload image.</p>
+        <p><strong>How to email invoice?</strong><br>Click "Email" button - compose email with invoice details.</p>
+        <p><strong>What is QR code for?</strong><br>Payment QR code for UPI/scan to pay.</p>
     </div>
 
     <footer>
@@ -745,6 +854,7 @@
 <script>
     let currentStatus = 'paid';
     let itemCount = 1;
+    let logoDataURL = null;
 
     // === THEME ===
     function toggleTheme() {
@@ -753,10 +863,30 @@
         if (current === 'dark') {
             html.removeAttribute('data-theme');
             document.getElementById('themeLabel').textContent = 'Dark';
+            localStorage.setItem('theme', 'light');
         } else {
             html.setAttribute('data-theme', 'dark');
             document.getElementById('themeLabel').textContent = 'Light';
+            localStorage.setItem('theme', 'dark');
         }
+    }
+
+    // === LOGO UPLOAD ===
+    function handleLogoUpload(event) {
+        const file = event.target.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            logoDataURL = e.target.result;
+            const preview = document.getElementById('logoPreview');
+            preview.innerHTML = `<img src="${logoDataURL}" style="width:50px;height:50px;border-radius:10px;object-fit:cover;">`;
+            preview.className = '';
+            document.getElementById('previewLogo').style.display = 'block';
+            document.getElementById('previewLogoImg').src = logoDataURL;
+            showToast('✅ Logo uploaded!');
+            updatePreview();
+        };
+        reader.readAsDataURL(file);
     }
 
     // === DATE ===
@@ -765,13 +895,33 @@
         document.getElementById('invoiceDate').value = today;
         const due = new Date(); due.setDate(due.getDate() + 15);
         document.getElementById('dueDate').value = due.toISOString().split('T')[0];
-        updatePreview();
-        // Load saved theme
+        
+        // Load theme
         if (localStorage.getItem('theme') === 'dark') {
             document.documentElement.setAttribute('data-theme', 'dark');
             document.getElementById('themeLabel').textContent = 'Light';
         }
+        
+        updatePreview();
+        generateQR();
     };
+
+    // === QR CODE ===
+    function generateQR() {
+        const container = document.getElementById('qrcode');
+        container.innerHTML = '';
+        const company = document.getElementById('companyName').value || 'Invoice';
+        const total = document.getElementById('previewTotal').textContent || '$0';
+        const qrData = `Pay to: ${company}\nAmount: ${total}\nUPI: freelancer@pay`;
+        new QRCode(container, {
+            text: qrData,
+            width: 80,
+            height: 80,
+            colorDark: '#1a1a2e',
+            colorLight: '#ffffff',
+            correctLevel: QRCode.CorrectLevel.H
+        });
+    }
 
     // === STATUS ===
     function setStatus(status) {
@@ -779,9 +929,11 @@
         const badge = document.getElementById('statusBadge');
         const btns = document.querySelectorAll('.status-selector button');
         btns.forEach(b => b.className = '');
-        const map = { paid: ['status-paid', 'Paid', 'active-paid', 0],
-                      unpaid: ['status-unpaid', 'Unpaid', 'active-unpaid', 1],
-                      overdue: ['status-overdue', 'Overdue', 'active-overdue', 2] };
+        const map = {
+            paid: ['status-paid', 'PAID', 'active-paid', 0],
+            unpaid: ['status-unpaid', 'UNPAID', 'active-unpaid', 1],
+            overdue: ['status-overdue', 'OVERDUE', 'active-overdue', 2]
+        };
         const m = map[status];
         badge.className = 'status-badge ' + m[0];
         badge.textContent = m[1];
@@ -806,12 +958,12 @@
             <input type="text" class="item-desc" placeholder="Description" value="Service ${++itemCount}" oninput="updatePreview()">
             <input type="number" class="item-qty" placeholder="Qty" value="1" oninput="updatePreview()">
             <input type="number" class="item-rate" placeholder="Rate" value="500" oninput="updatePreview()">
-            <input type="text" class="item-total" readonly style="background:#f1f5f9;font-weight:700;">
+            <input type="text" class="item-total" readonly style="background:#f1f5f9;font-weight:700;font-size:0.8rem;">
             <button class="remove-item" onclick="removeItem(this)">✕</button>
         `;
         container.appendChild(div);
         updatePreview();
-        showToast('Item added!');
+        showToast('✅ Item added!');
     }
 
     function removeItem(btn) {
@@ -819,9 +971,9 @@
         if (document.querySelectorAll('.item-row').length > 1) {
             row.remove();
             updatePreview();
-            showToast('Item removed');
+            showToast('🗑️ Item removed');
         } else {
-            showToast('Need at least 1 item');
+            showToast('⚠️ Need at least 1 item');
         }
     }
 
@@ -855,12 +1007,18 @@
         document.getElementById('previewDue').textContent = dueDate ? new Date(dueDate).toLocaleDateString('en-US') : '--';
         document.getElementById('previewNotes').textContent = notes || 'No notes';
 
+        // Logo
+        if (logoDataURL) {
+            document.getElementById('previewLogo').style.display = 'block';
+            document.getElementById('previewLogoImg').src = logoDataURL;
+        }
+
         // Items
         const items = getItemsData();
         const tbody = document.getElementById('previewItemsBody');
         tbody.innerHTML = '';
         let grandTotal = 0;
-        items.forEach((item, i) => {
+        items.forEach((item) => {
             const tr = document.createElement('tr');
             tr.innerHTML = `
                 <td>${item.desc}</td>
@@ -874,9 +1032,10 @@
 
         document.getElementById('previewTotal').textContent = formatCurrency(grandTotal);
 
-        // Generate on
         const now = new Date().toLocaleDateString('en-US', { day: 'numeric', month: 'short', year: 'numeric' });
         document.getElementById('previewGenerated').textContent = now;
+        
+        generateQR();
     }
 
     // === TOAST ===
@@ -899,11 +1058,11 @@
             currency: getCurrency(),
             items: getItemsData(),
             status: currentStatus,
+            logo: logoDataURL,
             savedAt: new Date().toISOString()
         };
         const key = 'invoice_' + Date.now();
         localStorage.setItem(key, JSON.stringify(data));
-        // Show saved invoices count
         const count = Object.keys(localStorage).filter(k => k.startsWith('invoice_')).length;
         showToast('✅ Invoice saved! (' + count + ' saved)');
     }
@@ -914,7 +1073,6 @@
         navigator.clipboard.writeText(text).then(() => {
             showToast('📋 Invoice copied!');
         }).catch(() => {
-            // Fallback
             const area = document.createElement('textarea');
             area.value = text;
             document.body.appendChild(area);
@@ -925,14 +1083,24 @@
         });
     }
 
+    // === EMAIL ===
+    function emailInvoice() {
+        const company = document.getElementById('companyName').value || 'Invoice';
+        const client = document.getElementById('clientName').value || 'Client';
+        const total = document.getElementById('previewTotal').textContent;
+        const subject = `Invoice from ${company}`;
+        const body = `📄 Invoice\n\nFrom: ${company}\nClient: ${client}\nTotal: ${total}\n\nThank you for your business!`;
+        window.location.href = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        showToast('📧 Email client opened!');
+    }
+
     // === WHATSAPP ===
     function shareWhatsApp() {
         const company = document.getElementById('companyName').value || 'Invoice';
         const client = document.getElementById('clientName').value || 'Client';
         const total = document.getElementById('previewTotal').textContent;
         const msg = `📄 *Invoice from ${company}*\nClient: ${client}\nTotal: ${total}\n\nCreated with Invoice Generator`;
-        const url = `https://wa.me/?text=${encodeURIComponent(msg)}`;
-        window.open(url, '_blank');
+        window.open(`https://wa.me/?text=${encodeURIComponent(msg)}`, '_blank');
     }
 
     // === PDF ===
@@ -954,18 +1122,19 @@
                 .header { border-radius: 0 !important; }
                 #invoicePreview { background: white !important; }
                 .status-badge { display: inline-block !important; }
-                .invoice-footer { border-color: #e8edf5 !important; }
+                .qr-section { display: flex !important; }
+                #qrcode { display: block !important; }
             </style>
             </head>
             <body>
-                <div class="header" style="border-radius:12px 12px 0 0;padding:20px 30px;">
+                <div class="header" style="border-radius:12px 12px 0 0;padding:16px 24px;">
                     <div class="header-left">
                         <div class="header-logo"><i class="fas fa-file-invoice-dollar"></i></div>
                         <div><h1 style="color:white;">Invoice</h1><p style="color:#a8b5d9;">Professional Invoice</p></div>
                     </div>
                 </div>
-                <div style="margin-top:16px;">${preview.outerHTML}</div>
-                <div style="text-align:center;color:#94a3b8;font-size:0.8rem;border-top:1px solid #e8edf5;padding-top:16px;margin-top:20px;">
+                <div style="margin-top:14px;">${preview.outerHTML}</div>
+                <div style="text-align:center;color:#94a3b8;font-size:0.75rem;border-top:1px solid #e8edf5;padding-top:14px;margin-top:16px;">
                     Generated by Invoice Generator
                 </div>
                 <script>window.onload=function(){window.print();}<\/script>
@@ -985,14 +1154,21 @@
         document.getElementById('invoiceDate').value = today;
         const due = new Date(); due.setDate(due.getDate() + 15);
         document.getElementById('dueDate').value = due.toISOString().split('T')[0];
+        
+        // Reset logo
+        logoDataURL = null;
+        document.getElementById('logoPreview').innerHTML = '<i class="fas fa-plus"></i>';
+        document.getElementById('logoPreview').className = 'placeholder';
+        document.getElementById('previewLogo').style.display = 'none';
+        document.getElementById('logoInput').value = '';
+        
         // Reset items
-        const container = document.getElementById('itemsContainer');
-        container.innerHTML = `
+        document.getElementById('itemsContainer').innerHTML = `
             <div class="item-row">
                 <input type="text" class="item-desc" placeholder="Description" value="Web Development" oninput="updatePreview()">
                 <input type="number" class="item-qty" placeholder="Qty" value="20" oninput="updatePreview()">
                 <input type="number" class="item-rate" placeholder="Rate" value="1500" oninput="updatePreview()">
-                <input type="text" class="item-total" readonly style="background:#f1f5f9;font-weight:700;">
+                <input type="text" class="item-total" readonly style="background:#f1f5f9;font-weight:700;font-size:0.8rem;">
                 <button class="remove-item" onclick="removeItem(this)">✕</button>
             </div>
         `;
