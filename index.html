@@ -1,228 +1,369 @@
 <!DOCTYPE html>
 <html lang="en">
-<head> <meta name="google-site-verification" content="4M1S7HQ39C6cOUNhsDS_hjeLjfg9vXI54sBlhHE1gkw" />
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Premium Invoice Generator - Pro Features</title>
-    <meta name="description" content="Premium invoice generator with QR code, email, logo upload - 100% free">
-    
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Invoice Generator - Professional Templates</title>
+    <meta name="description" content="Create professional invoices with beautiful templates. Free, fast, and easy to use." />
     <meta name="google-site-verification" content="YOUR_VERIFICATION_CODE_HERE" />
-    <link rel="canonical" href="https://socialsarvis-beep.github.io/invoice-generator/">
-    
-    <!-- Font Awesome 6 -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <!-- QR Code Library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js">
+    </script>
     <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
     <style>
+        /* ========================================
+           GLOBAL RESET & VARIABLES
+        ======================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
         :root {
-            --bg: #f8faff;
+            --bg: #f0f4f8;
             --card: #ffffff;
             --text: #1a1a2e;
             --text-light: #64748b;
-            --border: #e8edf5;
-            --primary: #f7971e;
-            --primary-dark: #e68a00;
-            --gradient: linear-gradient(145deg, #f7971e, #ffd200);
-            --shadow: 0 25px 80px rgba(0,0,0,0.08);
-            --radius: 20px;
+            --border: #e2e8f0;
+            --shadow: 0 20px 60px rgba(0, 0, 0, 0.06);
+            --radius: 16px;
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --primary: #2563eb;
+            --primary-light: #dbeafe;
         }
-
-        [data-theme="dark"] {
-            --bg: #0f0f1a;
-            --card: #1a1a2e;
-            --text: #f1f5f9;
-            --text-light: #94a3b8;
-            --border: #2d2d44;
-            --shadow: 0 25px 80px rgba(0,0,0,0.4);
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
 
         body {
             background: var(--bg);
             color: var(--text);
             min-height: 100vh;
-            padding: 20px;
+            padding: 16px;
             transition: var(--transition);
         }
 
-        .container { max-width: 1280px; margin: 0 auto; }
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
 
-        /* Header */
+        /* ========================================
+           HEADER
+        ======================================== */
         .header {
-            background: linear-gradient(145deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            background: linear-gradient(145deg, #1a1a2e, #0f3460);
             border-radius: var(--radius) var(--radius) 0 0;
-            padding: 24px 36px;
+            padding: 18px 28px;
             color: white;
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            gap: 14px;
-            border-bottom: 3px solid rgba(247, 151, 30, 0.3);
-            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+            gap: 10px;
+            border-bottom: 3px solid var(--primary);
         }
-
-        .header-left { display: flex; align-items: center; gap: 16px; }
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
         .header-logo {
-            width: 52px; height: 52px;
-            background: var(--gradient);
-            border-radius: 14px;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 26px; color: #1a1a2e;
-            box-shadow: 0 8px 25px rgba(247, 151, 30, 0.3);
+            width: 44px;
+            height: 44px;
+            background: var(--primary);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: white;
         }
         .header h1 {
-            font-size: 1.6rem; font-weight: 900;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .header p { font-size: 0.9rem; opacity: 0.8; color: #a8b5d9; }
-
-        .header-actions { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
-
-        .theme-toggle {
-            background: rgba(255,255,255,0.1);
-            border: 1px solid rgba(255,255,255,0.15);
+            font-size: 1.3rem;
+            font-weight: 900;
             color: white;
-            padding: 7px 14px;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: var(--transition);
-            font-size: 0.85rem;
-            backdrop-filter: blur(10px);
         }
-        .theme-toggle:hover {
-            background: rgba(247, 151, 30, 0.2);
-            border-color: #f7971e;
-            transform: translateY(-2px);
+        .header p {
+            font-size: 0.75rem;
+            opacity: 0.8;
+            color: #a8b5d9;
         }
 
-        /* Navigation */
+        /* ========================================
+           NAVIGATION
+        ======================================== */
         .nav-bar {
             background: var(--card);
-            padding: 10px 28px;
+            padding: 8px 20px;
             display: flex;
-            gap: 18px;
+            gap: 14px;
             flex-wrap: wrap;
             border-bottom: 2px solid var(--border);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
             transition: var(--transition);
         }
         .nav-bar a {
             color: var(--text-light);
             text-decoration: none;
             font-weight: 500;
-            font-size: 0.82rem;
+            font-size: 0.75rem;
             transition: var(--transition);
-            padding: 5px 12px;
-            border-radius: 10px;
+            padding: 4px 10px;
+            border-radius: 6px;
         }
-        .nav-bar a:hover, .nav-bar a.active {
-            color: #f7971e;
-            background: rgba(247, 151, 30, 0.08);
+        .nav-bar a:hover,
+        .nav-bar a.active {
+            color: var(--primary);
+            background: var(--primary-light);
         }
-        .nav-bar a i { margin-right: 6px; }
+        .nav-bar a i {
+            margin-right: 5px;
+        }
 
-        /* Tool Wrapper */
+        /* ========================================
+           TEMPLATE GALLERY
+        ======================================== */
+        .template-gallery {
+            background: var(--card);
+            padding: 16px 20px;
+            border-radius: 0 0 var(--radius) var(--radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 18px;
+            border: 1px solid var(--border);
+            transition: var(--transition);
+        }
+        .template-gallery h2 {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: var(--text);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .template-gallery h2 i {
+            color: var(--primary);
+        }
+        .template-gallery h2 span {
+            font-size: 0.7rem;
+            font-weight: 400;
+            color: var(--text-light);
+        }
+
+        .template-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+            gap: 10px;
+        }
+        .template-card {
+            background: var(--bg);
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            padding: 12px 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+        }
+        .template-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--primary);
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.1);
+        }
+        .template-card.active {
+            border-color: var(--primary);
+            background: var(--primary-light);
+        }
+        .template-card .preview-icon {
+            font-size: 1.6rem;
+            margin-bottom: 3px;
+            display: block;
+        }
+        .template-card .template-name {
+            font-weight: 700;
+            font-size: 0.75rem;
+            color: var(--text);
+        }
+        .template-card .template-desc {
+            font-size: 0.6rem;
+            color: var(--text-light);
+            margin-top: 1px;
+        }
+        .template-card .badge {
+            position: absolute;
+            top: 3px;
+            right: 3px;
+            background: var(--primary);
+            color: white;
+            font-size: 0.45rem;
+            font-weight: 700;
+            padding: 1px 6px;
+            border-radius: 50px;
+        }
+        .template-card .apply-btn {
+            margin-top: 5px;
+            padding: 2px 10px;
+            background: var(--primary);
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 0.6rem;
+            cursor: pointer;
+            color: white;
+            transition: var(--transition);
+        }
+        .template-card .apply-btn:hover {
+            transform: scale(1.05);
+        }
+        .template-card.active .apply-btn {
+            background: #16a34a;
+        }
+
+        /* ========================================
+           TOOL WRAPPER
+        ======================================== */
         .tool-wrapper {
             background: var(--card);
-            border-radius: 0 0 var(--radius) var(--radius);
-            padding: 30px;
+            border-radius: var(--radius);
+            padding: 18px;
             box-shadow: var(--shadow);
-            margin-bottom: 30px;
-            transition: var(--transition);
+            margin-bottom: 18px;
             border: 1px solid var(--border);
+            transition: var(--transition);
+        }
+        .tool-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
         }
 
-        .tool-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
-
-        @media (max-width: 900px) { .tool-grid { grid-template-columns: 1fr; } }
+        @media (max-width: 900px) {
+            .tool-grid {
+                grid-template-columns: 1fr;
+            }
+        }
         @media (max-width: 600px) {
-            .header { flex-direction: column; text-align: center; padding: 18px; }
-            .header-left { flex-direction: column; }
-            .header-actions { justify-content: center; }
-            .nav-bar { justify-content: center; padding: 8px 10px; gap: 4px; }
-            .nav-bar a { font-size: 0.7rem; padding: 3px 7px; }
-            .tool-wrapper { padding: 14px; }
+            .header {
+                flex-direction: column;
+                text-align: center;
+                padding: 12px;
+            }
+            .header-left {
+                flex-direction: column;
+            }
+            .nav-bar {
+                justify-content: center;
+                padding: 6px;
+                gap: 4px;
+            }
+            .nav-bar a {
+                font-size: 0.6rem;
+                padding: 2px 6px;
+            }
+            .template-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .tool-wrapper {
+                padding: 8px;
+            }
+            .template-gallery {
+                padding: 8px 10px;
+            }
         }
 
-        /* Form */
+        /* ========================================
+           FORM
+        ======================================== */
         .form-section h2 {
-            font-size: 1.3rem; font-weight: 800;
+            font-size: 1rem;
+            font-weight: 800;
             color: var(--text);
-            margin-bottom: 20px;
-            display: flex; align-items: center; gap: 10px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
-        .form-section h2 i { color: #f7971e; }
-
-        .form-group { margin-bottom: 14px; }
+        .form-section h2 i {
+            color: var(--primary);
+        }
+        .form-group {
+            margin-bottom: 8px;
+        }
         .form-group label {
             display: block;
             font-weight: 600;
-            font-size: 0.75rem;
-            margin-bottom: 4px;
+            font-size: 0.6rem;
+            margin-bottom: 2px;
             color: var(--text-light);
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
-        .form-group label i { color: #f7971e; margin-right: 6px; width: 16px; }
-
-        .form-group input, .form-group textarea, .form-group select {
+        .form-group label i {
+            color: var(--primary);
+            margin-right: 3px;
+            width: 12px;
+        }
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
             width: 100%;
-            padding: 10px 14px;
+            padding: 6px 8px;
             border: 2px solid var(--border);
-            border-radius: 12px;
-            font-size: 0.9rem;
+            border-radius: 6px;
+            font-size: 0.75rem;
             transition: var(--transition);
             background: var(--bg);
             color: var(--text);
         }
-        .form-group input:focus, .form-group textarea:focus {
+        .form-group input:focus,
+        .form-group textarea:focus {
             outline: none;
-            border-color: #f7971e;
-            box-shadow: 0 0 0 4px rgba(247, 151, 30, 0.1);
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
         }
-        .form-group textarea { resize: vertical; min-height: 50px; }
-        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .form-group textarea {
+            resize: vertical;
+            min-height: 30px;
+        }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6px;
+        }
 
-        /* Logo Upload */
         .logo-upload {
             display: flex;
             align-items: center;
-            gap: 14px;
-            padding: 10px 14px;
+            gap: 8px;
+            padding: 4px 8px;
             border: 2px dashed var(--border);
-            border-radius: 12px;
+            border-radius: 6px;
             background: var(--bg);
-            transition: var(--transition);
             cursor: pointer;
             flex-wrap: wrap;
         }
-        .logo-upload:hover { border-color: #f7971e; }
+        .logo-upload:hover {
+            border-color: var(--primary);
+        }
         .logo-upload img {
-            width: 50px;
-            height: 50px;
-            border-radius: 10px;
+            width: 30px;
+            height: 30px;
+            border-radius: 4px;
             object-fit: cover;
-            border: 2px solid var(--border);
         }
         .logo-upload .placeholder {
-            width: 50px;
-            height: 50px;
-            border-radius: 10px;
+            width: 30px;
+            height: 30px;
+            border-radius: 4px;
             background: var(--border);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 24px;
+            font-size: 14px;
             color: var(--text-light);
         }
         .logo-upload input[type="file"] {
@@ -234,15 +375,14 @@
         .logo-label {
             font-weight: 500;
             color: var(--text-light);
-            font-size: 0.85rem;
+            font-size: 0.7rem;
         }
-        .logo-label i { color: #f7971e; margin-right: 6px; }
 
         .btn {
-            padding: 12px 24px;
+            padding: 6px 14px;
             border: none;
-            border-radius: 12px;
-            font-size: 0.9rem;
+            border-radius: 6px;
+            font-size: 0.75rem;
             font-weight: 700;
             cursor: pointer;
             transition: var(--transition);
@@ -250,20 +390,25 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
+            gap: 5px;
         }
         .btn-primary {
-            background: var(--gradient);
-            color: #1a1a2e;
-            box-shadow: 0 4px 20px rgba(247, 151, 30, 0.35);
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 4px 20px rgba(37, 99, 235, 0.3);
         }
-        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 35px rgba(247, 151, 30, 0.45); }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(37, 99, 235, 0.4);
+        }
 
-        /* Preview */
+        /* ========================================
+           PREVIEW - INVOICEHOME STYLE
+        ======================================== */
         .preview-section {
             background: var(--bg);
-            border-radius: 16px;
-            padding: 18px;
+            border-radius: 10px;
+            padding: 12px;
             border: 2px solid var(--border);
             position: relative;
             transition: var(--transition);
@@ -271,916 +416,1514 @@
         .preview-section::before {
             content: '⚡ LIVE PREVIEW';
             position: absolute;
-            top: -12px;
-            right: 18px;
-            background: var(--gradient);
-            color: #1a1a2e;
-            padding: 2px 14px;
+            top: -8px;
+            right: 12px;
+            background: var(--primary);
+            color: white;
+            padding: 2px 8px;
             border-radius: 50px;
-            font-size: 0.65rem;
+            font-size: 0.5rem;
             font-weight: 800;
             letter-spacing: 0.5px;
         }
 
         #invoicePreview {
             background: white;
-            padding: 24px;
-            border-radius: 12px;
-            box-shadow: 0 4px 25px rgba(0,0,0,0.04);
-            position: relative;
-        }
-        [data-theme="dark"] #invoicePreview { background: #1e1e32; color: white; }
-        [data-theme="dark"] #invoicePreview .invoice-header .company { color: white; }
-        [data-theme="dark"] #invoicePreview .invoice-details .value { color: #e2e8f0; }
-        [data-theme="dark"] #invoicePreview .invoice-table td { color: #e2e8f0; border-color: #2d2d44; }
-        [data-theme="dark"] #invoicePreview .invoice-table th { background: #2d2d44; color: #94a3b8; }
-        [data-theme="dark"] #invoicePreview .invoice-table .total-row { background: #1a1a2e; }
-        [data-theme="dark"] #invoicePreview .invoice-footer { border-color: #2d2d44; }
-        [data-theme="dark"] #invoicePreview .invoice-number .num { color: white; }
-
-        .invoice-logo {
-            max-width: 80px;
-            max-height: 60px;
+            padding: 14px 16px;
             border-radius: 8px;
-            object-fit: contain;
+            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.04);
+            transition: var(--transition);
+            max-width: 100%;
+            margin: 0 auto;
         }
 
+        /* ===== INVOICE HEADER ===== */
         .invoice-header {
-            border-bottom: 3px solid #f7971e;
-            padding-bottom: 14px;
-            margin-bottom: 18px;
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            align-items: flex-start;
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 8px;
+            margin-bottom: 10px;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 4px;
         }
-        .invoice-header .company {
-            font-size: 1.4rem;
+        .invoice-header .company-section .company-name {
+            font-size: 1.1rem;
             font-weight: 900;
             color: #1a1a2e;
         }
-        .invoice-header .company span { color: #f7971e; }
-        .invoice-number .num { font-size: 0.95rem; font-weight: 700; }
-
-        .status-badge {
-            display: inline-block;
-            padding: 3px 16px;
-            border-radius: 50px;
+        .invoice-header .company-section .company-name span {
+            color: var(--primary);
+        }
+        .invoice-header .company-section .company-address {
             font-size: 0.65rem;
+            color: var(--text-light);
+            margin-top: 1px;
+        }
+        .invoice-header .invoice-title {
+            text-align: right;
+        }
+        .invoice-header .invoice-title .title {
+            font-size: 1.2rem;
+            font-weight: 900;
+            color: #1a1a2e;
+            letter-spacing: 1px;
+        }
+        .invoice-header .invoice-title .status-badge {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 50px;
+            font-size: 0.5rem;
             font-weight: 700;
-            margin-top: 3px;
+            margin-top: 2px;
             letter-spacing: 0.5px;
         }
-        .status-paid { background: #22c55e; color: white; }
-        .status-unpaid { background: #f59e0b; color: white; }
-        .status-overdue { background: #ef4444; color: white; }
+        .status-paid {
+            background: #22c55e;
+            color: white;
+        }
+        .status-unpaid {
+            background: #f59e0b;
+            color: white;
+        }
+        .status-overdue {
+            background: #ef4444;
+            color: white;
+        }
 
+        /* ===== INVOICE DETAILS ===== */
         .invoice-details {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 16px;
-            margin-bottom: 18px;
+            gap: 8px;
+            margin-bottom: 10px;
         }
         .invoice-details .label {
-            font-size: 0.65rem;
+            font-size: 0.5rem;
             color: #94a3b8;
             text-transform: uppercase;
             font-weight: 700;
             letter-spacing: 0.8px;
         }
         .invoice-details .value {
-            font-size: 0.9rem;
+            font-size: 0.75rem;
             font-weight: 600;
             color: #1a1a2e;
-            margin-top: 2px;
+        }
+        .invoice-details .value-small {
+            font-size: 0.65rem;
+            color: var(--text-light);
+            font-weight: 400;
         }
 
+        /* ===== INVOICE TABLE ===== */
         .invoice-table {
             width: 100%;
             border-collapse: collapse;
-            margin: 14px 0;
+            margin: 6px 0;
+            font-size: 0.7rem;
         }
         .invoice-table th {
             background: #f1f5f9;
-            padding: 8px 12px;
+            padding: 4px 6px;
             text-align: left;
-            font-size: 0.65rem;
+            font-size: 0.5rem;
             text-transform: uppercase;
             font-weight: 700;
             color: #475569;
-            letter-spacing: 0.5px;
         }
         .invoice-table td {
-            padding: 8px 12px;
+            padding: 4px 6px;
             border-bottom: 1px solid #e8edf5;
             font-weight: 500;
-            font-size: 0.85rem;
         }
         .invoice-table .total-row {
             font-weight: 800;
-            font-size: 1rem;
+            font-size: 0.8rem;
             background: #f8faff;
-            border-top: 3px solid #f7971e;
+            border-top: 3px solid var(--primary);
+        }
+        .invoice-table .subtotal-row {
+            font-weight: 600;
+            background: #f8faff;
+        }
+        .invoice-table .tax-row {
+            font-weight: 600;
+            background: #f8faff;
         }
 
-        /* QR Code */
+        /* ===== INVOICE FOOTER ===== */
+        .invoice-footer {
+            margin-top: 8px;
+            padding-top: 8px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 4px;
+        }
+        .invoice-footer .terms {
+            font-size: 0.6rem;
+            color: var(--text-light);
+        }
+        .invoice-footer .bank {
+            font-size: 0.6rem;
+            color: var(--text-light);
+            text-align: right;
+        }
+        .invoice-footer .bank strong {
+            color: var(--text);
+        }
+
+        /* ===== QR CODE ===== */
         .qr-section {
             display: flex;
-            gap: 14px;
+            gap: 6px;
             align-items: center;
-            margin: 10px 0;
+            margin: 4px 0;
             flex-wrap: wrap;
         }
         #qrcode {
             background: white;
-            padding: 8px;
-            border-radius: 10px;
-            border: 2px solid var(--border);
+            padding: 3px;
+            border-radius: 4px;
+            border: 1px solid var(--border);
         }
-        #qrcode img { display: block; }
-
+        #qrcode img {
+            display: block;
+        }
         .qr-label {
-            font-size: 0.8rem;
+            font-size: 0.6rem;
             color: var(--text-light);
             font-weight: 500;
         }
 
+        /* ===== ACTION BUTTONS ===== */
         .action-buttons {
             display: flex;
-            gap: 8px;
-            margin-top: 14px;
+            gap: 4px;
+            margin-top: 6px;
             flex-wrap: wrap;
         }
         .action-buttons button {
             flex: 1;
-            padding: 8px 12px;
+            padding: 4px 6px;
             border: none;
-            border-radius: 10px;
+            border-radius: 4px;
             font-weight: 700;
             cursor: pointer;
             transition: var(--transition);
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 6px;
-            font-size: 0.8rem;
-            min-width: 60px;
+            gap: 3px;
+            font-size: 0.6rem;
+            min-width: 35px;
         }
-        .btn-pdf { background: linear-gradient(145deg, #dc2626, #b91c1c); color: white; }
-        .btn-pdf:hover { transform: translateY(-2px); box-shadow: 0 6px 25px rgba(220,38,38,0.3); }
-        .btn-save { background: linear-gradient(145deg, #2563eb, #1d4ed8); color: white; }
-        .btn-save:hover { transform: translateY(-2px); }
-        .btn-copy { background: #f1f5f9; color: #475569; }
-        .btn-copy:hover { transform: translateY(-2px); }
-        .btn-email { background: linear-gradient(145deg, #ea580c, #c2410c); color: white; }
-        .btn-email:hover { transform: translateY(-2px); }
-        .btn-whatsapp { background: #25D366; color: white; }
-        .btn-whatsapp:hover { transform: translateY(-2px); }
-        .btn-reset { background: #f1f5f9; color: #475569; }
-        .btn-reset:hover { transform: translateY(-2px); }
+        .btn-pdf {
+            background: #dc2626;
+            color: white;
+        }
+        .btn-pdf:hover {
+            transform: translateY(-2px);
+        }
+        .btn-save {
+            background: #2563eb;
+            color: white;
+        }
+        .btn-save:hover {
+            transform: translateY(-2px);
+        }
+        .btn-copy {
+            background: #f1f5f9;
+            color: #475569;
+        }
+        .btn-copy:hover {
+            transform: translateY(-2px);
+        }
+        .btn-email {
+            background: #ea580c;
+            color: white;
+        }
+        .btn-email:hover {
+            transform: translateY(-2px);
+        }
+        .btn-whatsapp {
+            background: #25D366;
+            color: white;
+        }
+        .btn-whatsapp:hover {
+            transform: translateY(-2px);
+        }
+        .btn-reset {
+            background: #f1f5f9;
+            color: #475569;
+        }
+        .btn-reset:hover {
+            transform: translateY(-2px);
+        }
 
         .status-selector {
             display: flex;
-            gap: 6px;
-            margin: 8px 0;
+            gap: 4px;
+            margin: 4px 0;
             flex-wrap: wrap;
         }
         .status-selector button {
-            padding: 3px 14px;
+            padding: 2px 8px;
             border-radius: 50px;
             border: 2px solid var(--border);
             background: var(--card);
-            font-size: 0.65rem;
+            font-size: 0.5rem;
             font-weight: 600;
             cursor: pointer;
             transition: var(--transition);
             color: var(--text);
         }
-        .status-selector button.active-paid { border-color: #22c55e; background: #22c55e; color: white; }
-        .status-selector button.active-unpaid { border-color: #f59e0b; background: #f59e0b; color: white; }
-        .status-selector button.active-overdue { border-color: #ef4444; background: #ef4444; color: white; }
+        .status-selector button.active-paid {
+            border-color: #22c55e;
+            background: #22c55e;
+            color: white;
+        }
+        .status-selector button.active-unpaid {
+            border-color: #f59e0b;
+            background: #f59e0b;
+            color: white;
+        }
+        .status-selector button.active-overdue {
+            border-color: #ef4444;
+            background: #ef4444;
+            color: white;
+        }
 
+        .invoice-logo {
+            max-width: 40px;
+            max-height: 35px;
+            border-radius: 4px;
+            object-fit: contain;
+        }
+
+        /* ===== ITEMS ROW ===== */
         .item-row {
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr 32px;
-            gap: 8px;
+            grid-template-columns: 2fr 1fr 1fr 1fr 22px;
+            gap: 3px;
             align-items: center;
-            margin-bottom: 6px;
+            margin-bottom: 3px;
         }
         .item-row input {
-            padding: 6px 10px;
+            padding: 3px 5px;
             border: 2px solid var(--border);
-            border-radius: 8px;
-            font-size: 0.8rem;
+            border-radius: 4px;
+            font-size: 0.65rem;
             background: var(--bg);
             color: var(--text);
         }
-        .item-row input:focus { outline: none; border-color: #f7971e; }
+        .item-row input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
         .remove-item {
             background: #ef4444;
             color: white;
             border: none;
-            border-radius: 8px;
-            width: 28px;
-            height: 28px;
+            border-radius: 4px;
+            width: 18px;
+            height: 18px;
             cursor: pointer;
-            font-size: 0.8rem;
+            font-size: 0.5rem;
             transition: var(--transition);
         }
-        .remove-item:hover { transform: scale(1.1); }
+        .remove-item:hover {
+            transform: scale(1.1);
+        }
         .add-item-btn {
-            background: var(--gradient);
-            color: #1a1a2e;
+            background: var(--primary);
+            color: white;
             border: none;
-            padding: 6px 14px;
-            border-radius: 8px;
+            padding: 2px 8px;
+            border-radius: 4px;
             font-weight: 600;
             cursor: pointer;
             transition: var(--transition);
-            font-size: 0.8rem;
-            margin-top: 4px;
+            font-size: 0.65rem;
+            margin-top: 3px;
         }
-        .add-item-btn:hover { transform: translateY(-2px); }
+        .add-item-btn:hover {
+            transform: translateY(-2px);
+        }
 
+        /* ========================================
+           TEMPLATE COLOR VARIATIONS (10+ Templates)
+        ======================================== */
+        .template-classic .invoice-header {
+            border-color: #2563eb;
+        }
+        .template-classic .invoice-header .company-name span {
+            color: #2563eb;
+        }
+        .template-classic .status-badge {
+            background: #2563eb;
+            color: white;
+        }
+        .template-classic .invoice-table .total-row {
+            border-color: #2563eb;
+        }
+
+        .template-modern .invoice-header {
+            border-color: #16a34a;
+        }
+        .template-modern .invoice-header .company-name span {
+            color: #16a34a;
+        }
+        .template-modern .status-badge {
+            background: #16a34a;
+            color: white;
+        }
+        .template-modern .invoice-table .total-row {
+            border-color: #16a34a;
+        }
+
+        .template-elegant .invoice-header {
+            border-color: #d97706;
+        }
+        .template-elegant .invoice-header .company-name span {
+            color: #d97706;
+        }
+        .template-elegant .status-badge {
+            background: #d97706;
+            color: white;
+        }
+        .template-elegant .invoice-table .total-row {
+            border-color: #d97706;
+        }
+
+        .template-minimal .invoice-header {
+            border-color: #64748b;
+        }
+        .template-minimal .invoice-header .company-name span {
+            color: #475569;
+        }
+        .template-minimal .status-badge {
+            background: #475569;
+            color: white;
+        }
+        .template-minimal .invoice-table .total-row {
+            border-color: #64748b;
+        }
+
+        .template-vibrant .invoice-header {
+            border-color: #8b5cf6;
+        }
+        .template-vibrant .invoice-header .company-name span {
+            color: #8b5cf6;
+        }
+        .template-vibrant .status-badge {
+            background: #8b5cf6;
+            color: white;
+        }
+        .template-vibrant .invoice-table .total-row {
+            border-color: #8b5cf6;
+        }
+
+        .template-dark #invoicePreview {
+            background: #1a1a2e;
+            color: #f1f5f9;
+        }
+        .template-dark .invoice-header .company-name {
+            color: #f1f5f9;
+        }
+        .template-dark .invoice-header {
+            border-color: #f59e0b;
+        }
+        .template-dark .invoice-header .company-name span {
+            color: #f59e0b;
+        }
+        .template-dark .invoice-details .value {
+            color: #e2e8f0;
+        }
+        .template-dark .invoice-table td {
+            color: #e2e8f0;
+            border-color: #2d2d44;
+        }
+        .template-dark .invoice-table th {
+            background: #2d2d44;
+            color: #94a3b8;
+        }
+        .template-dark .invoice-table .total-row {
+            background: #0f0f1a;
+            border-color: #f59e0b;
+        }
+        .template-dark .invoice-table .subtotal-row {
+            background: #0f0f1a;
+            color: #e2e8f0;
+        }
+        .template-dark .invoice-table .tax-row {
+            background: #0f0f1a;
+            color: #e2e8f0;
+        }
+        .template-dark .invoice-footer {
+            border-color: #2d2d44;
+        }
+        .template-dark .invoice-number .num {
+            color: #f1f5f9;
+        }
+        .template-dark .status-badge {
+            background: #f59e0b;
+            color: #1a1a2e;
+        }
+        .template-dark .invoice-footer .terms {
+            color: #94a3b8;
+        }
+        .template-dark .invoice-footer .bank {
+            color: #94a3b8;
+        }
+
+        .template-red .invoice-header {
+            border-color: #dc2626;
+        }
+        .template-red .invoice-header .company-name span {
+            color: #dc2626;
+        }
+        .template-red .status-badge {
+            background: #dc2626;
+            color: white;
+        }
+        .template-red .invoice-table .total-row {
+            border-color: #dc2626;
+        }
+
+        .template-teal .invoice-header {
+            border-color: #0d9488;
+        }
+        .template-teal .invoice-header .company-name span {
+            color: #0d9488;
+        }
+        .template-teal .status-badge {
+            background: #0d9488;
+            color: white;
+        }
+        .template-teal .invoice-table .total-row {
+            border-color: #0d9488;
+        }
+
+        .template-pink .invoice-header {
+            border-color: #db2777;
+        }
+        .template-pink .invoice-header .company-name span {
+            color: #db2777;
+        }
+        .template-pink .status-badge {
+            background: #db2777;
+            color: white;
+        }
+        .template-pink .invoice-table .total-row {
+            border-color: #db2777;
+        }
+
+        .template-orange .invoice-header {
+            border-color: #ea580c;
+        }
+        .template-orange .invoice-header .company-name span {
+            color: #ea580c;
+        }
+        .template-orange .status-badge {
+            background: #ea580c;
+            color: white;
+        }
+        .template-orange .invoice-table .total-row {
+            border-color: #ea580c;
+        }
+
+        /* ========================================
+           CONTENT SECTION
+        ======================================== */
         .content-section {
             background: var(--card);
             border-radius: var(--radius);
-            padding: 32px;
+            padding: 20px;
             box-shadow: var(--shadow);
-            margin-top: 28px;
+            margin-top: 16px;
             border: 1px solid var(--border);
             transition: var(--transition);
         }
         .content-section h2 {
             color: var(--text);
-            font-size: 1.4rem;
+            font-size: 1.1rem;
             font-weight: 800;
-            margin-bottom: 12px;
+            margin-bottom: 6px;
         }
-        .content-section p { color: var(--text-light); line-height: 1.8; }
-
+        .content-section p {
+            color: var(--text-light);
+            line-height: 1.8;
+            font-size: 0.85rem;
+        }
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-            gap: 14px;
-            margin: 20px 0;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 8px;
+            margin: 10px 0;
         }
         .feature-card {
             background: var(--bg);
-            padding: 16px;
-            border-radius: 12px;
+            padding: 10px;
+            border-radius: 6px;
             text-align: center;
             border: 1px solid var(--border);
             transition: var(--transition);
         }
-        .feature-card:hover { transform: translateY(-4px); border-color: #f7971e; }
-        .feature-card i { font-size: 1.8rem; color: #f7971e; margin-bottom: 6px; }
-        .feature-card h4 { color: var(--text); font-weight: 700; font-size: 0.9rem; }
-        .feature-card p { font-size: 0.8rem; color: var(--text-light); }
+        .feature-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--primary);
+        }
+        .feature-card i {
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-bottom: 3px;
+        }
+        .feature-card h4 {
+            color: var(--text);
+            font-weight: 700;
+            font-size: 0.75rem;
+        }
+        .feature-card p {
+            font-size: 0.65rem;
+            color: var(--text-light);
+        }
 
+        /* ========================================
+           FOOTER
+        ======================================== */
         footer {
             text-align: center;
-            padding: 24px 0 14px;
+            padding: 14px 0 8px;
             color: var(--text-light);
             border-top: 1px solid var(--border);
-            margin-top: 24px;
+            margin-top: 14px;
             transition: var(--transition);
         }
         footer a {
-            color: #f7971e;
+            color: var(--primary);
             text-decoration: none;
-            margin: 0 8px;
+            margin: 0 4px;
             font-weight: 600;
-            transition: var(--transition);
-            font-size: 0.85rem;
+            font-size: 0.7rem;
         }
-        footer a:hover { color: #e68a00; }
+        footer a:hover {
+            text-decoration: underline;
+        }
         .footer-links {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 6px;
-            margin: 8px 0;
+            gap: 4px;
+            margin: 4px 0;
         }
 
+        /* ========================================
+           TOAST NOTIFICATION
+        ======================================== */
         .toast {
             position: fixed;
-            bottom: 30px;
-            right: 30px;
+            bottom: 20px;
+            right: 20px;
             background: var(--card);
             border: 2px solid #22c55e;
-            padding: 14px 20px;
-            border-radius: 12px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            padding: 8px 14px;
+            border-radius: 6px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
             display: none;
             align-items: center;
-            gap: 10px;
+            gap: 5px;
             font-weight: 600;
             color: var(--text);
             z-index: 1000;
-            transition: var(--transition);
-            border-left: 5px solid #22c55e;
-            font-size: 0.9rem;
+            font-size: 0.75rem;
+            border-left: 4px solid #22c55e;
         }
-        .toast.show { display: flex; animation: slideIn 0.4s ease; }
+        .toast.show {
+            display: flex;
+            animation: slideIn 0.4s ease;
+        }
         @keyframes slideIn {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
-        .toast i { font-size: 1.2rem; color: #22c55e; }
+        .toast i {
+            font-size: 0.8rem;
+            color: #22c55e;
+        }
 
+        /* ========================================
+           PRINT STYLES
+        ======================================== */
         @media print {
-            .action-buttons, .btn, .form-section, .status-selector, .nav-bar, .header-actions, .theme-toggle, .qr-section {
+            .action-buttons,
+            .btn,
+            .form-section,
+            .status-selector,
+            .nav-bar,
+            .template-gallery,
+            .toast {
                 display: none !important;
             }
-            .preview-section { border: none !important; padding: 0 !important; }
-            .preview-section::before { display: none !important; }
-            body { background: white !important; padding: 0 !important; }
-            .tool-wrapper { box-shadow: none !important; padding: 0 !important; }
-            .header { border-radius: 0 !important; }
-            #invoicePreview { background: white !important; }
+            .preview-section {
+                border: none !important;
+                padding: 0 !important;
+            }
+            .preview-section::before {
+                display: none !important;
+            }
+            body {
+                background: white !important;
+                padding: 0 !important;
+            }
+            .tool-wrapper {
+                box-shadow: none !important;
+                padding: 0 !important;
+            }
+            .header {
+                border-radius: 0 !important;
+            }
+            #invoicePreview {
+                background: white !important;
+            }
+            .qr-section {
+                display: flex !important;
+            }
+            #qrcode {
+                display: block !important;
+            }
         }
     </style>
 </head>
+
 <body>
 
-<div class="container">
-    <!-- Header -->
-    <div class="header">
-        <div class="header-left">
-            <div class="header-logo"><i class="fas fa-file-invoice-dollar"></i></div>
+    <div class="container">
+        <!-- ===== HEADER ===== -->
+        <div class="header">
+            <div class="header-left">
+                <div class="header-logo"><i class="fas fa-file-invoice-dollar"></i></div>
+                <div>
+                    <h1>Invoice Generator</h1>
+                    <p><i class="fas fa-check-circle" style="color:#22c55e;"></i> 10+ Templates • Free</p>
+                </div>
+            </div>
             <div>
-                <h1>Invoice Generator</h1>
-                <p><i class="fas fa-check-circle" style="color:#22c55e;"></i> Premium • QR • Email • Logo</p>
+                <button onclick="window.location.reload()" style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;padding:4px 10px;border-radius:6px;cursor:pointer;font-size:0.7rem;"><i class="fas fa-redo"></i></button>
             </div>
         </div>
-        <div class="header-actions">
-            <button class="theme-toggle" onclick="toggleTheme()"><i class="fas fa-moon"></i> <span id="themeLabel">Dark</span></button>
-            <button class="theme-toggle" onclick="window.location.reload()"><i class="fas fa-redo"></i></button>
+
+        <!-- ===== NAVIGATION ===== -->
+        <div class="nav-bar">
+            <a href="index.html" class="active"><i class="fas fa-home"></i> Home</a>
+            <a href="about.html"><i class="fas fa-info-circle"></i> About</a>
+            <a href="blog.html"><i class="fas fa-blog"></i> Blog</a>
+            <a href="privacy-policy.html"><i class="fas fa-shield-alt"></i> Privacy</a>
+            <a href="terms.html"><i class="fas fa-file-contract"></i> Terms</a>
+            <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
         </div>
-    </div>
 
-    <!-- Navigation -->
-    <div class="nav-bar">
-        <a href="index.html" class="active"><i class="fas fa-home"></i> Home</a>
-        <a href="about.html"><i class="fas fa-info-circle"></i> About</a>
-        <a href="blog.html"><i class="fas fa-blog"></i> Blog</a>
-        <a href="privacy-policy.html"><i class="fas fa-shield-alt"></i> Privacy</a>
-        <a href="terms.html"><i class="fas fa-file-contract"></i> Terms</a>
-        <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
-    </div>
-
-    <!-- Tool -->
-    <div class="tool-wrapper">
-        <div class="tool-grid">
-            <!-- Form -->
-            <div class="form-section">
-                <h2><i class="fas fa-pen-fancy"></i> Invoice Details</h2>
-
-                <!-- Logo Upload -->
-                <div class="form-group">
-                    <label><i class="fas fa-image"></i> Company Logo</label>
-                    <div class="logo-upload" onclick="document.getElementById('logoInput').click()">
-                        <div id="logoPreview" class="placeholder">
-                            <i class="fas fa-plus"></i>
-                        </div>
-                        <span class="logo-label"><i class="fas fa-upload"></i> Click to upload logo (PNG/JPG)</span>
-                        <input type="file" id="logoInput" accept="image/png,image/jpeg" onchange="handleLogoUpload(event)">
-                    </div>
+        <!-- ===== TEMPLATE GALLERY ===== -->
+        <div class="template-gallery">
+            <h2><i class="fas fa-layer-group"></i> Choose Template <span>— Click to apply</span></h2>
+            <div class="template-grid" id="templateGrid">
+                <div class="template-card active" data-template="classic" onclick="applyTemplate('classic')">
+                    <span class="badge">Popular</span>
+                    <span class="preview-icon">📘</span>
+                    <div class="template-name">Classic Blue</div>
+                    <div class="template-desc">Professional</div>
+                    <button class="apply-btn" onclick="event.stopPropagation();applyTemplate('classic')">✓ Active</button>
                 </div>
-
-                <div class="form-group">
-                    <label><i class="fas fa-building"></i> Company Name</label>
-                    <input type="text" id="companyName" value="Freelance Pro" oninput="updatePreview()">
+                <div class="template-card" data-template="modern" onclick="applyTemplate('modern')">
+                    <span class="preview-icon">🌿</span>
+                    <div class="template-name">Modern Green</div>
+                    <div class="template-desc">Fresh</div>
+                    <button class="apply-btn" onclick="event.stopPropagation();applyTemplate('modern')">Apply</button>
                 </div>
-
-                <div class="form-group">
-                    <label><i class="fas fa-user"></i> Client Name</label>
-                    <input type="text" id="clientName" value="Tech Solutions Inc." oninput="updatePreview()">
+                <div class="template-card" data-template="elegant" onclick="applyTemplate('elegant')">
+                    <span class="preview-icon">✨</span>
+                    <div class="template-name">Elegant Gold</div>
+                    <div class="template-desc">Luxury</div>
+                    <button class="apply-btn" onclick="event.stopPropagation();applyTemplate('elegant')">Apply</button>
                 </div>
-
-                <div class="form-group">
-                    <label><i class="fas fa-hashtag"></i> Invoice Number</label>
-                    <input type="text" id="invoiceNumber" value="INV-2026-001" oninput="updatePreview()">
+                <div class="template-card" data-template="minimal" onclick="applyTemplate('minimal')">
+                    <span class="preview-icon">⬜</span>
+                    <div class="template-name">Minimal Gray</div>
+                    <div class="template-desc">Simple</div>
+                    <button class="apply-btn" onclick="event.stopPropagation();applyTemplate('minimal')">Apply</button>
                 </div>
-
-                <div class="form-row">
-                    <div class="form-group">
-                        <label><i class="fas fa-calendar-day"></i> Invoice Date</label>
-                        <input type="date" id="invoiceDate" oninput="updatePreview()">
-                    </div>
-                    <div class="form-group">
-                        <label><i class="fas fa-calendar-check"></i> Due Date</label>
-                        <input type="date" id="dueDate" oninput="updatePreview()">
-                    </div>
+                <div class="template-card" data-template="vibrant" onclick="applyTemplate('vibrant')">
+                    <span class="preview-icon">💜</span>
+                    <div class="template-name">Vibrant Purple</div>
+                    <div class="template-desc">Creative</div>
+                    <button class="apply-btn" onclick="event.stopPropagation();applyTemplate('vibrant')">Apply</button>
                 </div>
-
-                <div class="form-group">
-                    <label><i class="fas fa-dollar-sign"></i> Currency</label>
-                    <select id="currency" onchange="updatePreview()">
-                        <option value="$">$ USD</option>
-                        <option value="€">€ EUR</option>
-                        <option value="£">£ GBP</option>
-                        <option value="₹">₹ INR</option>
-                    </select>
+                <div class="template-card" data-template="dark" onclick="applyTemplate('dark')">
+                    <span class="badge">New</span>
+                    <span class="preview-icon">🌙</span>
+                    <div class="template-name">Dark Premium</div>
+                    <div class="template-desc">Sleek</div>
+                    <button class="apply-btn" onclick="event.stopPropagation();applyTemplate('dark')">Apply</button>
                 </div>
-
-                <!-- Items -->
-                <div class="form-group">
-                    <label><i class="fas fa-list"></i> Items / Services</label>
-                    <div id="itemsContainer">
-                        <div class="item-row">
-                            <input type="text" class="item-desc" placeholder="Description" value="Web Development" oninput="updatePreview()">
-                            <input type="number" class="item-qty" placeholder="Qty" value="20" oninput="updatePreview()">
-                            <input type="number" class="item-rate" placeholder="Rate" value="1500" oninput="updatePreview()">
-                            <input type="text" class="item-total" readonly style="background:#f1f5f9;font-weight:700;font-size:0.8rem;">
-                            <button class="remove-item" onclick="removeItem(this)">✕</button>
-                        </div>
-                    </div>
-                    <button class="add-item-btn" onclick="addItem()"><i class="fas fa-plus"></i> Add Item</button>
+                <div class="template-card" data-template="red" onclick="applyTemplate('red')">
+                    <span class="preview-icon">🔥</span>
+                    <div class="template-name">Red Dynamic</div>
+                    <div class="template-desc">Bold</div>
+                    <button class="apply-btn" onclick="event.stopPropagation();applyTemplate('red')">Apply</button>
                 </div>
-
-                <div class="form-group">
-                    <label><i class="fas fa-sticky-note"></i> Notes</label>
-                    <textarea id="notes" oninput="updatePreview()">Thank you for your business! Payment due within 15 days.</textarea>
+                <div class="template-card" data-template="teal" onclick="applyTemplate('teal')">
+                    <span class="preview-icon">🌊</span>
+                    <div class="template-name">Teal Fresh</div>
+                    <div class="template-desc">Calm</div>
+                    <button class="apply-btn" onclick="event.stopPropagation();applyTemplate('teal')">Apply</button>
                 </div>
-
-                <button class="btn btn-primary" onclick="updatePreview()">
-                    <i class="fas fa-sync-alt"></i> Update Preview
-                </button>
+                <div class="template-card" data-template="pink" onclick="applyTemplate('pink')">
+                    <span class="preview-icon">🌸</span>
+                    <div class="template-name">Pink Soft</div>
+                    <div class="template-desc">Warm</div>
+                    <button class="apply-btn" onclick="event.stopPropagation();applyTemplate('pink')">Apply</button>
+                </div>
+                <div class="template-card" data-template="orange" onclick="applyTemplate('orange')">
+                    <span class="preview-icon">🍊</span>
+                    <div class="template-name">Orange Energy</div>
+                    <div class="template-desc">Vibrant</div>
+                    <button class="apply-btn" onclick="event.stopPropagation();applyTemplate('orange')">Apply</button>
+                </div>
             </div>
+        </div>
 
-            <!-- Preview -->
-            <div class="preview-section">
-                <div id="invoicePreview">
-                    <div class="invoice-header">
-                        <div style="display:flex;align-items:center;gap:12px;">
-                            <div id="previewLogo" style="display:none;">
-                                <img id="previewLogoImg" class="invoice-logo" alt="Logo">
+        <!-- ===== TOOL ===== -->
+        <div class="tool-wrapper">
+            <div class="tool-grid">
+                <!-- LEFT: FORM -->
+                <div class="form-section">
+                    <h2><i class="fas fa-pen-fancy"></i> Invoice Details</h2>
+
+                    <!-- Logo -->
+                    <div class="form-group">
+                        <label><i class="fas fa-image"></i> Logo</label>
+                        <div class="logo-upload" onclick="document.getElementById('logoInput').click()">
+                            <div id="logoPreview" class="placeholder"><i class="fas fa-plus"></i></div>
+                            <span class="logo-label"><i class="fas fa-upload"></i> Upload Logo</span>
+                            <input type="file" id="logoInput" accept="image/png,image/jpeg" onchange="handleLogoUpload(event)">
+                        </div>
+                    </div>
+
+                    <!-- Company -->
+                    <div class="form-group">
+                        <label><i class="fas fa-building"></i> Company</label>
+                        <input type="text" id="companyName" value="East Asia Trading" oninput="updatePreview()" />
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-map-pin"></i> Company Address</label>
+                        <input type="text" id="companyAddress" value="Pasar Pudu Baru 10, Kuala Lumpur 53000" oninput="updatePreview()" />
+                    </div>
+
+                    <!-- Client -->
+                    <div class="form-group">
+                        <label><i class="fas fa-user"></i> Bill To (Client)</label>
+                        <input type="text" id="clientName" value="Mayang Bujang" oninput="updatePreview()" />
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-map-pin"></i> Client Address</label>
+                        <input type="text" id="clientAddress" value="2 Pasar Moden 55, Kuala Lumpur 55100" oninput="updatePreview()" />
+                    </div>
+
+                    <!-- Ship To -->
+                    <div class="form-group">
+                        <label><i class="fas fa-truck"></i> Ship To Address</label>
+                        <input type="text" id="shipAddress" value="1721 Jln Sp 232/7, Kuala Lumpur 55103" oninput="updatePreview()" />
+                    </div>
+
+                    <!-- Invoice Numbers -->
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label><i class="fas fa-hashtag"></i> Invoice #</label>
+                            <input type="text" id="invoiceNumber" value="MY-001" oninput="updatePreview()" />
+                        </div>
+                        <div class="form-group">
+                            <label><i class="fas fa-tag"></i> P.O.#</label>
+                            <input type="text" id="poNumber" value="2330/2019" oninput="updatePreview()" />
+                        </div>
+                    </div>
+
+                    <!-- Dates -->
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label><i class="fas fa-calendar-day"></i> Date</label>
+                            <input type="date" id="invoiceDate" oninput="updatePreview()" />
+                        </div>
+                        <div class="form-group">
+                            <label><i class="fas fa-calendar-check"></i> Due</label>
+                            <input type="date" id="dueDate" oninput="updatePreview()" />
+                        </div>
+                    </div>
+
+                    <!-- Currency & Tax -->
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label><i class="fas fa-dollar-sign"></i> Currency</label>
+                            <select id="currency" onchange="updatePreview()">
+                                <option value="$">$ USD</option>
+                                <option value="€">€ EUR</option>
+                                <option value="£">£ GBP</option>
+                                <option value="₹">₹ INR</option>
+                                <option value="RM" selected>RM MYR</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label><i class="fas fa-percent"></i> Tax (%)</label>
+                            <input type="number" id="taxRate" value="6" min="0" max="100" oninput="updatePreview()" />
+                        </div>
+                    </div>
+
+                    <!-- Items -->
+                    <div class="form-group">
+                        <label><i class="fas fa-list"></i> Items</label>
+                        <div id="itemsContainer">
+                            <div class="item-row">
+                                <input type="text" class="item-desc" placeholder="Description" value="Wooden elephant figurine" oninput="updatePreview()" />
+                                <input type="number" class="item-qty" placeholder="Qty" value="1" oninput="updatePreview()" />
+                                <input type="number" class="item-rate" placeholder="Rate" value="600" oninput="updatePreview()" />
+                                <input type="text" class="item-total" readonly style="background:#f1f5f9;font-weight:700;font-size:0.6rem;" />
+                                <button class="remove-item" onclick="removeItem(this)">✕</button>
                             </div>
+                            <div class="item-row">
+                                <input type="text" class="item-desc" placeholder="Description" value="Large cloth rice bag" oninput="updatePreview()" />
+                                <input type="number" class="item-qty" placeholder="Qty" value="2" oninput="updatePreview()" />
+                                <input type="number" class="item-rate" placeholder="Rate" value="45" oninput="updatePreview()" />
+                                <input type="text" class="item-total" readonly style="background:#f1f5f9;font-weight:700;font-size:0.6rem;" />
+                                <button class="remove-item" onclick="removeItem(this)">✕</button>
+                            </div>
+                            <div class="item-row">
+                                <input type="text" class="item-desc" placeholder="Description" value="Bamboo ladder" oninput="updatePreview()" />
+                                <input type="number" class="item-qty" placeholder="Qty" value="3" oninput="updatePreview()" />
+                                <input type="number" class="item-rate" placeholder="Rate" value="20" oninput="updatePreview()" />
+                                <input type="text" class="item-total" readonly style="background:#f1f5f9;font-weight:700;font-size:0.6rem;" />
+                                <button class="remove-item" onclick="removeItem(this)">✕</button>
+                            </div>
+                        </div>
+                        <button class="add-item-btn" onclick="addItem()"><i class="fas fa-plus"></i> Add Item</button>
+                    </div>
+
+                    <!-- Terms & Bank -->
+                    <div class="form-group">
+                        <label><i class="fas fa-sticky-note"></i> Terms & Conditions</label>
+                        <textarea id="terms" oninput="updatePreview()">Payment is due within 15 days</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-university"></i> Bank Details</label>
+                        <textarea id="bankDetails" oninput="updatePreview()">Public Bank Berhad Account Number: 12345678 Routing Number: 0987654321098</textarea>
+                    </div>
+
+                    <button class="btn btn-primary" onclick="updatePreview()">
+                        <i class="fas fa-sync-alt"></i> Update Preview
+                    </button>
+                </div>
+
+                <!-- RIGHT: PREVIEW -->
+                <div class="preview-section">
+                    <div id="invoicePreview" class="template-classic">
+
+                        <!-- ===== INVOICE HEADER ===== -->
+                        <div class="invoice-header">
+                            <div class="company-section">
+                                <div style="display:flex;align-items:center;gap:6px;">
+                                    <div id="previewLogo" style="display:none;">
+                                        <img id="previewLogoImg" class="invoice-logo" alt="Logo" />
+                                    </div>
+                                    <div>
+                                        <div class="company-name"><span id="previewCompany">East Asia</span> Trading</div>
+                                        <div class="company-address" id="previewCompanyAddress">Pasar Pudu Baru 10, Kuala Lumpur 53000</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="invoice-title">
+                                <div class="title">INVOICE</div>
+                                <div class="status-badge status-paid" id="statusBadge">PAID</div>
+                            </div>
+                        </div>
+
+                        <!-- ===== INVOICE DETAILS ===== -->
+                        <div class="invoice-details">
                             <div>
-                                <div class="company"><span id="previewCompany">Freelance</span> Pro</div>
-                                <div style="font-size:0.7rem; color:#94a3b8; font-weight:500;">GST: 22ABCDE1234F1Z5</div>
+                                <div class="label">Bill To</div>
+                                <div class="value" id="previewClient">Mayang Bujang</div>
+                                <div class="value-small" id="previewClientAddress">2 Pasar Moden 55, Kuala Lumpur 55100</div>
+                                <div style="margin-top:4px;">
+                                    <div class="label">Ship To</div>
+                                    <div class="value-small" id="previewShipAddress">1721 Jln Sp 232/7, Kuala Lumpur 55103</div>
+                                </div>
+                            </div>
+                            <div style="text-align:right;">
+                                <div class="label">Invoice #</div>
+                                <div class="value" id="previewInvoiceNumberRight">MY-001</div>
+                                <div class="label" style="margin-top:3px;">Invoice Date</div>
+                                <div class="value" id="previewDate">29/01/2019</div>
+                                <div class="label" style="margin-top:3px;">P.O.#</div>
+                                <div class="value" id="previewPONumber">2330/2019</div>
+                                <div class="label" style="margin-top:3px;">Due Date</div>
+                                <div class="value" id="previewDue">24/05/2019</div>
                             </div>
                         </div>
-                        <div class="invoice-number">
-                            <div class="num" id="previewInvoiceNumber">INV-2026-001</div>
-                            <div class="status-badge status-paid" id="statusBadge">PAID</div>
+
+                        <!-- ===== STATUS SELECTOR ===== -->
+                        <div class="status-selector">
+                            <button class="active-paid" onclick="setStatus('paid')">Paid</button>
+                            <button onclick="setStatus('unpaid')">Unpaid</button>
+                            <button onclick="setStatus('overdue')">Overdue</button>
+                        </div>
+
+                        <!-- ===== INVOICE TABLE ===== -->
+                        <table class="invoice-table">
+                            <thead>
+                                <tr>
+                                    <th style="width:12%;text-align:center;">QTY</th>
+                                    <th style="width:48%;">DESCRIPTION</th>
+                                    <th style="width:20%;text-align:right;">UNIT PRICE</th>
+                                    <th style="width:20%;text-align:right;">AMOUNT</th>
+                                </tr>
+                            </thead>
+                            <tbody id="previewItemsBody">
+                                <!-- Rendered by JS -->
+                            </tbody>
+                            <tfoot>
+                                <tr class="subtotal-row">
+                                    <td colspan="3" style="text-align:right;">Subtotal</td>
+                                    <td style="text-align:right;" id="previewSubtotal">RM750.00</td>
+                                </tr>
+                                <tr class="tax-row">
+                                    <td colspan="3" style="text-align:right;" id="previewTaxLabel">SST 6.0%</td>
+                                    <td style="text-align:right;" id="previewTax">RM45.00</td>
+                                </tr>
+                                <tr class="total-row">
+                                    <td colspan="3" style="text-align:right;font-size:0.8rem;"><i class="fas fa-calculator"></i> TOTAL</td>
+                                    <td style="text-align:right;" id="previewTotal">RM795.00</td>
+                                </tr>
+                            </tfoot>
+                        </table>
+
+                        <!-- ===== QR CODE ===== -->
+                        <div class="qr-section">
+                            <div id="qrcode"></div>
+                            <div>
+                                <div class="qr-label"><i class="fas fa-qrcode" style="color:var(--primary);"></i> Scan to Pay</div>
+                                <div style="font-size:0.55rem;color:var(--text-light);">UPI: freelancer@pay</div>
+                            </div>
+                        </div>
+
+                        <!-- ===== INVOICE FOOTER ===== -->
+                        <div class="invoice-footer">
+                            <div class="terms" id="previewTerms">
+                                <strong>Terms & Conditions</strong><br>Payment is due within 15 days
+                            </div>
+                            <div class="bank" id="previewBank">
+                                <strong>Public Bank Berhad</strong><br>Account Number: 12345678<br>Routing Number: 0987654321098
+                            </div>
                         </div>
                     </div>
 
-                    <div class="invoice-details">
-                        <div>
-                            <div class="label">Bill To</div>
-                            <div class="value" id="previewClient">Tech Solutions Inc.</div>
-                        </div>
-                        <div style="text-align:right;">
-                            <div class="label">Invoice Date</div>
-                            <div class="value" id="previewDate">--</div>
-                            <div class="label" style="margin-top:4px;">Due Date</div>
-                            <div class="value" id="previewDue">--</div>
-                        </div>
+                    <!-- ===== ACTION BUTTONS ===== -->
+                    <div class="action-buttons">
+                        <button class="btn-pdf" onclick="downloadPDF()"><i class="fas fa-file-pdf"></i> PDF</button>
+                        <button class="btn-save" onclick="saveInvoice()"><i class="fas fa-save"></i> Save</button>
+                        <button class="btn-copy" onclick="copyInvoice()"><i class="fas fa-copy"></i> Copy</button>
+                        <button class="btn-email" onclick="emailInvoice()"><i class="fas fa-envelope"></i> Email</button>
+                        <button class="btn-whatsapp" onclick="shareWhatsApp()"><i class="fab fa-whatsapp"></i> Share</button>
+                        <button class="btn-reset" onclick="resetForm()"><i class="fas fa-undo-alt"></i> Reset</button>
                     </div>
-
-                    <div class="status-selector">
-                        <button class="active-paid" onclick="setStatus('paid')">✅ Paid</button>
-                        <button onclick="setStatus('unpaid')">⏳ Unpaid</button>
-                        <button onclick="setStatus('overdue')">⚠️ Overdue</button>
-                    </div>
-
-                    <table class="invoice-table">
-                        <thead>
-                            <tr>
-                                <th>Description</th>
-                                <th style="text-align:center;">Qty</th>
-                                <th style="text-align:right;">Rate</th>
-                                <th style="text-align:right;">Amount</th>
-                            </tr>
-                        </thead>
-                        <tbody id="previewItemsBody">
-                            <tr>
-                                <td id="previewDescription">Web Development</td>
-                                <td style="text-align:center;" id="previewQty">20</td>
-                                <td style="text-align:right;" id="previewRate">$1,500</td>
-                                <td style="text-align:right;" id="previewAmount">$30,000</td>
-                            </tr>
-                        </tbody>
-                        <tfoot>
-                            <tr class="total-row">
-                                <td colspan="3" style="text-align:right; font-size:0.95rem;">
-                                    <i class="fas fa-calculator"></i> Total Amount
-                                </td>
-                                <td style="text-align:right;" id="previewTotal">$30,000</td>
-                            </tr>
-                        </tfoot>
-                    </table>
-
-                    <!-- QR Code -->
-                    <div class="qr-section">
-                        <div id="qrcode"></div>
-                        <div>
-                            <div class="qr-label"><i class="fas fa-qrcode" style="color:#f7971e;"></i> Scan to Pay</div>
-                            <div style="font-size:0.7rem; color:var(--text-light);">UPI: freelancer@pay</div>
-                        </div>
-                    </div>
-
-                    <div style="margin-top:12px; font-size:0.8rem; color:var(--text-light); background:var(--bg); padding:8px 14px; border-radius:8px; border-left:4px solid #f7971e;">
-                        <i class="fas fa-sticky-note" style="color:#f7971e;"></i>
-                        <strong>Notes:</strong> <span id="previewNotes">Thank you for your business!</span>
-                    </div>
-
-                    <div class="invoice-footer" style="margin-top:14px; padding-top:14px; border-top:2px solid var(--border); display:flex; justify-content:space-between; flex-wrap:wrap; gap:6px;">
-                        <div>
-                            <div style="font-size:0.65rem; color:#94a3b8; text-transform:uppercase; font-weight:700; letter-spacing:0.5px;">Payment Terms</div>
-                            <div style="font-weight:700; color:var(--text); font-size:0.9rem;">15 Days</div>
-                        </div>
-                        <div style="text-align:right;">
-                            <div style="font-size:0.65rem; color:#94a3b8; text-transform:uppercase; font-weight:700; letter-spacing:0.5px;">Generated on</div>
-                            <div style="font-weight:700; color:var(--text); font-size:0.9rem;" id="previewGenerated">--</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="action-buttons">
-                    <button class="btn-pdf" onclick="downloadPDF()"><i class="fas fa-file-pdf"></i> PDF</button>
-                    <button class="btn-save" onclick="saveInvoice()"><i class="fas fa-save"></i> Save</button>
-                    <button class="btn-copy" onclick="copyInvoice()"><i class="fas fa-copy"></i> Copy</button>
-                    <button class="btn-email" onclick="emailInvoice()"><i class="fas fa-envelope"></i> Email</button>
-                    <button class="btn-whatsapp" onclick="shareWhatsApp()"><i class="fab fa-whatsapp"></i> Share</button>
-                    <button class="btn-reset" onclick="resetForm()"><i class="fas fa-undo-alt"></i> Reset</button>
                 </div>
             </div>
         </div>
+
+        <!-- ===== CONTENT ===== -->
+        <div class="content-section">
+            <h2>🎨 10+ Professional Templates</h2>
+            <div class="features-grid">
+                <div class="feature-card"><i class="fas fa-file-alt"></i><h4>Classic Blue</h4><p>Trustworthy</p></div>
+                <div class="feature-card"><i class="fas fa-leaf"></i><h4>Modern Green</h4><p>Fresh</p></div>
+                <div class="feature-card"><i class="fas fa-crown"></i><h4>Elegant Gold</h4><p>Luxury</p></div>
+                <div class="feature-card"><i class="fas fa-square"></i><h4>Minimal Gray</h4><p>Simple</p></div>
+                <div class="feature-card"><i class="fas fa-palette"></i><h4>Vibrant Purple</h4><p>Creative</p></div>
+                <div class="feature-card"><i class="fas fa-moon"></i><h4>Dark Premium</h4><p>Sleek</p></div>
+                <div class="feature-card"><i class="fas fa-fire"></i><h4>Red Dynamic</h4><p>Bold</p></div>
+                <div class="feature-card"><i class="fas fa-water"></i><h4>Teal Fresh</h4><p>Calm</p></div>
+                <div class="feature-card"><i class="fas fa-flower"></i><h4>Pink Soft</h4><p>Warm</p></div>
+                <div class="feature-card"><i class="fas fa-sun"></i><h4>Orange Energy</h4><p>Vibrant</p></div>
+            </div>
+            <h3>❓ FAQ</h3>
+            <p><strong>How to change template?</strong> Click any template card — preview updates instantly.</p>
+            <p><strong>Are all templates free?</strong> Yes! All 10+ templates are completely free.</p>
+            <p><strong>Can I customize templates?</strong> Yes! Colors, fonts, layout auto-adapt when you select a template.</p>
+        </div>
+
+        <!-- ===== FOOTER ===== -->
+        <footer>
+            <p>&copy; 2026 Invoice Generator. Made with <i class="fas fa-heart" style="color:#ef4444;"></i> by socialsarv</p>
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="blog.html">Blog</a>
+                <a href="privacy-policy.html">Privacy</a>
+                <a href="terms.html">Terms</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </footer>
     </div>
 
-    <!-- Content -->
-    <div class="content-section">
-        <h2>🌟 Premium Features</h2>
-        <div class="features-grid">
-            <div class="feature-card"><i class="fas fa-moon"></i><h4>Dark Mode</h4><p>Eye-friendly night mode</p></div>
-            <div class="feature-card"><i class="fas fa-save"></i><h4>Save Invoices</h4><p>Local storage save</p></div>
-            <div class="feature-card"><i class="fas fa-copy"></i><h4>Copy Invoice</h4><p>One-click copy</p></div>
-            <div class="feature-card"><i class="fas fa-dollar-sign"></i><h4>Multi Currency</h4><p>$ € £ ₹ support</p></div>
-            <div class="feature-card"><i class="fas fa-list"></i><h4>Multiple Items</h4><p>Add unlimited items</p></div>
-            <div class="feature-card"><i class="fab fa-whatsapp"></i><h4>WhatsApp Share</h4><p>Direct share</p></div>
-            <div class="feature-card"><i class="fas fa-envelope"></i><h4>Email Invoice</h4><p>Send via email</p></div>
-            <div class="feature-card"><i class="fas fa-qrcode"></i><h4>QR Code</h4><p>Payment QR</p></div>
-            <div class="feature-card"><i class="fas fa-image"></i><h4>Logo Upload</h4><p>Brand your invoices</p></div>
-        </div>
-        <h3>❓ FAQ</h3>
-        <p><strong>Is this really free?</strong><br>Yes! 100% free with no hidden charges.</p>
-        <p><strong>How to add logo?</strong><br>Click "Company Logo" box and upload image.</p>
-        <p><strong>How to email invoice?</strong><br>Click "Email" button - compose email with invoice details.</p>
-        <p><strong>What is QR code for?</strong><br>Payment QR code for UPI/scan to pay.</p>
-    </div>
+    <!-- ===== TOAST ===== -->
+    <div class="toast" id="toast"><i class="fas fa-check-circle"></i> <span id="toastMsg">Done!</span></div>
 
-    <footer>
-        <p>&copy; 2026 Invoice Generator. Made with <i class="fas fa-heart" style="color:#ef4444;"></i> by socialsarv</p>
-        <div class="footer-links">
-            <a href="index.html">Home</a>
-            <a href="about.html">About</a>
-            <a href="blog.html">Blog</a>
-            <a href="privacy-policy.html">Privacy</a>
-            <a href="terms.html">Terms</a>
-            <a href="contact.html">Contact</a>
-        </div>
-    </footer>
-</div>
+    <!-- ========================================
+    JAVASCRIPT
+    ======================================== -->
+    <script>
+        // ========================================
+        // VARIABLES
+        // ========================================
+        let currentStatus = 'paid';
+        let itemCount = 3;
+        let logoDataURL = null;
+        let currentTemplate = 'classic';
 
-<!-- Toast -->
-<div class="toast" id="toast"><i class="fas fa-check-circle"></i> <span id="toastMsg">Done!</span></div>
-
-<script>
-    let currentStatus = 'paid';
-    let itemCount = 1;
-    let logoDataURL = null;
-
-    // === THEME ===
-    function toggleTheme() {
-        const html = document.documentElement;
-        const current = html.getAttribute('data-theme');
-        if (current === 'dark') {
-            html.removeAttribute('data-theme');
-            document.getElementById('themeLabel').textContent = 'Dark';
-            localStorage.setItem('theme', 'light');
-        } else {
-            html.setAttribute('data-theme', 'dark');
-            document.getElementById('themeLabel').textContent = 'Light';
-            localStorage.setItem('theme', 'dark');
-        }
-    }
-
-    // === LOGO UPLOAD ===
-    function handleLogoUpload(event) {
-        const file = event.target.files[0];
-        if (!file) return;
-        const reader = new FileReader();
-        reader.onload = function(e) {
-            logoDataURL = e.target.result;
-            const preview = document.getElementById('logoPreview');
-            preview.innerHTML = `<img src="${logoDataURL}" style="width:50px;height:50px;border-radius:10px;object-fit:cover;">`;
+        // ========================================
+        // TEMPLATE
+        // ========================================
+        function applyTemplate(template) {
+            currentTemplate = template;
+            const preview = document.getElementById('invoicePreview');
             preview.className = '';
-            document.getElementById('previewLogo').style.display = 'block';
-            document.getElementById('previewLogoImg').src = logoDataURL;
-            showToast('✅ Logo uploaded!');
+            preview.classList.add('template-' + template);
+
+            document.querySelectorAll('.template-card').forEach(card => {
+                card.classList.remove('active');
+                const btn = card.querySelector('.apply-btn');
+                if (card.dataset.template === template) {
+                    card.classList.add('active');
+                    btn.textContent = '✓ Active';
+                } else {
+                    btn.textContent = 'Apply';
+                }
+            });
+
+            showToast('🎨 Template: ' + template.replace('-', ' ').toUpperCase());
             updatePreview();
-        };
-        reader.readAsDataURL(file);
-    }
-
-    // === DATE ===
-    window.onload = function() {
-        const today = new Date().toISOString().split('T')[0];
-        document.getElementById('invoiceDate').value = today;
-        const due = new Date(); due.setDate(due.getDate() + 15);
-        document.getElementById('dueDate').value = due.toISOString().split('T')[0];
-        
-        // Load theme
-        if (localStorage.getItem('theme') === 'dark') {
-            document.documentElement.setAttribute('data-theme', 'dark');
-            document.getElementById('themeLabel').textContent = 'Light';
         }
-        
-        updatePreview();
-        generateQR();
-    };
 
-    // === QR CODE ===
-    function generateQR() {
-        const container = document.getElementById('qrcode');
-        container.innerHTML = '';
-        const company = document.getElementById('companyName').value || 'Invoice';
-        const total = document.getElementById('previewTotal').textContent || '$0';
-        const qrData = `Pay to: ${company}\nAmount: ${total}\nUPI: freelancer@pay`;
-        new QRCode(container, {
-            text: qrData,
-            width: 80,
-            height: 80,
-            colorDark: '#1a1a2e',
-            colorLight: '#ffffff',
-            correctLevel: QRCode.CorrectLevel.H
-        });
-    }
+        // ========================================
+        // LOGO
+        // ========================================
+        function handleLogoUpload(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                logoDataURL = e.target.result;
+                const preview = document.getElementById('logoPreview');
+                preview.innerHTML = `<img src="${logoDataURL}" style="width:30px;height:30px;border-radius:4px;object-fit:cover;">`;
+                preview.className = '';
+                document.getElementById('previewLogo').style.display = 'block';
+                document.getElementById('previewLogoImg').src = logoDataURL;
+                showToast('✅ Logo uploaded!');
+                updatePreview();
+            };
+            reader.readAsDataURL(file);
+        }
 
-    // === STATUS ===
-    function setStatus(status) {
-        currentStatus = status;
-        const badge = document.getElementById('statusBadge');
-        const btns = document.querySelectorAll('.status-selector button');
-        btns.forEach(b => b.className = '');
-        const map = {
-            paid: ['status-paid', 'PAID', 'active-paid', 0],
-            unpaid: ['status-unpaid', 'UNPAID', 'active-unpaid', 1],
-            overdue: ['status-overdue', 'OVERDUE', 'active-overdue', 2]
-        };
-        const m = map[status];
-        badge.className = 'status-badge ' + m[0];
-        badge.textContent = m[1];
-        btns[m[3]].className = m[2];
-    }
+        // ========================================
+        // DATE INIT
+        // ========================================
+        window.onload = function() {
+            // Set default dates
+            const today = new Date();
+            const dateStr = today.toISOString().split('T')[0];
+            document.getElementById('invoiceDate').value = dateStr;
 
-    // === CURRENCY ===
-    function getCurrency() {
-        return document.getElementById('currency').value || '$';
-    }
+            const due = new Date();
+            due.setDate(due.getDate() + 15);
+            document.getElementById('dueDate').value = due.toISOString().split('T')[0];
 
-    function formatCurrency(num) {
-        return getCurrency() + Number(num).toLocaleString('en-US');
-    }
-
-    // === ITEMS ===
-    function addItem() {
-        const container = document.getElementById('itemsContainer');
-        const div = document.createElement('div');
-        div.className = 'item-row';
-        div.innerHTML = `
-            <input type="text" class="item-desc" placeholder="Description" value="Service ${++itemCount}" oninput="updatePreview()">
-            <input type="number" class="item-qty" placeholder="Qty" value="1" oninput="updatePreview()">
-            <input type="number" class="item-rate" placeholder="Rate" value="500" oninput="updatePreview()">
-            <input type="text" class="item-total" readonly style="background:#f1f5f9;font-weight:700;font-size:0.8rem;">
-            <button class="remove-item" onclick="removeItem(this)">✕</button>
-        `;
-        container.appendChild(div);
-        updatePreview();
-        showToast('✅ Item added!');
-    }
-
-    function removeItem(btn) {
-        const row = btn.parentElement;
-        if (document.querySelectorAll('.item-row').length > 1) {
-            row.remove();
             updatePreview();
-            showToast('🗑️ Item removed');
-        } else {
-            showToast('⚠️ Need at least 1 item');
-        }
-    }
-
-    function getItemsData() {
-        const rows = document.querySelectorAll('.item-row');
-        const items = [];
-        rows.forEach(row => {
-            const desc = row.querySelector('.item-desc').value || 'Service';
-            const qty = parseFloat(row.querySelector('.item-qty').value) || 0;
-            const rate = parseFloat(row.querySelector('.item-rate').value) || 0;
-            items.push({ desc, qty, rate, total: qty * rate });
-            const totalInput = row.querySelector('.item-total');
-            totalInput.value = formatCurrency(qty * rate);
-        });
-        return items;
-    }
-
-    // === UPDATE PREVIEW ===
-    function updatePreview() {
-        const company = document.getElementById('companyName').value || 'Your Company';
-        const client = document.getElementById('clientName').value || 'Client';
-        const invNum = document.getElementById('invoiceNumber').value || 'INV-001';
-        const invDate = document.getElementById('invoiceDate').value;
-        const dueDate = document.getElementById('dueDate').value;
-        const notes = document.getElementById('notes').value || '';
-
-        document.getElementById('previewCompany').textContent = company;
-        document.getElementById('previewClient').textContent = client;
-        document.getElementById('previewInvoiceNumber').textContent = invNum;
-        document.getElementById('previewDate').textContent = invDate ? new Date(invDate).toLocaleDateString('en-US') : '--';
-        document.getElementById('previewDue').textContent = dueDate ? new Date(dueDate).toLocaleDateString('en-US') : '--';
-        document.getElementById('previewNotes').textContent = notes || 'No notes';
-
-        // Logo
-        if (logoDataURL) {
-            document.getElementById('previewLogo').style.display = 'block';
-            document.getElementById('previewLogoImg').src = logoDataURL;
-        }
-
-        // Items
-        const items = getItemsData();
-        const tbody = document.getElementById('previewItemsBody');
-        tbody.innerHTML = '';
-        let grandTotal = 0;
-        items.forEach((item) => {
-            const tr = document.createElement('tr');
-            tr.innerHTML = `
-                <td>${item.desc}</td>
-                <td style="text-align:center;">${item.qty}</td>
-                <td style="text-align:right;">${formatCurrency(item.rate)}</td>
-                <td style="text-align:right;">${formatCurrency(item.total)}</td>
-            `;
-            tbody.appendChild(tr);
-            grandTotal += item.total;
-        });
-
-        document.getElementById('previewTotal').textContent = formatCurrency(grandTotal);
-
-        const now = new Date().toLocaleDateString('en-US', { day: 'numeric', month: 'short', year: 'numeric' });
-        document.getElementById('previewGenerated').textContent = now;
-        
-        generateQR();
-    }
-
-    // === TOAST ===
-    function showToast(msg) {
-        const toast = document.getElementById('toast');
-        document.getElementById('toastMsg').textContent = msg;
-        toast.classList.add('show');
-        setTimeout(() => toast.classList.remove('show'), 3000);
-    }
-
-    // === SAVE ===
-    function saveInvoice() {
-        const data = {
-            company: document.getElementById('companyName').value,
-            client: document.getElementById('clientName').value,
-            number: document.getElementById('invoiceNumber').value,
-            date: document.getElementById('invoiceDate').value,
-            due: document.getElementById('dueDate').value,
-            notes: document.getElementById('notes').value,
-            currency: getCurrency(),
-            items: getItemsData(),
-            status: currentStatus,
-            logo: logoDataURL,
-            savedAt: new Date().toISOString()
+            generateQR();
         };
-        const key = 'invoice_' + Date.now();
-        localStorage.setItem(key, JSON.stringify(data));
-        const count = Object.keys(localStorage).filter(k => k.startsWith('invoice_')).length;
-        showToast('✅ Invoice saved! (' + count + ' saved)');
-    }
 
-    // === COPY ===
-    function copyInvoice() {
-        const text = document.getElementById('invoicePreview').innerText;
-        navigator.clipboard.writeText(text).then(() => {
-            showToast('📋 Invoice copied!');
-        }).catch(() => {
-            const area = document.createElement('textarea');
-            area.value = text;
-            document.body.appendChild(area);
-            area.select();
-            document.execCommand('copy');
-            area.remove();
-            showToast('📋 Invoice copied!');
-        });
-    }
+        // ========================================
+        // QR CODE
+        // ========================================
+        function generateQR() {
+            const container = document.getElementById('qrcode');
+            container.innerHTML = '';
+            const company = document.getElementById('companyName').value || 'Invoice';
+            const total = document.getElementById('previewTotal').textContent || '$0';
+            const qrData = `Pay to: ${company}\nAmount: ${total}\nUPI: freelancer@pay`;
+            try {
+                new QRCode(container, {
+                    text: qrData,
+                    width: 60,
+                    height: 60,
+                    colorDark: '#1a1a2e',
+                    colorLight: '#ffffff',
+                    correctLevel: QRCode.CorrectLevel.H
+                });
+            } catch (e) {
+                container.innerHTML = '<span style="font-size:0.6rem;color:#94a3b8;">QR</span>';
+            }
+        }
 
-    // === EMAIL ===
-    function emailInvoice() {
-        const company = document.getElementById('companyName').value || 'Invoice';
-        const client = document.getElementById('clientName').value || 'Client';
-        const total = document.getElementById('previewTotal').textContent;
-        const subject = `Invoice from ${company}`;
-        const body = `📄 Invoice\n\nFrom: ${company}\nClient: ${client}\nTotal: ${total}\n\nThank you for your business!`;
-        window.location.href = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-        showToast('📧 Email client opened!');
-    }
+        // ========================================
+        // STATUS
+        // ========================================
+        function setStatus(status) {
+            currentStatus = status;
+            const badge = document.getElementById('statusBadge');
+            const btns = document.querySelectorAll('.status-selector button');
+            btns.forEach(b => b.className = '');
+            const map = {
+                paid: ['status-paid', 'PAID', 'active-paid', 0],
+                unpaid: ['status-unpaid', 'UNPAID', 'active-unpaid', 1],
+                overdue: ['status-overdue', 'OVERDUE', 'active-overdue', 2]
+            };
+            const m = map[status];
+            badge.className = 'status-badge ' + m[0];
+            badge.textContent = m[1];
+            btns[m[3]].className = m[2];
+        }
 
-    // === WHATSAPP ===
-    function shareWhatsApp() {
-        const company = document.getElementById('companyName').value || 'Invoice';
-        const client = document.getElementById('clientName').value || 'Client';
-        const total = document.getElementById('previewTotal').textContent;
-        const msg = `📄 *Invoice from ${company}*\nClient: ${client}\nTotal: ${total}\n\nCreated with Invoice Generator`;
-        window.open(`https://wa.me/?text=${encodeURIComponent(msg)}`, '_blank');
-    }
+        // ========================================
+        // CURRENCY
+        // ========================================
+        function getCurrency() {
+            return document.getElementById('currency').value || 'RM';
+        }
 
-    // === PDF ===
-    function downloadPDF() {
-        const preview = document.getElementById('invoicePreview');
-        const w = window.open('', '_blank');
-        const styles = document.querySelector('style').innerHTML;
-        w.document.write(`
-            <html><head><title>Invoice</title>
-            <style>${styles}</style>
-            <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-            <style>
-                .action-buttons, .btn, .form-section, .status-selector, .nav-bar, .header-actions { display: none !important; }
-                .preview-section { border: none !important; padding: 0 !important; }
-                .preview-section::before { display: none !important; }
-                body { background: white !important; padding: 20px !important; }
-                .tool-wrapper { box-shadow: none !important; padding: 0 !important; }
-                .header { border-radius: 0 !important; }
-                #invoicePreview { background: white !important; }
-                .status-badge { display: inline-block !important; }
-                .qr-section { display: flex !important; }
-                #qrcode { display: block !important; }
-            </style>
-            </head>
-            <body>
-                <div class="header" style="border-radius:12px 12px 0 0;padding:16px 24px;">
-                    <div class="header-left">
-                        <div class="header-logo"><i class="fas fa-file-invoice-dollar"></i></div>
-                        <div><h1 style="color:white;">Invoice</h1><p style="color:#a8b5d9;">Professional Invoice</p></div>
+        function formatCurrency(num) {
+            return getCurrency() + Number(num).toFixed(2);
+        }
+
+        // ========================================
+        // ITEMS
+        // ========================================
+        function addItem() {
+            const container = document.getElementById('itemsContainer');
+            const div = document.createElement('div');
+            div.className = 'item-row';
+            div.innerHTML = `
+                    <input type="text" class="item-desc" placeholder="Description" value="Service ${++itemCount}" oninput="updatePreview()" />
+                    <input type="number" class="item-qty" placeholder="Qty" value="1" oninput="updatePreview()" />
+                    <input type="number" class="item-rate" placeholder="Rate" value="100" oninput="updatePreview()" />
+                    <input type="text" class="item-total" readonly style="background:#f1f5f9;font-weight:700;font-size:0.6rem;" />
+                    <button class="remove-item" onclick="removeItem(this)">✕</button>
+                `;
+            container.appendChild(div);
+            updatePreview();
+            showToast('✅ Item added!');
+        }
+
+        function removeItem(btn) {
+            const row = btn.parentElement;
+            if (document.querySelectorAll('.item-row').length > 1) {
+                row.remove();
+                updatePreview();
+                showToast('🗑️ Item removed');
+            } else {
+                showToast('⚠️ Need at least 1 item');
+            }
+        }
+
+        function getItemsData() {
+            const rows = document.querySelectorAll('.item-row');
+            const items = [];
+            rows.forEach(row => {
+                const desc = row.querySelector('.item-desc').value || 'Service';
+                const qty = parseFloat(row.querySelector('.item-qty').value) || 0;
+                const rate = parseFloat(row.querySelector('.item-rate').value) || 0;
+                items.push({ desc, qty, rate, total: qty * rate });
+                const totalInput = row.querySelector('.item-total');
+                totalInput.value = formatCurrency(qty * rate);
+            });
+            return items;
+        }
+
+        // ========================================
+        // UPDATE PREVIEW
+        // ========================================
+        function updatePreview() {
+            // --- Get all values ---
+            const company = document.getElementById('companyName').value || 'Your Company';
+            const companyAddress = document.getElementById('companyAddress').value || '';
+            const client = document.getElementById('clientName').value || 'Client';
+            const clientAddress = document.getElementById('clientAddress').value || '';
+            const shipAddress = document.getElementById('shipAddress').value || '';
+            const invNum = document.getElementById('invoiceNumber').value || 'INV-001';
+            const poNumber = document.getElementById('poNumber').value || '';
+            const invDate = document.getElementById('invoiceDate').value;
+            const dueDate = document.getElementById('dueDate').value;
+            const terms = document.getElementById('terms').value || 'Payment is due within 15 days';
+            const bankDetails = document.getElementById('bankDetails').value || '';
+            const taxRate = parseFloat(document.getElementById('taxRate').value) || 0;
+
+            // --- Update Company ---
+            document.getElementById('previewCompany').textContent = company;
+            document.getElementById('previewCompanyAddress').textContent = companyAddress;
+
+            // --- Update Client ---
+            document.getElementById('previewClient').textContent = client;
+            document.getElementById('previewClientAddress').textContent = clientAddress;
+            document.getElementById('previewShipAddress').textContent = shipAddress;
+
+            // --- Update Invoice Numbers ---
+            document.getElementById('previewInvoiceNumberRight').textContent = invNum;
+            document.getElementById('previewPONumber').textContent = poNumber;
+
+            // --- Update Dates ---
+            document.getElementById('previewDate').textContent = invDate ? new Date(invDate).toLocaleDateString(
+                'en-GB') : '--';
+            document.getElementById('previewDue').textContent = dueDate ? new Date(dueDate).toLocaleDateString(
+                'en-GB') : '--';
+
+            // --- Update Terms & Bank ---
+            document.getElementById('previewTerms').innerHTML =
+                `<strong>Terms & Conditions</strong><br>${terms.replace(/\n/g, '<br>')}`;
+            document.getElementById('previewBank').innerHTML = bankDetails.replace(/\n/g, '<br>');
+
+            // --- Logo ---
+            if (logoDataURL) {
+                document.getElementById('previewLogo').style.display = 'block';
+                document.getElementById('previewLogoImg').src = logoDataURL;
+            }
+
+            // --- Items & Totals ---
+            const items = getItemsData();
+            const tbody = document.getElementById('previewItemsBody');
+            tbody.innerHTML = '';
+            let grandTotal = 0;
+
+            items.forEach((item) => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                        <td style="text-align:center;">${item.qty}</td>
+                        <td>${item.desc}</td>
+                        <td style="text-align:right;">${formatCurrency(item.rate)}</td>
+                        <td style="text-align:right;">${formatCurrency(item.total)}</td>
+                    `;
+                tbody.appendChild(tr);
+                grandTotal += item.total;
+            });
+
+            // --- Calculate Tax & Total ---
+            const tax = grandTotal * (taxRate / 100);
+            const totalWithTax = grandTotal + tax;
+
+            document.getElementById('previewSubtotal').textContent = formatCurrency(grandTotal);
+            document.getElementById('previewTaxLabel').textContent = `Tax ${taxRate}%`;
+            document.getElementById('previewTax').textContent = formatCurrency(tax);
+            document.getElementById('previewTotal').textContent = formatCurrency(totalWithTax);
+
+            // --- QR Code ---
+            generateQR();
+        }
+
+        // ========================================
+        // TOAST
+        // ========================================
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastMsg').textContent = msg;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 3000);
+        }
+
+        // ========================================
+        // SAVE
+        // ========================================
+        function saveInvoice() {
+            const data = {
+                company: document.getElementById('companyName').value,
+                companyAddress: document.getElementById('companyAddress').value,
+                client: document.getElementById('clientName').value,
+                clientAddress: document.getElementById('clientAddress').value,
+                shipAddress: document.getElementById('shipAddress').value,
+                number: document.getElementById('invoiceNumber').value,
+                poNumber: document.getElementById('poNumber').value,
+                date: document.getElementById('invoiceDate').value,
+                due: document.getElementById('dueDate').value,
+                terms: document.getElementById('terms').value,
+                bankDetails: document.getElementById('bankDetails').value,
+                currency: getCurrency(),
+                taxRate: document.getElementById('taxRate').value,
+                items: getItemsData(),
+                status: currentStatus,
+                template: currentTemplate,
+                logo: logoDataURL,
+                savedAt: new Date().toISOString()
+            };
+            const key = 'invoice_' + Date.now();
+            localStorage.setItem(key, JSON.stringify(data));
+            const count = Object.keys(localStorage).filter(k => k.startsWith('invoice_')).length;
+            showToast('✅ Saved! (' + count + ' saved)');
+        }
+
+        // ========================================
+        // COPY
+        // ========================================
+        function copyInvoice() {
+            const text = document.getElementById('invoicePreview').innerText;
+            navigator.clipboard.writeText(text).then(() => showToast('📋 Copied!'))
+                .catch(() => {
+                    const area = document.createElement('textarea');
+                    area.value = text;
+                    document.body.appendChild(area);
+                    area.select();
+                    document.execCommand('copy');
+                    area.remove();
+                    showToast('📋 Copied!');
+                });
+        }
+
+        // ========================================
+        // EMAIL
+        // ========================================
+        function emailInvoice() {
+            const company = document.getElementById('companyName').value || 'Invoice';
+            const client = document.getElementById('clientName').value || 'Client';
+            const total = document.getElementById('previewTotal').textContent;
+            const subject = `Invoice from ${company}`;
+            const body =
+                `📄 Invoice\n\nFrom: ${company}\nClient: ${client}\nTotal: ${total}\n\nThank you for your business!`;
+            window.location.href =
+                `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            showToast('📧 Email opened!');
+        }
+
+        // ========================================
+        // WHATSAPP
+        // ========================================
+        function shareWhatsApp() {
+            const company = document.getElementById('companyName').value || 'Invoice';
+            const client = document.getElementById('clientName').value || 'Client';
+            const total = document.getElementById('previewTotal').textContent;
+            const msg =
+                `📄 *Invoice from ${company}*\nClient: ${client}\nTotal: ${total}\n\nCreated with Invoice Generator`;
+            window.open(`https://wa.me/?text=${encodeURIComponent(msg)}`, '_blank');
+        }
+
+        // ========================================
+        // PDF
+        // ========================================
+        function downloadPDF() {
+            const preview = document.getElementById('invoicePreview');
+            const w = window.open('', '_blank');
+            const styles = document.querySelector('style').innerHTML;
+            w.document.write(`
+                    <html><head><title>Invoice</title>
+                    <style>${styles}</style>
+                    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+                    <style>
+                        .action-buttons, .btn, .form-section, .status-selector, .nav-bar, .template-gallery {
+                            display: none !important;
+                        }
+                        .preview-section { border: none !important; padding: 0 !important; }
+                        .preview-section::before { display: none !important; }
+                        body { background: white !important; padding: 20px !important; }
+                        .tool-wrapper { box-shadow: none !important; padding: 0 !important; }
+                        .header { border-radius: 0 !important; }
+                        #invoicePreview { background: white !important; }
+                        .status-badge { display: inline-block !important; }
+                        .qr-section { display: flex !important; }
+                        #qrcode { display: block !important; }
+                    </style>
+                    </head>
+                    <body>
+                        <div class="header" style="border-radius:12px 12px 0 0;padding:14px 20px;">
+                            <div class="header-left">
+                                <div class="header-logo"><i class="fas fa-file-invoice-dollar"></i></div>
+                                <div><h1 style="color:white;">Invoice</h1><p style="color:#a8b5d9;">Professional Invoice</p></div>
+                            </div>
+                        </div>
+                        <div style="margin-top:12px;">${preview.outerHTML}</div>
+                        <div style="text-align:center;color:#94a3b8;font-size:0.7rem;border-top:1px solid #e8edf5;padding-top:12px;margin-top:14px;">
+                            Generated by Invoice Generator
+                        </div>
+                        <script>window.onload=function(){ window.print(); }<\/script>
+                    </body></html>
+                `);
+            w.document.close();
+        }
+
+        // ========================================
+        // RESET
+        // ========================================
+        function resetForm() {
+            document.getElementById('companyName').value = 'East Asia Trading';
+            document.getElementById('companyAddress').value = 'Pasar Pudu Baru 10, Kuala Lumpur 53000';
+            document.getElementById('clientName').value = 'Mayang Bujang';
+            document.getElementById('clientAddress').value = '2 Pasar Moden 55, Kuala Lumpur 55100';
+            document.getElementById('shipAddress').value = '1721 Jln Sp 232/7, Kuala Lumpur 55103';
+            document.getElementById('invoiceNumber').value = 'MY-001';
+            document.getElementById('poNumber').value = '2330/2019';
+            document.getElementById('taxRate').value = 6;
+            document.getElementById('terms').value = 'Payment is due within 15 days';
+            document.getElementById('bankDetails').value =
+                'Public Bank Berhad Account Number: 12345678 Routing Number: 0987654321098';
+            document.getElementById('currency').value = 'RM';
+
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('invoiceDate').value = today;
+            const due = new Date();
+            due.setDate(due.getDate() + 15);
+            document.getElementById('dueDate').value = due.toISOString().split('T')[0];
+
+            // Reset Logo
+            logoDataURL = null;
+            document.getElementById('logoPreview').innerHTML = '<i class="fas fa-plus"></i>';
+            document.getElementById('logoPreview').className = 'placeholder';
+            document.getElementById('previewLogo').style.display = 'none';
+            document.getElementById('logoInput').value = '';
+
+            // Reset Items
+            document.getElementById('itemsContainer').innerHTML = `
+                    <div class="item-row">
+                        <input type="text" class="item-desc" placeholder="Description" value="Wooden elephant figurine" oninput="updatePreview()">
+                        <input type="number" class="item-qty" placeholder="Qty" value="1" oninput="updatePreview()">
+                        <input type="number" class="item-rate" placeholder="Rate" value="600" oninput="updatePreview()">
+                        <input type="text" class="item-total" readonly style="background:#f1f5f9;font-weight:700;font-size:0.6rem;">
+                        <button class="remove-item" onclick="removeItem(this)">✕</button>
                     </div>
-                </div>
-                <div style="margin-top:14px;">${preview.outerHTML}</div>
-                <div style="text-align:center;color:#94a3b8;font-size:0.75rem;border-top:1px solid #e8edf5;padding-top:14px;margin-top:16px;">
-                    Generated by Invoice Generator
-                </div>
-                <script>window.onload=function(){window.print();}<\/script>
-            </body></html>
-        `);
-        w.document.close();
-    }
+                    <div class="item-row">
+                        <input type="text" class="item-desc" placeholder="Description" value="Large cloth rice bag" oninput="updatePreview()">
+                        <input type="number" class="item-qty" placeholder="Qty" value="2" oninput="updatePreview()">
+                        <input type="number" class="item-rate" placeholder="Rate" value="45" oninput="updatePreview()">
+                        <input type="text" class="item-total" readonly style="background:#f1f5f9;font-weight:700;font-size:0.6rem;">
+                        <button class="remove-item" onclick="removeItem(this)">✕</button>
+                    </div>
+                    <div class="item-row">
+                        <input type="text" class="item-desc" placeholder="Description" value="Bamboo ladder" oninput="updatePreview()">
+                        <input type="number" class="item-qty" placeholder="Qty" value="3" oninput="updatePreview()">
+                        <input type="number" class="item-rate" placeholder="Rate" value="20" oninput="updatePreview()">
+                        <input type="text" class="item-total" readonly style="background:#f1f5f9;font-weight:700;font-size:0.6rem;">
+                        <button class="remove-item" onclick="removeItem(this)">✕</button>
+                    </div>
+                `;
+            itemCount = 3;
+            setStatus('paid');
+            applyTemplate('classic');
+            updatePreview();
+            showToast('🔄 Reset done!');
+        }
 
-    // === RESET ===
-    function resetForm() {
-        document.getElementById('companyName').value = 'Freelance Pro';
-        document.getElementById('clientName').value = 'Tech Solutions Inc.';
-        document.getElementById('invoiceNumber').value = 'INV-2026-001';
-        document.getElementById('notes').value = 'Thank you for your business! Payment due within 15 days.';
-        document.getElementById('currency').value = '$';
-        const today = new Date().toISOString().split('T')[0];
-        document.getElementById('invoiceDate').value = today;
-        const due = new Date(); due.setDate(due.getDate() + 15);
-        document.getElementById('dueDate').value = due.toISOString().split('T')[0];
-        
-        // Reset logo
-        logoDataURL = null;
-        document.getElementById('logoPreview').innerHTML = '<i class="fas fa-plus"></i>';
-        document.getElementById('logoPreview').className = 'placeholder';
-        document.getElementById('previewLogo').style.display = 'none';
-        document.getElementById('logoInput').value = '';
-        
-        // Reset items
-        document.getElementById('itemsContainer').innerHTML = `
-            <div class="item-row">
-                <input type="text" class="item-desc" placeholder="Description" value="Web Development" oninput="updatePreview()">
-                <input type="number" class="item-qty" placeholder="Qty" value="20" oninput="updatePreview()">
-                <input type="number" class="item-rate" placeholder="Rate" value="1500" oninput="updatePreview()">
-                <input type="text" class="item-total" readonly style="background:#f1f5f9;font-weight:700;font-size:0.8rem;">
-                <button class="remove-item" onclick="removeItem(this)">✕</button>
-            </div>
-        `;
-        itemCount = 1;
-        setStatus('paid');
-        updatePreview();
-        showToast('🔄 Reset done!');
-    }
-
-    // Auto update
-    document.addEventListener('input', updatePreview);
-</script>
+        // Auto update on any input change
+        document.addEventListener('input', updatePreview);
+    </script>
 
 </body>
 </html>
