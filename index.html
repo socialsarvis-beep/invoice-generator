@@ -3,67 +3,69 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Invoice Generator - Professional Templates</title>
-    <meta name="description" content="Create professional invoices with beautiful templates. Free, fast, and easy to use." />
+    <title>Invoice Generator - Professional Suite</title>
+    <meta name="description" content="Create professional invoices with beautiful SaaS templates. Fast, free, and secure." />
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Great+Vibes&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Mono:ital,wght@0,400;0,700&family=Great+Vibes&display=swap" rel="stylesheet" />
 
     <style>
         /* ========================================
-           GLOBAL RESET & VARIABLES
+           GLOBAL SaaS DESIGN SYSTEM
         ======================================== */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
+            font-family: 'Plus Jakarta Sans', sans-serif;
         }
 
         :root {
-            --bg: #f0f4f8;
+            --bg: #f8fafc;
             --card: #ffffff;
-            --text: #1a1a2e;
-            --text-light: #64748b;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
             --border: #e2e8f0;
-            --shadow: 0 20px 60px rgba(0, 0, 0, 0.06);
-            --radius: 16px;
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             --primary: #2563eb;
-            --primary-light: #dbeafe;
+            --primary-hover: #1d4ed8;
+            --primary-light: #eff6ff;
+            --accent: #10b981;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -1px rgba(0,0,0,0.03);
+            --shadow-lg: 0 10px 25px -5px rgba(0,0,0,0.08), 0 8px 10px -6px rgba(0,0,0,0.01);
+            --radius-sm: 6px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
             --star-color: #f59e0b;
             --star-empty: #cbd5e1;
         }
 
         body {
             background: var(--bg);
-            color: var(--text);
+            color: var(--text-main);
             min-height: 100vh;
-            padding: 16px;
-            transition: var(--transition);
+            padding-bottom: 40px;
         }
 
         .container {
             max-width: 1280px;
             margin: 0 auto;
+            padding: 0 16px;
         }
 
         /* ========================================
-           HEADER
+           HEADER & NAVBAR
         ======================================== */
         .header {
-            background: linear-gradient(145deg, #1a1a2e, #0f3460);
-            border-radius: var(--radius) var(--radius) 0 0;
-            padding: 18px 28px;
+            background: #0f172a;
+            padding: 16px 28px;
             color: white;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 10px;
-            border-bottom: 3px solid var(--primary);
+            border-bottom: 1px solid #1e293b;
         }
         .header-left {
             display: flex;
@@ -71,52 +73,76 @@
             gap: 12px;
         }
         .header-logo {
-            width: 44px;
-            height: 44px;
+            width: 40px;
+            height: 40px;
             background: var(--primary);
             border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 20px;
+            font-size: 18px;
             color: white;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
         }
         .header h1 {
-            font-size: 1.3rem;
-            font-weight: 900;
-            color: white;
+            font-size: 1.25rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
         }
         .header p {
             font-size: 0.75rem;
-            opacity: 0.8;
-            color: #a8b5d9;
+            color: #94a3b8;
+        }
+
+        .nav-bar {
+            background: var(--card);
+            padding: 10px 28px;
+            display: flex;
+            gap: 20px;
+            border-bottom: 1px solid var(--border);
+            box-shadow: var(--shadow-sm);
+        }
+        .nav-bar a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.8rem;
+            transition: all 0.2s;
+            padding: 6px 12px;
+            border-radius: var(--radius-sm);
+        }
+        .nav-bar a:hover, .nav-bar a.active {
+            color: var(--primary);
+            background: var(--primary-light);
         }
 
         /* ========================================
-           NAVIGATION
+           MOBILE VIEW TAB NAVIGATION
         ======================================== */
-        .nav-bar {
-            background: var(--card);
-            padding: 8px 20px;
-            display: flex;
-            gap: 14px;
-            flex-wrap: wrap;
-            border-bottom: 2px solid var(--border);
-            transition: var(--transition);
+        .mobile-tabs {
+            display: none;
+            grid-template-columns: 1fr 1fr;
+            background: #e2e8f0;
+            padding: 4px;
+            border-radius: var(--radius-md);
+            margin: 16px 0;
         }
-        .nav-bar a {
-            color: var(--text-light);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.75rem;
-            transition: var(--transition);
-            padding: 4px 10px;
-            border-radius: 6px;
+        .tab-btn {
+            padding: 10px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 0.85rem;
+            border: none;
+            border-radius: 8px;
+            background: transparent;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.2s;
         }
-        .nav-bar a:hover,
-        .nav-bar a.active {
+        .tab-btn.active {
+            background: white;
             color: var(--primary);
-            background: var(--primary-light);
+            box-shadow: var(--shadow-sm);
         }
 
         /* ========================================
@@ -124,500 +150,348 @@
         ======================================== */
         .template-gallery {
             background: var(--card);
-            padding: 16px 20px;
-            border-radius: 0 0 var(--radius) var(--radius);
-            box-shadow: var(--shadow);
-            margin-bottom: 18px;
+            padding: 20px;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            margin: 20px 0;
             border: 1px solid var(--border);
-            transition: var(--transition);
         }
         .template-gallery h2 {
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 800;
-            color: var(--text);
-            margin-bottom: 12px;
+            margin-bottom: 14px;
             display: flex;
             align-items: center;
             gap: 8px;
         }
-        .template-gallery h2 i {
-            color: var(--primary);
-        }
-        .template-gallery h2 span {
-            font-size: 0.7rem;
-            font-weight: 400;
-            color: var(--text-light);
-        }
+        .template-gallery h2 i { color: var(--primary); }
 
         .template-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-            gap: 10px;
+            gap: 12px;
         }
         .template-card {
             background: var(--bg);
             border: 2px solid var(--border);
-            border-radius: 10px;
+            border-radius: var(--radius-sm);
             padding: 12px 8px;
             text-align: center;
             cursor: pointer;
-            transition: var(--transition);
+            transition: all 0.2s ease;
             position: relative;
         }
         .template-card:hover {
-            transform: translateY(-3px);
+            transform: translateY(-2px);
             border-color: var(--primary);
-            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.1);
+            box-shadow: var(--shadow-md);
         }
         .template-card.active {
             border-color: var(--primary);
             background: var(--primary-light);
         }
-        .template-card .preview-icon {
-            font-size: 1.6rem;
-            margin-bottom: 3px;
-            display: block;
-        }
-        .template-card .template-name {
-            font-weight: 700;
-            font-size: 0.75rem;
-            color: var(--text);
-        }
-        .template-card .template-desc {
-            font-size: 0.6rem;
-            color: var(--text-light);
-            margin-top: 1px;
-        }
+        .template-card .preview-icon { font-size: 1.5rem; margin-bottom: 4px; display: block; }
+        .template-card .template-name { font-weight: 700; font-size: 0.75rem; color: var(--text-main); }
+        .template-card .template-desc { font-size: 0.65rem; color: var(--text-muted); }
         .template-card .badge {
             position: absolute;
-            top: 3px;
-            right: 3px;
+            top: 4px;
+            right: 4px;
             background: var(--primary);
             color: white;
-            font-size: 0.45rem;
+            font-size: 0.5rem;
             font-weight: 700;
-            padding: 1px 6px;
+            padding: 2px 6px;
             border-radius: 50px;
-        }
-        .template-card .apply-btn {
-            margin-top: 5px;
-            padding: 2px 10px;
-            background: var(--primary);
-            border: none;
-            border-radius: 4px;
-            font-weight: 600;
-            font-size: 0.6rem;
-            cursor: pointer;
-            color: white;
-            transition: var(--transition);
-        }
-        .template-card.active .apply-btn {
-            background: #16a34a;
         }
 
         /* ========================================
-           TOOL WRAPPER
+           MAIN APP LAYOUT
         ======================================== */
         .tool-wrapper {
-            background: var(--card);
-            border-radius: var(--radius);
-            padding: 18px;
-            box-shadow: var(--shadow);
-            margin-bottom: 18px;
-            border: 1px solid var(--border);
+            margin-top: 20px;
         }
         .tool-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 18px;
-        }
-
-        @media (max-width: 900px) {
-            .tool-grid { grid-template-columns: 1fr; }
+            grid-template-columns: 1fr 1.1fr;
+            gap: 24px;
+            align-items: start;
         }
 
         /* ========================================
-           FORM SECTION
+           FORM PANEL
         ======================================== */
+        .form-section {
+            background: var(--card);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-sm);
+        }
         .form-section h2 {
-            font-size: 1rem;
+            font-size: 1.1rem;
             font-weight: 800;
-            color: var(--text);
-            margin-bottom: 12px;
+            margin-bottom: 16px;
             display: flex;
             align-items: center;
             gap: 8px;
         }
-        .form-section h2 i { color: var(--primary); }
-        .form-group { margin-bottom: 8px; }
+        .form-group { margin-bottom: 12px; }
         .form-group label {
             display: block;
-            font-weight: 600;
-            font-size: 0.6rem;
-            margin-bottom: 2px;
-            color: var(--text-light);
+            font-weight: 700;
+            font-size: 0.7rem;
+            margin-bottom: 4px;
+            color: var(--text-muted);
             text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
         .form-group input,
         .form-group textarea,
         .form-group select {
             width: 100%;
-            padding: 6px 8px;
-            border: 2px solid var(--border);
-            border-radius: 6px;
-            font-size: 0.75rem;
-            background: var(--bg);
-            color: var(--text);
+            padding: 9px 12px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            font-size: 0.825rem;
+            background: #ffffff;
+            color: var(--text-main);
+            transition: all 0.2s;
         }
-        .form-group textarea {
-            resize: vertical;
-            min-height: 35px;
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
         }
         .form-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 6px;
+            gap: 10px;
         }
 
         .logo-upload {
             display: flex;
             align-items: center;
-            gap: 8px;
-            padding: 4px 8px;
+            gap: 12px;
+            padding: 8px 12px;
             border: 2px dashed var(--border);
-            border-radius: 6px;
+            border-radius: var(--radius-sm);
             background: var(--bg);
             cursor: pointer;
         }
         .logo-upload input[type="file"] { display: none; }
         .logo-upload .placeholder {
-            width: 30px;
-            height: 30px;
-            border-radius: 4px;
-            background: var(--border);
+            width: 36px; height: 36px;
+            border-radius: 6px;
+            background: #e2e8f0;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 12px;
-            color: var(--text-light);
+            font-size: 14px;
+            color: var(--text-muted);
         }
 
         .item-row {
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr 22px;
-            gap: 3px;
+            grid-template-columns: 2fr 1fr 1fr 1fr 28px;
+            gap: 6px;
             align-items: center;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
         .remove-item {
-            background: #ef4444;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            height: 22px;
-            cursor: pointer;
-        }
-        .add-item-btn {
-            background: var(--primary);
-            color: white;
-            border: none;
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-weight: 600;
-            cursor: pointer;
-            font-size: 0.65rem;
-            margin-top: 4px;
-        }
-
-        .btn {
-            padding: 8px 14px;
+            background: #fee2e2;
+            color: #ef4444;
             border: none;
             border-radius: 6px;
+            height: 32px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.2s;
+        }
+        .remove-item:hover { background: #fca5a5; }
+        .add-item-btn {
+            background: var(--primary-light);
+            color: var(--primary);
+            border: 1px dashed var(--primary);
+            padding: 8px;
+            border-radius: var(--radius-sm);
+            font-weight: 700;
+            cursor: pointer;
             font-size: 0.75rem;
+            width: 100%;
+            margin-top: 6px;
+            transition: all 0.2s;
+        }
+        .add-item-btn:hover { background: var(--primary); color: white; }
+
+        .btn {
+            padding: 10px 16px;
+            border: none;
+            border-radius: var(--radius-sm);
+            font-size: 0.8rem;
             font-weight: 700;
             cursor: pointer;
             width: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 5px;
-            margin-top: 10px;
+            gap: 6px;
+            margin-top: 14px;
+            transition: background 0.2s;
         }
         .btn-primary { background: var(--primary); color: white; }
+        .btn-primary:hover { background: var(--primary-hover); }
 
         /* ========================================
-           PREVIEW BASE STYLES
+           PREVIEW SECTION & SHEET DESIGN
         ======================================== */
         .preview-section {
-            background: var(--bg);
-            border-radius: 10px;
-            padding: 12px;
-            border: 2px solid var(--border);
-            position: relative;
+            position: sticky;
+            top: 20px;
         }
-        .preview-section::before {
-            content: '⚡ LIVE PREVIEW';
-            position: absolute;
-            top: -8px;
-            right: 12px;
-            background: var(--primary);
-            color: white;
-            padding: 2px 8px;
+        .preview-card {
+            background: var(--card);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-lg);
+        }
+        .preview-header-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        .preview-badge {
+            background: #dcfce7;
+            color: #15803d;
+            padding: 4px 10px;
             border-radius: 50px;
-            font-size: 0.5rem;
+            font-size: 0.65rem;
             font-weight: 800;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
         }
 
         #invoicePreview {
             background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.04);
-            position: relative;
-            min-height: 550px;
+            padding: 28px;
+            border-radius: var(--radius-sm);
+            box-shadow: 0 0 0 1px rgba(0,0,0,0.05);
+            min-height: 520px;
             font-size: 0.75rem;
             overflow: hidden;
+            border: 1px solid var(--border);
         }
 
         .invoice-details-grid {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
-            gap: 10px;
-            margin: 15px 0;
+            gap: 12px;
+            margin: 16px 0;
         }
         .invoice-details-grid .col-title {
-            font-size: 0.6rem;
+            font-size: 0.65rem;
             font-weight: 800;
             text-transform: uppercase;
-            color: #64748b;
+            color: var(--text-muted);
             margin-bottom: 4px;
         }
-        .invoice-details-grid .col-desc {
-            line-height: 1.3;
-            color: #334155;
-        }
+        .invoice-details-grid .col-desc { line-height: 1.4; color: var(--text-main); }
         .invoice-meta-list {
             display: grid;
             grid-template-columns: auto auto;
             justify-content: end;
-            gap: 2px 10px;
+            gap: 4px 10px;
             text-align: right;
         }
-        .invoice-meta-list .m-lbl { font-weight: 700; color: #64748b; font-size: 0.65rem; }
-        .invoice-meta-list .m-val { font-weight: 600; color: #0f172a; font-size: 0.65rem; }
+        .invoice-meta-list .m-lbl { font-weight: 700; color: var(--text-muted); font-size: 0.65rem; }
+        .invoice-meta-list .m-val { font-weight: 600; color: var(--text-main); font-size: 0.65rem; }
 
-        /* Table */
-        .inv-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 15px 0;
-        }
-        .inv-table th {
-            padding: 6px;
-            font-size: 0.6rem;
-            text-transform: uppercase;
-            font-weight: 800;
-        }
-        .inv-table td {
-            padding: 6px;
-            border-bottom: 1px solid #e2e8f0;
-            font-size: 0.7rem;
-        }
-        .inv-summary {
-            margin-left: auto;
-            width: 200px;
-            margin-top: 10px;
-        }
-        .inv-summary .s-row {
-            display: flex;
-            justify-content: space-between;
-            padding: 3px 0;
-            font-weight: 600;
-        }
+        .inv-table { width: 100%; border-collapse: collapse; margin: 16px 0; }
+        .inv-table th { padding: 8px; font-size: 0.65rem; text-transform: uppercase; font-weight: 800; }
+        .inv-table td { padding: 8px; border-bottom: 1px solid var(--border); font-size: 0.75rem; }
+        
+        .inv-summary { margin-left: auto; width: 220px; margin-top: 12px; }
+        .inv-summary .s-row { display: flex; justify-content: space-between; padding: 4px 0; font-weight: 600; }
         .inv-summary .s-total {
-            font-size: 0.85rem;
-            font-weight: 900;
-            border-top: 2px solid #000;
-            padding-top: 4px;
-            margin-top: 2px;
+            font-size: 0.9rem;
+            font-weight: 800;
+            border-top: 2px solid var(--text-main);
+            padding-top: 6px;
+            margin-top: 4px;
         }
 
         .inv-signature {
-            margin-top: 15px;
+            margin-top: 20px;
             text-align: right;
             font-family: 'Great Vibes', cursive;
-            font-size: 1.8rem;
-            color: #1e293b;
+            font-size: 2rem;
+            color: var(--text-main);
         }
-
         .inv-footer {
             margin-top: 20px;
-            padding-top: 10px;
-            border-top: 1px solid #e2e8f0;
+            padding-top: 12px;
+            border-top: 1px solid var(--border);
             font-size: 0.65rem;
-            color: #64748b;
+            color: var(--text-muted);
         }
-
-        /* ========================================
-           EXACT TEMPLATE STYLES (IMAGES 1-7)
-        ======================================== */
-
-        /* 1. BLUE HEADER BAR TEMPLATE */
-        #invoicePreview.template-blue-header .tmpl-header {
-            background: #2b6cb0;
-            color: white;
-            padding: 8px 12px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin: -20px -20px 15px -20px;
-        }
-        #invoicePreview.template-blue-header .tmpl-header h2 { font-size: 1.1rem; color: white; }
-        #invoicePreview.template-blue-header .inv-table th { background: #f7fafc; border-bottom: 2px solid #e2e8f0; }
-
-        /* 2. MONOSPACE / LOGO TEMPLATE */
-        #invoicePreview.template-monospace { font-family: 'Space Mono', monospace; }
-        #invoicePreview.template-monospace .tmpl-top { display: flex; justify-content: space-between; }
-        #invoicePreview.template-monospace .tmpl-logo-circle {
-            width: 50px; height: 50px; background: #cbd5e1; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center; font-weight: bold; color: white;
-        }
-        #invoicePreview.template-monospace .inv-table th { text-align: left; border-bottom: 2px solid #000; }
-        #invoicePreview.template-monospace .total-box { border: 2px solid #000; padding: 4px 8px; font-weight: bold; margin-top: 5px; }
-
-        /* 3. MODERN WAVE TEMPLATE */
-        #invoicePreview.template-modern-wave { position: relative; }
-        #invoicePreview.template-modern-wave .wave-bg {
-            position: absolute; top: 0; left: 0; width: 100px; height: 100%;
-            background: linear-gradient(135deg, rgba(167,243,208,0.5), rgba(186,230,253,0.5));
-            clip-path: polygon(0 0, 100% 0, 30% 100%, 0% 100%);
-            z-index: 0;
-        }
-        #invoicePreview.template-modern-wave .content-wrap { position: relative; z-index: 1; }
-        #invoicePreview.template-modern-wave h1 { color: #1e3a8a; font-size: 1.8rem; }
-
-        /* 4. CURVED BLUE TEMPLATE */
-        #invoicePreview.template-curved-blue { position: relative; }
-        #invoicePreview.template-curved-blue .curve-header { font-family: 'Great Vibes', cursive; font-size: 1.8rem; color: #2563eb; }
-        #invoicePreview.template-curved-blue .inv-table th { background: #3b82f6; color: white; }
-        #invoicePreview.template-curved-blue .bottom-waves {
-            position: absolute; bottom: 0; left: 0; right: 0; height: 40px;
-            background: radial-gradient(circle at 50% 100%, #60a5fa 0%, #2563eb 100%);
-            border-radius: 50% 50% 0 0; opacity: 0.3;
-        }
-
-        /* 5. VERTICAL RED TEMPLATE */
-        #invoicePreview.template-vertical-red { display: flex; gap: 10px; }
-        #invoicePreview.template-vertical-red .vert-bar {
-            writing-mode: vertical-rl; transform: rotate(180deg);
-            font-size: 1.5rem; font-weight: 900; color: #dc2626; letter-spacing: 2px; text-align: right;
-        }
-        #invoicePreview.template-vertical-red .main-content { flex: 1; }
-        #invoicePreview.template-vertical-red .inv-table th { background: #dc2626; color: white; }
-
-        /* 6. RUGGED / STAMP TEMPLATE */
-        #invoicePreview.template-rugged { background: #fefce8; border: 1px dashed #ca8a04; }
-        #invoicePreview.template-rugged .rug-title { text-align: center; color: #ea580c; letter-spacing: 3px; font-weight: 900; }
-        #invoicePreview.template-rugged .inv-table th { background: #ea580c; color: white; }
-
-        /* 7. TOP BOTTOM BARS TEMPLATE */
-        #invoicePreview.template-top-bottom-bar { padding-top: 25px; padding-bottom: 25px; }
-        #invoicePreview.template-top-bottom-bar::before {
-            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 10px; background: #2563eb;
-        }
-        #invoicePreview.template-top-bottom-bar::after {
-            content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 10px; background: #2563eb;
-        }
-        #invoicePreview.template-top-bottom-bar .total-banner {
-            border-top: 1px solid #000; border-bottom: 1px solid #000; padding: 6px 0; margin: 10px 0;
-            display: flex; justify-content: space-between; font-size: 1rem; font-weight: 900;
-        }
-
-        /* Standard Minimal Template */
-        #invoicePreview.template-classic .inv-table th { background: #f1f5f9; }
 
         /* ========================================
            ACTION BUTTONS
         ======================================== */
         .action-buttons {
-            display: flex;
-            gap: 4px;
-            margin-top: 8px;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            margin-top: 16px;
         }
         .action-buttons button {
-            flex: 1;
-            padding: 6px;
+            padding: 10px;
             border: none;
-            border-radius: 4px;
+            border-radius: var(--radius-sm);
             font-weight: 700;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 3px;
-            font-size: 0.65rem;
+            gap: 6px;
+            font-size: 0.75rem;
             color: white;
+            transition: opacity 0.2s;
         }
-        .btn-pdf { background: #dc2626; }
+        .action-buttons button:hover { opacity: 0.9; }
+        .btn-pdf { background: #dc2626; grid-column: span 3; font-size: 0.85rem; padding: 12px; }
         .btn-save { background: #2563eb; }
         .btn-copy { background: #475569; }
         .btn-email { background: #ea580c; }
-        .btn-whatsapp { background: #25D366; }
-        .btn-reset { background: #64748b; }
+        .btn-whatsapp { background: #16a34a; }
+        .btn-reset { background: #64748b; grid-column: span 2; }
 
-        /* ========================================
-           ⭐ 5-STAR REVIEW SYSTEM
-        ======================================== */
+        /* REVIEW SYSTEM */
         .review-section {
-            margin-top: 14px;
-            padding: 12px;
-            background: var(--card);
-            border-radius: 8px;
+            margin-top: 16px;
+            padding: 14px;
+            background: var(--bg);
+            border-radius: var(--radius-sm);
             border: 1px solid var(--border);
             text-align: center;
         }
-        .review-section .review-title {
-            font-size: 0.8rem;
-            font-weight: 700;
-            color: var(--text);
-            margin-bottom: 4px;
-        }
-        .review-section .stars-container {
-            display: flex;
-            justify-content: center;
-            gap: 6px;
-            margin: 6px 0;
-        }
-        .review-section .star {
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--star-empty);
-            transition: color 0.2s;
-        }
+        .review-section .review-title { font-size: 0.8rem; font-weight: 700; }
+        .review-section .stars-container { display: flex; justify-content: center; gap: 6px; margin: 6px 0; }
+        .review-section .star { font-size: 1.4rem; cursor: pointer; color: var(--star-empty); }
         .review-section .star.active { color: var(--star-color); }
-        .review-section .review-stats {
-            font-size: 0.65rem;
-            color: var(--text-light);
-            margin-top: 4px;
-        }
         .review-submit-btn {
             margin-top: 6px;
-            padding: 4px 12px;
+            padding: 6px 14px;
             background: var(--primary);
             color: white;
             border: none;
             border-radius: 4px;
-            font-size: 0.65rem;
+            font-size: 0.7rem;
             font-weight: 600;
             cursor: pointer;
-        }
-        .review-message {
-            font-size: 0.65rem;
-            color: #16a34a;
-            margin-top: 4px;
-            display: none;
-            font-weight: 600;
         }
 
         /* TOAST */
@@ -625,115 +499,106 @@
             position: fixed;
             bottom: 20px;
             right: 20px;
-            background: var(--card);
-            border-left: 4px solid #16a34a;
-            padding: 8px 14px;
-            border-radius: 6px;
-            box-shadow: var(--shadow);
+            background: #0f172a;
+            color: white;
+            padding: 10px 18px;
+            border-radius: 8px;
+            box-shadow: var(--shadow-lg);
             display: none;
             align-items: center;
-            gap: 5px;
+            gap: 8px;
             font-weight: 600;
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             z-index: 1000;
         }
         .toast.show { display: flex; }
 
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 900px) {
+            .tool-grid { grid-template-columns: 1fr; }
+            .mobile-tabs { display: grid; }
+            .form-section, .preview-section { display: none; }
+            .form-section.active-tab, .preview-section.active-tab { display: block; }
+            .preview-section { position: static; }
+        }
+
         @media print {
-            .action-buttons, .form-section, .nav-bar, .template-gallery, .toast, .review-section, .header {
+            .action-buttons, .form-section, .nav-bar, .template-gallery, .toast, .review-section, .header, .mobile-tabs, .preview-header-bar {
                 display: none !important;
             }
             body { background: white !important; padding: 0 !important; }
-            .tool-wrapper, .preview-section { border: none !important; box-shadow: none !important; padding: 0 !important; }
+            .tool-wrapper, .preview-card { border: none !important; box-shadow: none !important; padding: 0 !important; }
         }
     </style>
 </head>
 
 <body>
 
-    <div class="container">
-        <!-- ===== HEADER ===== -->
-        <div class="header">
-            <div class="header-left">
-                <div class="header-logo"><i class="fas fa-file-invoice-dollar"></i></div>
-                <div>
-                    <h1>Invoice Generator</h1>
-                    <p><i class="fas fa-check-circle" style="color:#22c55e;"></i> Professional Templates • Free • 5-Star Rated</p>
-                </div>
+    <!-- ===== HEADER ===== -->
+    <div class="header">
+        <div class="header-left">
+            <div class="header-logo"><i class="fas fa-file-invoice-dollar"></i></div>
+            <div>
+                <h1>InvoiceCraft Pro</h1>
+                <p>Instant Professional Invoices</p>
             </div>
-            <button onclick="window.location.reload()" style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;padding:4px 10px;border-radius:6px;cursor:pointer;font-size:0.7rem;"><i class="fas fa-redo"></i></button>
         </div>
+        <button onclick="window.location.reload()" style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;padding:6px 12px;border-radius:6px;cursor:pointer;font-size:0.75rem;"><i class="fas fa-redo"></i> Reset All</button>
+    </div>
 
-        <!-- ===== NAVIGATION ===== -->
-        <div class="nav-bar">
-            <a href="#" class="active"><i class="fas fa-home"></i> Home</a>
-            <a href="#"><i class="fas fa-info-circle"></i> About</a>
-            <a href="#"><i class="fas fa-blog"></i> Blog</a>
-            <a href="#"><i class="fas fa-shield-alt"></i> Privacy</a>
-            <a href="#"><i class="fas fa-file-contract"></i> Terms</a>
-            <a href="#"><i class="fas fa-envelope"></i> Contact</a>
+    <!-- ===== NAVIGATION ===== -->
+    <div class="nav-bar">
+        <a href="#" class="active"><i class="fas fa-home"></i> Generator</a>
+        <a href="#"><i class="fas fa-layer-group"></i> Templates</a>
+        <a href="#"><i class="fas fa-shield-alt"></i> Privacy</a>
+    </div>
+
+    <div class="container">
+        <!-- ===== MOBILE TABS ===== -->
+        <div class="mobile-tabs">
+            <button class="tab-btn active" id="btnTabEdit" onclick="switchMobileTab('edit')"><i class="fas fa-pen"></i> 1. Edit Details</button>
+            <button class="tab-btn" id="btnTabPreview" onclick="switchMobileTab('preview')"><i class="fas fa-eye"></i> 2. Live Preview</button>
         </div>
 
         <!-- ===== TEMPLATE GALLERY ===== -->
         <div class="template-gallery">
-            <h2><i class="fas fa-layer-group"></i> Choose Template <span>— Click to apply design style</span></h2>
+            <h2><i class="fas fa-palette"></i> Select Design Template</h2>
             <div class="template-grid" id="templateGrid">
-                <!-- 1 -->
                 <div class="template-card active" data-template="blue-header" onclick="applyTemplate('blue-header')">
                     <span class="badge">Popular</span>
                     <span class="preview-icon">📘</span>
-                    <div class="template-name">Blue Header</div>
-                    <div class="template-desc">Image 1 Style</div>
-                    <button class="apply-btn">✓ Active</button>
+                    <div class="template-name">Blue Modern</div>
+                    <div class="template-desc">Corporate</div>
                 </div>
-                <!-- 2 -->
                 <div class="template-card" data-template="monospace" onclick="applyTemplate('monospace')">
                     <span class="preview-icon">📟</span>
                     <div class="template-name">Monospace</div>
-                    <div class="template-desc">Image 2 Style</div>
-                    <button class="apply-btn">Apply</button>
+                    <div class="template-desc">Tech & Dev</div>
                 </div>
-                <!-- 3 -->
                 <div class="template-card" data-template="modern-wave" onclick="applyTemplate('modern-wave')">
                     <span class="preview-icon">🌊</span>
                     <div class="template-name">Modern Wave</div>
-                    <div class="template-desc">Image 3 Style</div>
-                    <button class="apply-btn">Apply</button>
+                    <div class="template-desc">Creative</div>
                 </div>
-                <!-- 4 -->
                 <div class="template-card" data-template="curved-blue" onclick="applyTemplate('curved-blue')">
                     <span class="preview-icon">🎨</span>
                     <div class="template-name">Curved Blue</div>
-                    <div class="template-desc">Image 4 Style</div>
-                    <button class="apply-btn">Apply</button>
+                    <div class="template-desc">Elegant</div>
                 </div>
-                <!-- 5 -->
                 <div class="template-card" data-template="vertical-red" onclick="applyTemplate('vertical-red')">
                     <span class="preview-icon">🔴</span>
                     <div class="template-name">Vertical Red</div>
-                    <div class="template-desc">Image 5 Style</div>
-                    <button class="apply-btn">Apply</button>
+                    <div class="template-desc">Bold</div>
                 </div>
-                <!-- 6 -->
                 <div class="template-card" data-template="rugged" onclick="applyTemplate('rugged')">
                     <span class="preview-icon">📜</span>
                     <div class="template-name">Rugged Stamp</div>
-                    <div class="template-desc">Image 6 Style</div>
-                    <button class="apply-btn">Apply</button>
+                    <div class="template-desc">Vintage</div>
                 </div>
-                <!-- 7 -->
                 <div class="template-card" data-template="top-bottom-bar" onclick="applyTemplate('top-bottom-bar')">
                     <span class="preview-icon">➖</span>
-                    <div class="template-name">Top Bottom Bar</div>
-                    <div class="template-desc">Image 7 Style</div>
-                    <button class="apply-btn">Apply</button>
-                </div>
-                <!-- Classic -->
-                <div class="template-card" data-template="classic" onclick="applyTemplate('classic')">
-                    <span class="preview-icon">📄</span>
-                    <div class="template-name">Classic Clean</div>
-                    <div class="template-desc">Simple Minimal</div>
-                    <button class="apply-btn">Apply</button>
+                    <div class="template-name">Minimal Bar</div>
+                    <div class="template-desc">Clean</div>
                 </div>
             </div>
         </div>
@@ -741,21 +606,22 @@
         <!-- ===== TOOL WRAPPER ===== -->
         <div class="tool-wrapper">
             <div class="tool-grid">
-                <!-- LEFT: FORM -->
-                <div class="form-section">
-                    <h2><i class="fas fa-pen-fancy"></i> Invoice Details</h2>
+                
+                <!-- LEFT: FORM SECTION -->
+                <div class="form-section active-tab" id="formSection">
+                    <h2><i class="fas fa-pen-to-square" style="color:var(--primary)"></i> Invoice Data</h2>
 
                     <div class="form-group">
-                        <label>Logo</label>
+                        <label>Business Logo</label>
                         <div class="logo-upload" onclick="document.getElementById('logoInput').click()">
                             <div id="logoPreview" class="placeholder"><i class="fas fa-plus"></i></div>
-                            <span style="font-size:0.7rem;color:var(--text-light);">Upload Logo</span>
+                            <span style="font-size:0.75rem;color:var(--text-muted);font-weight:600;">Click to Upload Brand Logo</span>
                             <input type="file" id="logoInput" accept="image/*" onchange="handleLogoUpload(event)">
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label>Company Name</label>
+                        <label>Your Company Name</label>
                         <input type="text" id="companyName" value="East Asia Trading" oninput="updatePreview()" />
                     </div>
                     <div class="form-group">
@@ -775,24 +641,24 @@
                     </div>
 
                     <div class="form-group">
-                        <label>Ship To Address</label>
+                        <label>Shipping Address</label>
                         <input type="text" id="shipAddress" value="1721 Jln Sp 232/7, Kuala Lumpur 55103" oninput="updatePreview()" />
                     </div>
 
                     <div class="form-row">
                         <div class="form-group">
-                            <label>Invoice #</label>
+                            <label>Invoice Number</label>
                             <input type="text" id="invoiceNumber" value="MY-001" oninput="updatePreview()" />
                         </div>
                         <div class="form-group">
-                            <label>P.O.#</label>
+                            <label>P.O. Number</label>
                             <input type="text" id="poNumber" value="2330/2019" oninput="updatePreview()" />
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group">
-                            <label>Date</label>
+                            <label>Invoice Date</label>
                             <input type="date" id="invoiceDate" oninput="updatePreview()" />
                         </div>
                         <div class="form-group">
@@ -803,7 +669,7 @@
 
                     <div class="form-row">
                         <div class="form-group">
-                            <label>Currency</label>
+                            <label>Currency Symbol</label>
                             <select id="currency" onchange="updatePreview()">
                                 <option value="RM" selected>RM MYR</option>
                                 <option value="$">$ USD</option>
@@ -813,7 +679,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label>Tax / SST (%)</label>
+                            <label>Tax / SST Rate (%)</label>
                             <input type="number" id="taxRate" value="6" min="0" max="100" oninput="updatePreview()" />
                         </div>
                     </div>
@@ -825,82 +691,81 @@
                                 <input type="text" class="item-desc" placeholder="Description" value="Wooden elephant figurine" oninput="updatePreview()" />
                                 <input type="number" class="item-qty" placeholder="Qty" value="1" oninput="updatePreview()" />
                                 <input type="number" class="item-rate" placeholder="Rate" value="600" oninput="updatePreview()" />
-                                <input type="text" class="item-total" readonly style="background:#f1f5f9;font-weight:700;font-size:0.6rem;" />
+                                <input type="text" class="item-total" readonly style="background:#f1f5f9;font-weight:700;" />
                                 <button class="remove-item" onclick="removeItem(this)">✕</button>
                             </div>
                             <div class="item-row">
                                 <input type="text" class="item-desc" placeholder="Description" value="Large cloth rice bag" oninput="updatePreview()" />
                                 <input type="number" class="item-qty" placeholder="Qty" value="2" oninput="updatePreview()" />
                                 <input type="number" class="item-rate" placeholder="Rate" value="45" oninput="updatePreview()" />
-                                <input type="text" class="item-total" readonly style="background:#f1f5f9;font-weight:700;font-size:0.6rem;" />
-                                <button class="remove-item" onclick="removeItem(this)">✕</button>
-                            </div>
-                            <div class="item-row">
-                                <input type="text" class="item-desc" placeholder="Description" value="Bamboo ladder" oninput="updatePreview()" />
-                                <input type="number" class="item-qty" placeholder="Qty" value="3" oninput="updatePreview()" />
-                                <input type="number" class="item-rate" placeholder="Rate" value="20" oninput="updatePreview()" />
-                                <input type="text" class="item-total" readonly style="background:#f1f5f9;font-weight:700;font-size:0.6rem;" />
+                                <input type="text" class="item-total" readonly style="background:#f1f5f9;font-weight:700;" />
                                 <button class="remove-item" onclick="removeItem(this)">✕</button>
                             </div>
                         </div>
-                        <button class="add-item-btn" onclick="addItem()"><i class="fas fa-plus"></i> Add Item</button>
+                        <button class="add-item-btn" onclick="addItem()"><i class="fas fa-plus"></i> Add New Item</button>
                     </div>
 
                     <div class="form-group">
                         <label>Terms & Conditions</label>
-                        <textarea id="terms" oninput="updatePreview()">Payment is due within 15 days</textarea>
+                        <textarea id="terms" rows="2" oninput="updatePreview()">Payment is due within 15 days of invoice date.</textarea>
                     </div>
                     <div class="form-group">
-                        <label>Bank Details</label>
-                        <textarea id="bankDetails" oninput="updatePreview()">Public Bank Berhad&#10;Account Number: 12345678&#10;Routing Number: 0987654321098</textarea>
+                        <label>Bank & Payment Details</label>
+                        <textarea id="bankDetails" rows="2" oninput="updatePreview()">Public Bank Berhad&#10;Account Number: 12345678</textarea>
                     </div>
 
-                    <button class="btn btn-primary" onclick="updatePreview()">
-                        <i class="fas fa-sync-alt"></i> Update Live Preview
+                    <button class="btn btn-primary" onclick="updatePreview(); switchMobileTab('preview');">
+                        <i class="fas fa-eye"></i> View Live Preview
                     </button>
                 </div>
 
-                <!-- RIGHT: PREVIEW & RATING -->
-                <div class="preview-section">
-                    <div id="invoicePreview" class="template-blue-header">
-                        <!-- Dynamic Template Structure Injected/Updated via JS -->
-                    </div>
-
-                    <!-- ACTION BUTTONS -->
-                    <div class="action-buttons">
-                        <button class="btn-pdf" onclick="downloadPDF()"><i class="fas fa-file-pdf"></i> PDF</button>
-                        <button class="btn-save" onclick="saveInvoice()"><i class="fas fa-save"></i> Save</button>
-                        <button class="btn-copy" onclick="copyInvoice()"><i class="fas fa-copy"></i> Copy</button>
-                        <button class="btn-email" onclick="emailInvoice()"><i class="fas fa-envelope"></i> Email</button>
-                        <button class="btn-whatsapp" onclick="shareWhatsApp()"><i class="fab fa-whatsapp"></i> Share</button>
-                        <button class="btn-reset" onclick="resetForm()"><i class="fas fa-undo-alt"></i> Reset</button>
-                    </div>
-
-                    <!-- ⭐ 5-STAR REVIEW SYSTEM -->
-                    <div class="review-section">
-                        <div class="review-title"><i class="fas fa-star" style="color:var(--star-color);"></i> Rate this Template Generator</div>
-                        <div class="stars-container" id="starsContainer">
-                            <span class="star" data-value="1" onclick="setRating(1)">★</span>
-                            <span class="star" data-value="2" onclick="setRating(2)">★</span>
-                            <span class="star" data-value="3" onclick="setRating(3)">★</span>
-                            <span class="star" data-value="4" onclick="setRating(4)">★</span>
-                            <span class="star" data-value="5" onclick="setRating(5)">★</span>
+                <!-- RIGHT: PREVIEW PANEL -->
+                <div class="preview-section" id="previewSection">
+                    <div class="preview-card">
+                        <div class="preview-header-bar">
+                            <span class="preview-badge"><i class="fas fa-circle-check"></i> Live Interactive Preview</span>
                         </div>
-                        <div class="review-stats">
-                            Average Rating: <strong id="avgRating">0.0</strong> (<span id="reviewCount">0</span> user ratings)
+
+                        <!-- LIVE SHEET -->
+                        <div id="invoicePreview" class="template-blue-header"></div>
+
+                        <!-- ACTION BUTTONS -->
+                        <div class="action-buttons">
+                            <button class="btn-pdf" onclick="downloadPDF()"><i class="fas fa-file-pdf"></i> Download Official PDF</button>
+                            <button class="btn-save" onclick="saveInvoice()"><i class="fas fa-save"></i> Save</button>
+                            <button class="btn-copy" onclick="copyInvoice()"><i class="fas fa-copy"></i> Copy Text</button>
+                            <button class="btn-email" onclick="emailInvoice()"><i class="fas fa-envelope"></i> Email</button>
+                            <button class="btn-whatsapp" onclick="shareWhatsApp()"><i class="fab fa-whatsapp"></i> WhatsApp</button>
+                            <button class="btn-reset" onclick="resetForm()"><i class="fas fa-rotate-left"></i> Reset Form</button>
                         </div>
-                        <button class="review-submit-btn" onclick="submitReview()"><i class="fas fa-paper-plane"></i> Submit Rating</button>
-                        <div class="review-message" id="reviewMessage">✅ Thank you for rating! Saved successfully.</div>
+
+                        <!-- REVIEW BOX -->
+                        <div class="review-section">
+                            <div class="review-title"><i class="fas fa-star" style="color:var(--star-color);"></i> Rate this App</div>
+                            <div class="stars-container" id="starsContainer">
+                                <span class="star" data-value="1" onclick="setRating(1)">★</span>
+                                <span class="star" data-value="2" onclick="setRating(2)">★</span>
+                                <span class="star" data-value="3" onclick="setRating(3)">★</span>
+                                <span class="star" data-value="4" onclick="setRating(4)">★</span>
+                                <span class="star" data-value="5" onclick="setRating(5)">★</span>
+                            </div>
+                            <div style="font-size:0.65rem;color:var(--text-muted);">
+                                Rating: <strong id="avgRating">0.0</strong> (<span id="reviewCount">0</span> reviews)
+                            </div>
+                            <button class="review-submit-btn" onclick="submitReview()">Submit Rating</button>
+                            <div id="reviewMessage" style="font-size:0.65rem;color:#16a34a;display:none;margin-top:4px;">Thank you! Saved successfully.</div>
+                        </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
 
-    <!-- TOAST -->
-    <div class="toast" id="toast"><i class="fas fa-check-circle" style="color:#16a34a;"></i> <span id="toastMsg">Done!</span></div>
+    <!-- TOAST ALERT -->
+    <div class="toast" id="toast"><i class="fas fa-circle-check" style="color:#22c55e;"></i> <span id="toastMsg">Action Done!</span></div>
 
-    <!-- JavaScript logic -->
+    <!-- LOGIC -->
     <script>
         let currentTemplate = 'blue-header';
         let logoDataURL = null;
@@ -917,19 +782,27 @@
             loadReviews();
         };
 
+        function switchMobileTab(tab) {
+            if (tab === 'edit') {
+                document.getElementById('formSection').classList.add('active-tab');
+                document.getElementById('previewSection').classList.remove('active-tab');
+                document.getElementById('btnTabEdit').classList.add('active');
+                document.getElementById('btnTabPreview').classList.remove('active');
+            } else {
+                document.getElementById('previewSection').classList.add('active-tab');
+                document.getElementById('formSection').classList.remove('active-tab');
+                document.getElementById('btnTabPreview').classList.add('active');
+                document.getElementById('btnTabEdit').classList.remove('active');
+            }
+        }
+
         function applyTemplate(template) {
             currentTemplate = template;
             document.querySelectorAll('.template-card').forEach(card => {
                 card.classList.remove('active');
-                const btn = card.querySelector('.apply-btn');
-                if (card.dataset.template === template) {
-                    card.classList.add('active');
-                    btn.textContent = '✓ Active';
-                } else {
-                    btn.textContent = 'Apply';
-                }
+                if (card.dataset.template === template) card.classList.add('active');
             });
-            showToast('Template switched: ' + template);
+            showToast('Applied Template: ' + template);
             updatePreview();
         }
 
@@ -941,7 +814,7 @@
                 logoDataURL = evt.target.result;
                 document.getElementById('logoPreview').innerHTML = `<img src="${logoDataURL}" style="width:100%;height:100%;object-fit:cover;border-radius:4px;">`;
                 updatePreview();
-                showToast('Logo Uploaded!');
+                showToast('Logo Updated!');
             };
             reader.readAsDataURL(file);
         }
@@ -951,10 +824,10 @@
             const div = document.createElement('div');
             div.className = 'item-row';
             div.innerHTML = `
-                <input type="text" class="item-desc" placeholder="Description" value="New Service" oninput="updatePreview()" />
+                <input type="text" class="item-desc" placeholder="Description" value="New Service Item" oninput="updatePreview()" />
                 <input type="number" class="item-qty" placeholder="Qty" value="1" oninput="updatePreview()" />
                 <input type="number" class="item-rate" placeholder="Rate" value="100" oninput="updatePreview()" />
-                <input type="text" class="item-total" readonly style="background:#f1f5f9;font-weight:700;font-size:0.6rem;" />
+                <input type="text" class="item-total" readonly style="background:#f1f5f9;font-weight:700;" />
                 <button class="remove-item" onclick="removeItem(this)">✕</button>
             `;
             container.appendChild(div);
@@ -970,13 +843,8 @@
             }
         }
 
-        function getCurrency() {
-            return document.getElementById('currency').value || 'RM';
-        }
-
-        function formatCurrency(num) {
-            return getCurrency() + Number(num).toFixed(2);
-        }
+        function getCurrency() { return document.getElementById('currency').value || 'RM'; }
+        function formatCurrency(num) { return getCurrency() + ' ' + Number(num).toFixed(2); }
 
         function getItemsData() {
             const rows = document.querySelectorAll('.item-row');
@@ -1015,7 +883,7 @@
             const tax = subtotal * (taxRate / 100);
             const total = subtotal + tax;
 
-            let logoHTML = logoDataURL ? `<img src="${logoDataURL}" style="max-height:45px;max-width:100px;object-fit:contain;">` : `<div style="width:40px;height:40px;background:#cbd5e1;border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-weight:bold;font-size:0.6rem;">LOGO</div>`;
+            let logoHTML = logoDataURL ? `<img src="${logoDataURL}" style="max-height:45px;max-width:100px;object-fit:contain;">` : `<div style="width:36px;height:36px;background:#cbd5e1;border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-weight:bold;font-size:0.6rem;">LOGO</div>`;
 
             let tableRows = items.map(item => `
                 <tr>
@@ -1026,362 +894,76 @@
                 </tr>
             `).join('');
 
-            let html = '';
-
-            if (currentTemplate === 'blue-header') {
-                html = `
-                    <div class="tmpl-header">
-                        <h2>${company}</h2>
-                        <span style="font-weight:900;letter-spacing:1px;">INVOICE</span>
+            let html = `
+                <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px;">
+                    <div>
+                        <h2 style="font-size:1.2rem;font-weight:800;color:var(--text-main);">${company}</h2>
+                        <div style="font-size:0.65rem;color:var(--text-muted);">${companyAddr}</div>
                     </div>
-                    <div style="font-size:0.65rem;color:#475569;margin-bottom:15px;">${companyAddr}</div>
+                    <div>${logoHTML}</div>
+                </div>
 
-                    <div class="invoice-details-grid">
-                        <div>
-                            <div class="col-title">Bill To</div>
-                            <div class="col-desc"><strong>${client}</strong><br>${clientAddr}</div>
-                        </div>
-                        <div>
-                            <div class="col-title">Ship To</div>
-                            <div class="col-desc"><strong>${client}</strong><br>${shipAddr}</div>
-                        </div>
-                        <div class="invoice-meta-list">
-                            <span class="m-lbl">Invoice #</span><span class="m-val">${invNum}</span>
-                            <span class="m-lbl">Invoice Date</span><span class="m-val">${invDate}</span>
-                            <span class="m-lbl">P.O.#</span><span class="m-val">${poNum}</span>
-                            <span class="m-lbl">Due Date</span><span class="m-val">${dueDate}</span>
-                        </div>
+                <div class="invoice-details-grid">
+                    <div>
+                        <div class="col-title">Billed To</div>
+                        <div class="col-desc"><strong>${client}</strong><br>${clientAddr}</div>
                     </div>
-
-                    <table class="inv-table">
-                        <thead><tr><th>QTY</th><th>DESCRIPTION</th><th style="text-align:right;">UNIT PRICE</th><th style="text-align:right;">AMOUNT</th></tr></thead>
-                        <tbody>${tableRows}</tbody>
-                    </table>
-
-                    <div class="inv-summary">
-                        <div class="s-row"><span>Subtotal</span><span>${subtotal.toFixed(2)}</span></div>
-                        <div class="s-row"><span>SST ${taxRate}%</span><span>${tax.toFixed(2)}</span></div>
-                        <div class="s-row s-total"><span>TOTAL</span><span>${formatCurrency(total)}</span></div>
+                    <div>
+                        <div class="col-title">Shipped To</div>
+                        <div class="col-desc"><strong>${client}</strong><br>${shipAddr}</div>
                     </div>
-
-                    <div class="inv-signature">Byy -</div>
-                    <div class="inv-footer">
-                        <strong>Terms & Conditions</strong><br>${terms.replace(/\n/g, '<br>')}<br><br>
-                        ${bank.replace(/\n/g, '<br>')}
+                    <div class="invoice-meta-list">
+                        <span class="m-lbl">Invoice #</span><span class="m-val">${invNum}</span>
+                        <span class="m-lbl">Date</span><span class="m-val">${invDate}</span>
+                        <span class="m-lbl">P.O.#</span><span class="m-val">${poNum}</span>
+                        <span class="m-lbl">Due Date</span><span class="m-val">${dueDate}</span>
                     </div>
-                `;
-            } else if (currentTemplate === 'monospace') {
-                html = `
-                    <div class="tmpl-top">
-                        <div>
-                            <div style="font-size:1.8rem;font-weight:bold;letter-spacing:-1px;">invoice</div>
-                            <div style="font-size:0.65rem;margin-top:5px;"><strong>FROM</strong><br>${company}<br>${companyAddr}</div>
-                        </div>
-                        <div>${logoHTML}</div>
-                    </div>
+                </div>
 
-                    <div class="invoice-details-grid" style="margin-top:15px;">
-                        <div>
-                            <div class="col-title">BILL TO</div>
-                            <div class="col-desc">${client}<br>${clientAddr}</div>
-                        </div>
-                        <div>
-                            <div class="col-title">SHIP TO</div>
-                            <div class="col-desc">${client}<br>${shipAddr}</div>
-                        </div>
-                        <div class="invoice-meta-list">
-                            <span class="m-lbl">INVOICE #</span><span class="m-val">${invNum}</span>
-                            <span class="m-lbl">INVOICE DATE</span><span class="m-val">${invDate}</span>
-                            <span class="m-lbl">P.O.#</span><span class="m-val">${poNum}</span>
-                            <span class="m-lbl">DUE DATE</span><span class="m-val">${dueDate}</span>
-                        </div>
-                    </div>
+                <table class="inv-table">
+                    <thead><tr><th style="text-align:center;">QTY</th><th>DESCRIPTION</th><th style="text-align:right;">PRICE</th><th style="text-align:right;">AMOUNT</th></tr></thead>
+                    <tbody>${tableRows}</tbody>
+                </table>
 
-                    <table class="inv-table">
-                        <thead><tr><th>QTY</th><th>DESCRIPTION</th><th style="text-align:right;">UNIT PRICE</th><th style="text-align:right;">AMOUNT</th></tr></thead>
-                        <tbody>${tableRows}</tbody>
-                    </table>
+                <div class="inv-summary">
+                    <div class="s-row"><span>Subtotal</span><span>${subtotal.toFixed(2)}</span></div>
+                    <div class="s-row"><span>Tax (${taxRate}%)</span><span>${tax.toFixed(2)}</span></div>
+                    <div class="s-row s-total"><span>Total</span><span>${formatCurrency(total)}</span></div>
+                </div>
 
-                    <div class="inv-summary">
-                        <div class="s-row"><span>Subtotal</span><span>${subtotal.toFixed(2)}</span></div>
-                        <div class="s-row"><span>SST ${taxRate}%</span><span>${tax.toFixed(2)}</span></div>
-                    </div>
-                    <div class="total-box" style="text-align:right;font-size:0.9rem;">TOTAL: ${formatCurrency(total)}</div>
-
-                    <div class="inv-signature">Byy -</div>
-                    <div class="inv-footer">
-                        <strong>TERMS & CONDITIONS</strong><br>${terms}<br><br>${bank.replace(/\n/g, '<br>')}
-                    </div>
-                `;
-            } else if (currentTemplate === 'modern-wave') {
-                html = `
-                    <div class="wave-bg"></div>
-                    <div class="content-wrap">
-                        <h1>INVOICE</h1>
-                        <div style="font-size:0.7rem;font-weight:bold;color:#1e3a8a;">${company}</div>
-                        <div style="font-size:0.65rem;color:#475569;">${companyAddr}</div>
-
-                        <div class="invoice-details-grid">
-                            <div><div class="col-title">BILL TO</div><div class="col-desc">${client}<br>${clientAddr}</div></div>
-                            <div><div class="col-title">SHIP TO</div><div class="col-desc">${client}<br>${shipAddr}</div></div>
-                            <div class="invoice-meta-list">
-                                <span class="m-lbl">INVOICE #</span><span class="m-val">${invNum}</span>
-                                <span class="m-lbl">INVOICE DATE</span><span class="m-val">${invDate}</span>
-                                <span class="m-lbl">P.O.#</span><span class="m-val">${poNum}</span>
-                                <span class="m-lbl">DUE DATE</span><span class="m-val">${dueDate}</span>
-                            </div>
-                        </div>
-
-                        <table class="inv-table">
-                            <thead><tr style="color:#1e3a8a;"><th>QTY</th><th>DESCRIPTION</th><th style="text-align:right;">UNIT PRICE</th><th style="text-align:right;">AMOUNT</th></tr></thead>
-                            <tbody>${tableRows}</tbody>
-                        </table>
-
-                        <div class="inv-summary">
-                            <div class="s-row"><span>Subtotal</span><span>${subtotal.toFixed(2)}</span></div>
-                            <div class="s-row"><span>SST ${taxRate}%</span><span>${tax.toFixed(2)}</span></div>
-                            <div class="s-row s-total" style="color:#1e3a8a;"><span>TOTAL</span><span>${formatCurrency(total)}</span></div>
-                        </div>
-
-                        <div class="inv-signature">Byy -</div>
-                        <div class="inv-footer">
-                            <strong style="color:#1e3a8a;">TERMS & CONDITIONS</strong><br>${terms}<br><br>${bank.replace(/\n/g, '<br>')}
-                        </div>
-                    </div>
-                `;
-            } else if (currentTemplate === 'curved-blue') {
-                html = `
-                    <div style="display:flex;justify-content:space-between;align-items:center;">
-                        <div>
-                            <div class="curve-header">${company}</div>
-                            <div style="font-size:0.65rem;">${companyAddr}</div>
-                        </div>
-                        <div>${logoHTML}</div>
-                    </div>
-
-                    <div class="invoice-details-grid">
-                        <div><div class="col-title" style="color:#2563eb;">Bill To</div><div class="col-desc">${client}<br>${clientAddr}</div></div>
-                        <div><div class="col-title" style="color:#2563eb;">Ship To</div><div class="col-desc">${client}<br>${shipAddr}</div></div>
-                        <div class="invoice-meta-list">
-                            <span class="m-lbl">Invoice #</span><span class="m-val">${invNum}</span>
-                            <span class="m-lbl">Invoice Date</span><span class="m-val">${invDate}</span>
-                            <span class="m-lbl">P.O.#</span><span class="m-val">${poNum}</span>
-                            <span class="m-lbl">Due Date</span><span class="m-val">${dueDate}</span>
-                        </div>
-                    </div>
-
-                    <table class="inv-table">
-                        <thead><tr><th>Qty</th><th>Description</th><th style="text-align:right;">Unit Price</th><th style="text-align:right;">Amount</th></tr></thead>
-                        <tbody>${tableRows}</tbody>
-                    </table>
-
-                    <div class="inv-summary">
-                        <div class="s-row"><span>Subtotal</span><span>${subtotal.toFixed(2)}</span></div>
-                        <div class="s-row"><span>SST ${taxRate}%</span><span>${tax.toFixed(2)}</span></div>
-                        <div class="s-row s-total" style="color:#2563eb;"><span>Invoice Total</span><span>${formatCurrency(total)}</span></div>
-                    </div>
-
-                    <div class="inv-signature">Byy -</div>
-                    <div class="inv-footer">
-                        <strong style="color:#2563eb;">Terms & Conditions</strong><br>${terms}<br><br>${bank.replace(/\n/g, '<br>')}
-                    </div>
-                    <div class="bottom-waves"></div>
-                `;
-            } else if (currentTemplate === 'vertical-red') {
-                html = `
-                    <div class="vert-bar">INVOICE ${invNum}</div>
-                    <div class="main-content">
-                        <div style="display:flex;justify-content:space-between;">
-                            <div>
-                                <h2 style="color:#dc2626;">${company}</h2>
-                                <div style="font-size:0.65rem;">${companyAddr}</div>
-                            </div>
-                            <div>${logoHTML}</div>
-                        </div>
-
-                        <div class="invoice-details-grid">
-                            <div><div class="col-title" style="color:#dc2626;">Bill To</div><div class="col-desc">${client}<br>${clientAddr}</div></div>
-                            <div><div class="col-title" style="color:#dc2626;">Ship To</div><div class="col-desc">${client}<br>${shipAddr}</div></div>
-                            <div class="invoice-meta-list">
-                                <span class="m-lbl">Invoice Date</span><span class="m-val">${invDate}</span>
-                                <span class="m-lbl">P.O.#</span><span class="m-val">${poNum}</span>
-                                <span class="m-lbl">Due Date</span><span class="m-val">${dueDate}</span>
-                            </div>
-                        </div>
-
-                        <table class="inv-table">
-                            <thead><tr><th>Qty</th><th>Description</th><th style="text-align:right;">Unit Price</th><th style="text-align:right;">Amount</th></tr></thead>
-                            <tbody>${tableRows}</tbody>
-                        </table>
-
-                        <div class="inv-summary">
-                            <div class="s-row"><span>Subtotal</span><span>${subtotal.toFixed(2)}</span></div>
-                            <div class="s-row"><span>SST ${taxRate}%</span><span>${tax.toFixed(2)}</span></div>
-                            <div class="s-row s-total" style="color:#dc2626;"><span>Total</span><span>${formatCurrency(total)}</span></div>
-                        </div>
-
-                        <div class="inv-signature">Byy -</div>
-                        <div class="inv-footer" style="border-top:1px solid #dc2626;">
-                            <strong style="color:#dc2626;">Terms & Conditions</strong><br>${terms}<br><br>${bank.replace(/\n/g, '<br>')}
-                        </div>
-                    </div>
-                `;
-            } else if (currentTemplate === 'rugged') {
-                html = `
-                    <div class="rug-title">★ INVOICE ★</div>
-                    <div style="text-align:center;font-weight:bold;color:#ea580c;margin-top:5px;">${company}</div>
-                    <div style="text-align:center;font-size:0.65rem;">${companyAddr}</div>
-
-                    <div style="border-top:2px dashed #ea580c;margin:10px 0;"></div>
-
-                    <div class="invoice-details-grid">
-                        <div><div class="col-title" style="color:#ea580c;">BILL TO</div><div class="col-desc">${client}<br>${clientAddr}</div></div>
-                        <div><div class="col-title" style="color:#ea580c;">SHIP TO</div><div class="col-desc">${client}<br>${shipAddr}</div></div>
-                        <div class="invoice-meta-list">
-                            <span class="m-lbl">INVOICE #</span><span class="m-val">${invNum}</span>
-                            <span class="m-lbl">INVOICE DATE</span><span class="m-val">${invDate}</span>
-                            <span class="m-lbl">P.O.#</span><span class="m-val">${poNum}</span>
-                            <span class="m-lbl">DUE DATE</span><span class="m-val">${dueDate}</span>
-                        </div>
-                    </div>
-
-                    <table class="inv-table">
-                        <thead><tr><th>QTY</th><th>DESCRIPTION</th><th style="text-align:right;">UNIT PRICE</th><th style="text-align:right;">AMOUNT</th></tr></thead>
-                        <tbody>${tableRows}</tbody>
-                    </table>
-
-                    <div class="inv-summary">
-                        <div class="s-row"><span>Subtotal</span><span>${subtotal.toFixed(2)}</span></div>
-                        <div class="s-row"><span>SST ${taxRate}%</span><span>${tax.toFixed(2)}</span></div>
-                        <div class="s-row s-total" style="color:#ea580c;"><span>TOTAL</span><span>${formatCurrency(total)}</span></div>
-                    </div>
-
-                    <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-top:10px;">
-                        <div style="font-size:1.2rem;font-weight:900;color:#ea580c;">Thank you</div>
-                        <div class="inv-signature">Byy -</div>
-                    </div>
-
-                    <div class="inv-footer" style="border-top:2px dashed #ea580c;">
-                        <strong style="color:#ea580c;">TERMS & CONDITIONS</strong><br>${terms}<br><br>${bank.replace(/\n/g, '<br>')}
-                    </div>
-                `;
-            } else if (currentTemplate === 'top-bottom-bar') {
-                html = `
-                    <div style="font-size:0.75rem;font-weight:bold;">${company}</div>
-                    <div style="font-size:0.65rem;color:#475569;">${companyAddr}</div>
-
-                    <div class="invoice-details-grid">
-                        <div><div class="col-title">BILL TO</div><div class="col-desc">${client}<br>${clientAddr}</div></div>
-                        <div><div class="col-title">SHIP TO</div><div class="col-desc">${client}<br>${shipAddr}</div></div>
-                        <div class="invoice-meta-list">
-                            <span class="m-lbl">INVOICE #</span><span class="m-val">${invNum}</span>
-                            <span class="m-lbl">INVOICE DATE</span><span class="m-val">${invDate}</span>
-                            <span class="m-lbl">P.O.#</span><span class="m-val">${poNum}</span>
-                            <span class="m-lbl">DUE DATE</span><span class="m-val">${dueDate}</span>
-                        </div>
-                    </div>
-
-                    <div class="total-banner">
-                        <span>Invoice Total</span>
-                        <span>${formatCurrency(total)}</span>
-                    </div>
-
-                    <table class="inv-table">
-                        <thead><tr><th>QTY</th><th>DESCRIPTION</th><th style="text-align:right;">UNIT PRICE</th><th style="text-align:right;">AMOUNT</th></tr></thead>
-                        <tbody>${tableRows}</tbody>
-                    </table>
-
-                    <div class="inv-summary">
-                        <div class="s-row"><span>Subtotal</span><span>${subtotal.toFixed(2)}</span></div>
-                        <div class="s-row"><span>SST ${taxRate}%</span><span>${tax.toFixed(2)}</span></div>
-                    </div>
-
-                    <div class="inv-signature">Byy -</div>
-                    <div class="inv-footer">
-                        <strong>TERMS & CONDITIONS</strong><br>${terms}<br><br>${bank.replace(/\n/g, '<br>')}
-                    </div>
-                `;
-            } else {
-                /* CLASSIC */
-                html = `
-                    <div style="display:flex;justify-content:space-between;">
-                        <div>
-                            <h2>${company}</h2>
-                            <div style="font-size:0.65rem;color:#64748b;">${companyAddr}</div>
-                        </div>
-                        <div style="font-size:1.4rem;font-weight:900;">INVOICE</div>
-                    </div>
-
-                    <div class="invoice-details-grid">
-                        <div><div class="col-title">Bill To</div><div class="col-desc">${client}<br>${clientAddr}</div></div>
-                        <div><div class="col-title">Ship To</div><div class="col-desc">${client}<br>${shipAddr}</div></div>
-                        <div class="invoice-meta-list">
-                            <span class="m-lbl">Invoice #</span><span class="m-val">${invNum}</span>
-                            <span class="m-lbl">Invoice Date</span><span class="m-val">${invDate}</span>
-                            <span class="m-lbl">P.O.#</span><span class="m-val">${poNum}</span>
-                            <span class="m-lbl">Due Date</span><span class="m-val">${dueDate}</span>
-                        </div>
-                    </div>
-
-                    <table class="inv-table">
-                        <thead><tr><th>QTY</th><th>DESCRIPTION</th><th style="text-align:right;">UNIT PRICE</th><th style="text-align:right;">AMOUNT</th></tr></thead>
-                        <tbody>${tableRows}</tbody>
-                    </table>
-
-                    <div class="inv-summary">
-                        <div class="s-row"><span>Subtotal</span><span>${subtotal.toFixed(2)}</span></div>
-                        <div class="s-row"><span>SST ${taxRate}%</span><span>${tax.toFixed(2)}</span></div>
-                        <div class="s-row s-total"><span>TOTAL</span><span>${formatCurrency(total)}</span></div>
-                    </div>
-
-                    <div class="inv-signature">Byy -</div>
-                    <div class="inv-footer">
-                        <strong>Terms & Conditions</strong><br>${terms}<br><br>${bank.replace(/\n/g, '<br>')}
-                    </div>
-                `;
-            }
+                <div class="inv-signature">By - ${company}</div>
+                <div class="inv-footer">
+                    <strong>Terms & Conditions</strong><br>${terms.replace(/\n/g, '<br>')}<br><br>
+                    <strong>Payment Info</strong><br>${bank.replace(/\n/g, '<br>')}
+                </div>
+            `;
 
             preview.innerHTML = html;
         }
 
-        /* 5-STAR REVIEWS */
+        /* REVIEWS */
         function setRating(val) {
             selectedRating = val;
-            const stars = document.querySelectorAll('.review-section .star');
-            stars.forEach(s => {
-                const sv = parseInt(s.dataset.value);
-                if (sv <= val) s.classList.add('active');
-                else s.classList.remove('active');
+            document.querySelectorAll('.review-section .star').forEach(s => {
+                s.classList.toggle('active', parseInt(s.dataset.value) <= val);
             });
-            document.getElementById('reviewMessage').style.display = 'none';
         }
 
         function submitReview() {
-            if (selectedRating === 0) {
-                showToast('Please select a star rating first!');
-                return;
-            }
-            let reviews = JSON.parse(localStorage.getItem('invoice_template_reviews')) || [];
+            if (!selectedRating) return showToast('Please select a star rating');
+            let reviews = JSON.parse(localStorage.getItem('reviews')) || [];
             reviews.push(selectedRating);
-            localStorage.setItem('invoice_template_reviews', JSON.stringify(reviews));
-
+            localStorage.setItem('reviews', JSON.stringify(reviews));
             document.getElementById('reviewMessage').style.display = 'block';
-            showToast('Rating submitted!');
+            showToast('Thank you for rating!');
             loadReviews();
-            selectedRating = 0;
-            document.querySelectorAll('.review-section .star').forEach(s => s.classList.remove('active'));
         }
 
         function loadReviews() {
-            let reviews = JSON.parse(localStorage.getItem('invoice_template_reviews')) || [];
-            const count = reviews.length;
-            let avg = 0;
-            if (count > 0) {
-                const sum = reviews.reduce((a, b) => a + b, 0);
-                avg = (sum / count).toFixed(1);
-            }
+            let reviews = JSON.parse(localStorage.getItem('reviews')) || [];
+            let avg = reviews.length ? (reviews.reduce((a,b)=>a+b, 0)/reviews.length).toFixed(1) : '0.0';
             document.getElementById('avgRating').textContent = avg;
-            document.getElementById('reviewCount').textContent = count;
+            document.getElementById('reviewCount').textContent = reviews.length;
         }
 
         function showToast(msg) {
@@ -1392,41 +974,20 @@
         }
 
         function downloadPDF() { window.print(); }
-
-        function saveInvoice() {
-            showToast('Invoice Data Saved to Local Browser!');
-        }
-
+        function saveInvoice() { showToast('Saved Locally!'); }
         function copyInvoice() {
-            const txt = document.getElementById('invoicePreview').innerText;
-            navigator.clipboard.writeText(txt).then(() => showToast('Copied to Clipboard!'));
+            navigator.clipboard.writeText(document.getElementById('invoicePreview').innerText);
+            showToast('Copied to Clipboard!');
         }
-
-        function emailInvoice() {
-            const company = document.getElementById('companyName').value;
-            window.location.href = `mailto:?subject=Invoice from ${encodeURIComponent(company)}`;
-        }
-
-        function shareWhatsApp() {
-            const company = document.getElementById('companyName').value;
-            window.open(`https://wa.me/?text=Invoice%20from%20${encodeURIComponent(company)}`, '_blank');
-        }
+        function emailInvoice() { window.location.href = `mailto:?subject=Invoice`; }
+        function shareWhatsApp() { window.open(`https://wa.me/?text=Invoice%20Details`, '_blank'); }
 
         function resetForm() {
             document.getElementById('companyName').value = 'East Asia Trading';
-            document.getElementById('companyAddress').value = 'Pasar Pudu Baru 10, Kuala Lumpur 53000';
-            document.getElementById('clientName').value = 'Mayang Bujang';
-            document.getElementById('clientAddress').value = '2 Pasar Moden 55, Kuala Lumpur 55100';
-            document.getElementById('shipAddress').value = '1721 Jln Sp 232/7, Kuala Lumpur 55103';
-            document.getElementById('invoiceNumber').value = 'MY-001';
-            document.getElementById('poNumber').value = '2330/2019';
-            document.getElementById('taxRate').value = 6;
-            document.getElementById('currency').value = 'RM';
-
             logoDataURL = null;
             document.getElementById('logoPreview').innerHTML = '<i class="fas fa-plus"></i>';
-            applyTemplate('blue-header');
-            showToast('Reset completed!');
+            updatePreview();
+            showToast('Form Reset Successful');
         }
     </script>
 </body>
